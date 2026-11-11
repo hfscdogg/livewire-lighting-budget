@@ -8,7 +8,8 @@ fs.rmSync('distribution/apps-script',{recursive:true,force:true});fs.rmSync('dis
 fs.writeFileSync('distribution/Livewire-Lighting-Budget.html',html);
 fs.writeFileSync('distribution/Livewire-Internal-Setup.html',html.replace('<body>','<body><script>window.LIVEWIRE_INTERNAL=true;</script>'));
 for(const name of ['index.html','styles.css','shades.js','model.js','pricing.js','spreadsheet.js','customer-report.js','price-references.js','app.js'])fs.copyFileSync('dist/'+name,'distribution/source/dist/'+name);
-for(const name of ['model.test.js','wizard.test.js','scope.test.js','pricing.test.js','spreadsheet.test.js','labor.test.js','shades.test.js','build-distribution.js','README.md'])fs.copyFileSync(name,'distribution/source/'+name);
+for(const name of ['model.test.js','wizard.test.js','scope.test.js','pricing.test.js','spreadsheet.test.js','labor.test.js','shades.test.js','build-distribution.js','README.md','package.json','package-lock.json','.gitignore','.env.example'])fs.copyFileSync(name,'distribution/source/'+name);
+fs.cpSync('server','distribution/source/server',{recursive:true});
 fs.copyFileSync('distribution-docs/SETUP.txt','distribution/SETUP.txt');fs.copyFileSync('distribution-docs/SETUP.txt','distribution/source/distribution-docs/SETUP.txt');
 console.log('Created offline HTML, internal setup, documentation and source. No site identity, credentials, or project records included.');
 

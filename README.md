@@ -1,26 +1,34 @@
-# Livewire Lighting and Shades Budget Tool
+# Livewire Lighting and Shading Estimator
 
-Livewire’s internal budgeting application for lighting, lighting controls and motorized shades. Version 9 supports room-by-room scope, task-based labor, installation conditions, company pricing and customer budget reports.
+Livewire’s internal estimator for room-by-room lighting, Lutron controls and motorized shades. The shared application calculates budgets on the server, saves projects for approved employees, and prepares a customer-only report for Save as PDF in the browser.
 
-## Start locally
-Install Node.js 22 or newer from its official source, then run:
+## Run from a checkout
 
-- `npm test` to run the seven test suites.
-- `npm run build` to create the standalone files in `distribution/`.
-- Open `distribution/Livewire-Lighting-Budget.html` in your desktop browser.
+Use Node.js 22.16 or newer. Run `npm ci` and `npm test`. `npm run build` creates the existing standalone files under `distribution/`. The offline build includes internal pricing information and belongs in estimator-controlled storage.
 
-No npm dependencies are needed. This is not an authenticated hosted application. Do not enable public GitHub Pages.
+The shared app is a separate Node process with SQLite. The initial company price list is preliminary. A pricing administrator must check and publish company pricing, and review the saved project before a dollar range is shown. An incomplete project can produce a customer scope summary with no dollar amount.
 
-## Confidentiality
-This repository contains historical Livewire shade selling ranges, rates, margins and estimating assumptions. Keep the repository private. It contains no customer estimates or credentials. Generated estimates, company exports, downloaded HTML and local credentials should not be committed. Employee login, shared storage and admin-only pricing require the next implementation phase.
+## Shared application setup
 
-## Next steps
-1. Keep this repository private and confirm company ownership.
-2. Preserve the current calculation tests while separating private pricing from browser-delivered code.
-3. Add company sign-in, employee/admin authorization, central pricing and shared project storage.
-4. Test hosted authorization and pricing against the local application before staff rollout.
+1. Verify the existing host can run a persistent Node process with a writable private data directory, HTTPS reverse proxy and backups. Test on a dedicated staging hostname. Keep WordPress and the estimator on separate origins and serve only the estimator process on that hostname. Do not serve the checkout, offline distribution, database or price files through the web server. GitHub stores the private source.
+2. Use a Livewire-owned Google Cloud project and configure an internal OAuth web application in the confirmed Workspace organization. Register the exact redirect URI `<LIVEWIRE_ORIGIN>/auth/google/callback` and allow only the scopes `openid email`. The app checks Google's verified hosted domain, verified email, approved employee list and stable Google account subject.
+3. Copy `.env.example` to `.env` on the app host. Set the HTTPS app origin, work domain, OAuth values, approved employees and an absolute path in the private persistent data directory. Keep configuration and backups private. Run `npm ci --omit=dev` and `npm start` from the checkout. The process listens on `127.0.0.1` at `LIVEWIRE_PORT` by default. The proxy must forward browser Origin and cookie headers, bypass its cache, and avoid logging OAuth callback query strings. Configure process restart and SQLite-aware backups through the host.
+4. Test with a Livewire sales account and a pricing administrator on staging. Verify sign-in, opening and editing a shared project, role separation and PDF output before onboarding staff. Google OAuth and hosting must be verified in Livewire's environment.
 
----
+`LIVEWIRE_MEMBERS` maps approved work emails to `sales`, `pricing` or `owner`. All three roles can view and edit shared project scope. `pricing` and `owner` can publish price lists, reprice saved jobs and approve customer ranges. Maintain employee membership in server configuration and restart the process when it changes. Remove a departed employee's membership to deny existing sessions on restart. Review a previously bound identity before reusing a work email for a different Google account.
+
+## Shared estimating workflow
+
+- Sales uses the existing project, rooms, scope, access and budget steps. **Save project** saves the editable scope. **Shared projects** reopens a saved job or imports an older standalone project as scope only. A newer save from another employee is protected by a revision check.
+- Pricing administrators use **Company pricing** to publish a checked Livewire JSON or complete CSV. Keep a unique version in the file. New projects use the latest published version. Existing jobs keep their version until a pricing administrator explicitly applies the current version. Scope changes and repricing clear approval.
+- Before approving a saved project, check product mappings, Lutron compatibility and capacity, existing conditions, wiring allowances, task times and supplier costs. Compare any shade allowances with current fabrication quotes. Project review cannot release a range while required prices or model checks are unresolved. The customer report carries the approved selling range without supplier costs or labor breakdowns.
+- Use **Customer budget PDF** to open the customer summary, then **Save / print PDF** and choose Save as PDF in the browser.
+
+## Changelog
+
+- Restored application and estimating files missing from the GitHub checkout. Added the shared estimator with Livewire Google sign-in, server-side calculations, versioned administrator pricing, revision-checked shared projects and customer reports gated by pricing and scope review.
+
+## Standalone prototype reference
 
 # Livewire Lighting + Shades Budget v9
 
@@ -36,7 +44,7 @@ See [SETUP.txt](distribution-docs/SETUP.txt) for staff instructions and [SCOPE-M
 - Keep the approved HTML, company price-list JSON and individual estimate JSON files in business-controlled storage. Drive distributes files; it does not run the downloaded HTML or synchronize browser state.
 - Each estimate JSON preserves its room scope and full settings/pricing snapshot. Printing is a report, not an editable backup. Save before opening another estimate, applying a price list or starting a new project.
 - Internal screens are not secure roles. Recipients can inspect embedded data and full estimate JSON, including costs and margins. No backend permissions, shared database, automatic updates or live Drive sync are provided.
-- See [SHARED-APP-PLAN.txt](distribution-docs/SHARED-APP-PLAN.txt): real company login and admin-only central prices require server-side authorization and a protected database, not static hosting.
+- Use the shared application for protected pricing, work-account sign-in and team projects. The offline distribution is intended for controlled estimator use.
 
 ## Company price-list workflow
 
