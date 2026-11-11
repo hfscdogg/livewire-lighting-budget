@@ -1,0 +1,14 @@
+node_modules/
+distribution/
+.env
+.env.*
+!.env.example
+.openai/
+*.log
+.DS_Store
+Thumbs.db
+*-estimate.json
+*-project.json
+*-company-price-list.json
+exports/
+backups/

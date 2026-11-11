@@ -1,0 +1,13 @@
+{
+  "name": "livewire-lighting-budget",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Actual Livewire lighting and shading prototype",
+  "scripts": {
+    "test": "node model.test.js && node wizard.test.js && node scope.test.js && node pricing.test.js && node spreadsheet.test.js && node labor.test.js && node shades.test.js",
+    "build": "node build-distribution.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
