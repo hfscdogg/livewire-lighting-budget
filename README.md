@@ -1,6 +1,6 @@
 # Livewire Lighting and Shades Budget Tool
 
-Private company source repository for the actual revision-9 working prototype, not the synthetic boss demo.
+Livewire’s internal budgeting application for lighting, lighting controls and motorized shades. Version 9 supports room-by-room scope, task-based labor, installation conditions, company pricing and customer budget reports.
 
 ## Start locally
 Install Node.js 22 or newer from its official source, then run:
@@ -18,13 +18,13 @@ This repository contains historical Livewire shade selling ranges, rates, margin
 1. Keep this repository private and confirm company ownership.
 2. Preserve the current calculation tests while separating private pricing from browser-delivered code.
 3. Add company sign-in, employee/admin authorization, central pricing and shared project storage.
-4. Test hosted authorization and pricing against the working prototype before staff rollout.
+4. Test hosted authorization and pricing against the local application before staff rollout.
 
 ---
 
 # Livewire Lighting + Shades Budget v9
 
-Static, room-by-room budgeting prototype. It turns lighting selections into fixture packages, controls, wiring allowances, shared equipment and installation tasks. It is not an electrical design, verified bill of materials or fixed quote. Material costs remain unknown unless configured; labor standards are populated with explicit preliminary estimating judgments. Historical shade selling ranges are separate from costs.
+A local, room-by-room budgeting application. It turns lighting selections into fixture packages, controls, wiring allowances, shared equipment and installation tasks. It is not an electrical design, verified bill of materials or fixed quote. Material costs remain unknown unless configured; labor standards are populated with explicit preliminary estimating judgments. Historical shade selling ranges are separate from costs.
 
 See [SETUP.txt](distribution-docs/SETUP.txt) for staff instructions and [SCOPE-MATRIX.txt](distribution-docs/SCOPE-MATRIX.txt) for the modeled paths, remaining dependencies, exclusions and manufacturer references.
 
@@ -32,11 +32,11 @@ See [SETUP.txt](distribution-docs/SETUP.txt) for staff instructions and [SCOPE-M
 
 - `distribution/Livewire-Lighting-Budget.html`: self-contained sales planner.
 - `distribution/Livewire-Internal-Setup.html`: company settings and estimator review.
-- Both run locally without ChatGPT or a server. Browser storage is a draft convenience, not a backup.
+- Both run locally without an online account or a server. Browser storage is a draft convenience, not a backup.
 - Keep the approved HTML, company price-list JSON and individual estimate JSON files in business-controlled storage. Drive distributes files; it does not run the downloaded HTML or synchronize browser state.
 - Each estimate JSON preserves its room scope and full settings/pricing snapshot. Printing is a report, not an editable backup. Save before opening another estimate, applying a price list or starting a new project.
 - Internal screens are not secure roles. Recipients can inspect embedded data and full estimate JSON, including costs and margins. No backend permissions, shared database, automatic updates or live Drive sync are provided.
-- The prior Apps Script scaffold is removed. See SHARED-APP-PLAN.txt: real company login and admin-only central prices require server-side authorization and a protected database, not static hosting.
+- See [SHARED-APP-PLAN.txt](distribution-docs/SHARED-APP-PLAN.txt): real company login and admin-only central prices require server-side authorization and a protected database, not static hosting.
 
 ## Company price-list workflow
 
@@ -60,7 +60,7 @@ The effective date labels the release; it does not schedule activation. New proj
 ## Current business and allowance defaults
 
 - USD and feet. Per-meter catalog prices convert with 1 m = 1 / 0.3048 ft.
-- Labor: flat $112.50/person-hour on every installation date, per the latest instruction. Company settings remain editable in this local prototype.
+- Labor: flat $112.50/person-hour on every installation date. Company settings remain editable in this local application.
 - Small/large material gross margins: 65%/35%, using cost / (1 - margin). MSRP mode does not add margin. Material tax defaults to 6% of material selling price, a business assumption rather than tax-law verification.
 - Provisional medium runs: 50 ft per local branch; 75 ft per load home run, QS keypad/panel route, Ethernet route or circuit/module feeder; 15 ft per low-voltage driver lead. These are visible assumptions, not measurements or verified company standards. Sales does not enter exact cable footage.
 - Undercabinet sizing uses zones and a verified driver limit; equal division is provisional. An internal driver-count override can increase the minimum after actual run review.
@@ -68,7 +68,7 @@ The effective date labels the release; it does not schedule activation. New proj
 
 ## Source and validation
 
-Source runtime files are `dist/model.js`, `dist/pricing.js`, `dist/app.js`, `dist/styles.css` and `dist/index.html`. Run from the repository/source directory:
+Runtime source is in `dist/`, including the lighting, shading, pricing, spreadsheet and report modules. Run all regression suites with `npm test`, then build with `npm run build`. Individual checks include:
 
 ```text
 node --check dist/model.js
@@ -93,14 +93,14 @@ Tests exercise scope deductions, system gates, shared infrastructure, company-pr
 - Run `node spreadsheet.test.js` in addition to the four existing suites. New tests cover CSV roundtrip, invalid rows, reference/cost separation and customer-report privacy/range gating.
 
 ## Revision 8: populated labor and condition factors
-Flat112.50 USD/person-hour on all dates.63 task rows including six retained legacy rows; all have preliminary estimating units. Conditions affect only eligible work: physical task access factor, cable MAX(access,route), separate new plaster cuts and distinct route-access openings. Above/below accessible option prevents false closed-surface labor. New master/keypad/companion route coverage is tracked per load to avoid duplication or omission. Planning/programming scales by platform, rooms, zones, endpoints and keypads; on-site commissioning is separate. Daily setup and rough/trim visit minimum feed travel. Material prices remain unverified blanks. New `labor.test.js` covers these rules. Pre-v8 project migration changes the flat rate and fills blank standards with a visible notice, preserving custom nonblank hours.
+Flat $112.50 USD/person-hour on all dates. 63 task rows including six retained legacy rows; all have preliminary estimating units. Conditions affect only eligible work: physical task access factor, cable MAX(access,route), separate new plaster cuts and distinct route-access openings. Above/below accessible option prevents false closed-surface labor. New master/keypad/companion route coverage is tracked per load to avoid duplication or omission. Planning/programming scales by platform, rooms, zones, endpoints and keypads; on-site commissioning is separate. Daily setup and rough/trim visit minimum feed travel. Material prices remain unverified blanks. New `labor.test.js` covers these rules. Pre-v8 project migration changes the flat rate and fills blank standards with a visible notice, preserving custom nonblank hours.
 
 
 ## Revision 9: shading and shared-app planning
 - Repeatable window groups per room; quantity, approximate feet, collection,
   style, privacy, mount, power and optional finishes. Battery-only conditions
   omit irrelevant lighting/wiring questions.
-- 36 recovered historical shade selling ranges; no second material margin.
+- 36 historical shade selling ranges; no second material margin.
   Separate 12 V/35 V power, Type-A/QS addressing, receiver/Pico dependencies,
   shared headends and QS backbone routes. Package base labor is not double billed.
 - The expanded workbook/CSV has 100 products, 72 labor rows and 36 low/high shade
@@ -108,7 +108,7 @@ Flat112.50 USD/person-hour on all dates.63 task rows including six retained lega
 - Required price, tax-split, site, output/coverage and assembly reviews gate any
   complete range. Specialty/oversized styles do not silently use the roller grid.
 - See SHADING-ASSUMPTIONS.txt for historical versus provisional inputs and scope.
-- Run all seven *.test.js files. Independent audit also covered boundary counts,
+- Run all seven *.test.js files. Regression coverage includes boundary counts,
   pooled power, invalid data, route reuse, package tax and snapshot persistence.
 - Company SSO, central admin catalog and backend authorization remain planned,
-  not implemented. No GitHub account, deployment or access change was made.
+  not implemented in this release.
