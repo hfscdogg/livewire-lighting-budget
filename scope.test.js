@@ -51,3 +51,23 @@ console.log('PASS: centralized/distributed/mixed topology, shared modules/panels
   r.fanMotor = 'ac';
   assert.equal(M.calculate(s).issues.some(issue => issue.key.startsWith('fan_speed_')), false);
 }
+
+{
+  const [state, room] = base('RA3');
+  state.config.fixtureSpacingFt = 10;
+  state.project.networkPlan = 'existing';
+  Object.assign(state.config.catalog.find(row => row.id === 'ra3_processor'), { sku: 'RR-PROC3-KIT', includesPower: true });
+  Object.assign(room, { linearFt: 12, linearBehavior: 'lumaris', linearSections: '5,7' });
+  state.config.catalog.find(row => row.id === 'linear_lumaris').sku = 'LU-T05-TW-IN';
+  state.config.catalog.find(row => row.id === 'linear_parts').sku = 'LU-SR2-K';
+  state.config.catalog.find(row => row.id === 'driver_lumaris').sku += ' + LU-CK1-TW (2 connectors)';
+  const estimate = M.calculate(state);
+  assert.equal(qty(estimate, 'lighting_branch_cable'), 170);
+  assert.equal(qty(estimate, 'control_ethernet'), 0);
+  assert.equal(qty(estimate, 'network_accessories'), 0);
+  assert.equal(qty(estimate, 'linear_lumaris'), 5 * M.FT_PER_M);
+  assert.equal(qty(estimate, 'linear_parts'), 16);
+  assert.equal(qty(estimate, 'driver_lumaris'), 1);
+  room.linearSections = '4,4,4';
+  assert.ok(M.calculate(state).issues.some(({ key }) => key.startsWith('linear_zone_lengths_connectors_')));
+}
