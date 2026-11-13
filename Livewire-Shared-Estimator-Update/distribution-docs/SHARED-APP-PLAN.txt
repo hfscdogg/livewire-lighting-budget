@@ -1,0 +1,66 @@
+LIVEWIRE SHARED APP: PROPOSED ARCHITECTURE
+November 11, 2026 | Architecture reference
+See the repository README for the shared app implementation and hosting setup.
+
+THE GOAL
+One company-owned estimator that staff open in a browser, sign in with their
+own approved Livewire identity, and use with a centrally maintained price list.
+Sales select job scope; authorized administrators maintain prices and rules.
+Sales access the application with company sign-in; GitHub accounts are only needed by repository maintainers.
+
+OWNERSHIP AND SIGN-IN
+GitHub is the private source-code home, not the estimator's employee login.
+Use a company-owned private organization/repository with at least two company
+owners, 2FA and a documented recovery/ownership handover. A work-email individual
+GitHub account can administer that organization. Confirm company ownership
+and recovery procedures before wider rollout.
+
+Verify the company's existing identity provider before choosing an SSO
+integration: do not assume Google Workspace or Microsoft Entra. The app should
+verify provider-issued identity on the server, then check an explicit approved
+employee membership and role. Matching an email suffix alone is not sufficient.
+Provide staff offboarding and session revocation; avoid any shared password.
+
+PROTECTED APPLICATION
+Use a private code repository, HTTPS app host, authenticated API and database.
+All data permissions must be enforced server-side on every request:
+- Sales: create/edit permitted project scope, calculate allowed selling budgets,
+  and produce a sanitized customer report.
+- Pricing administrator: maintain cost/catalog/rates/rules; publish versioned
+  approved releases, with audit history and rollback.
+- Manager/owner: administer approved members and appropriate project access.
+
+Keep supplier costs, margins and internal catalogs in the protected backend.
+Never send them to sales browsers merely hidden in HTML or JSON. Server-side
+calculation returns only authorized line descriptions and selling results.
+Authenticate report/file endpoints too. Validate inputs, rate-limit endpoints,
+use safe output encoding, protect sessions and keep secrets out of source.
+
+DATA AND PRICE UPDATES
+Separate company price releases from projects. Save each estimate with its
+price/rule release and approved output snapshot. New projects use the current
+approved release. Existing jobs retain their snapshot unless an authorized
+user explicitly previews and confirms repricing. Record who changed what/when.
+Use optimistic version checks to prevent one user's save from silently
+replacing another's work. Include backups, recovery tests and retention rules.
+
+MIGRATION FROM THE LOCAL APPLICATION
+The calculation model, wizard and tests can be reused, but moving the current
+HTML to a host is not the secure conversion. Extract the calculation/catalog
+into the backend; replace local saving with authenticated project APIs and
+replace price import controls in the sales view with the approved server list.
+Import old project files only through validated, access-controlled migration.
+Do not ship old embedded costs or settings in the sales JavaScript bundle.
+
+BEFORE LAUNCH
+Test unauthenticated and wrong-user access, disabled employees, role escalation,
+project ownership, report downloads, price APIs and cached/old copies. Verify
+unauthorized users cannot read costs through source, network responses or APIs.
+Review logs for sensitive data, backup recovery, release rollback, concurrent
+editing, provider/domain restrictions, account ownership and monthly charges.
+
+DEPLOYMENT STATUS
+The repository includes the shared Node app, Google sign-in integration,
+server-side catalog and calculations, SQLite project storage and role checks.
+Livewire hosting, Google OAuth credentials and staging approval remain setup
+items. The standalone HTML continues to be a separate local estimator tool.

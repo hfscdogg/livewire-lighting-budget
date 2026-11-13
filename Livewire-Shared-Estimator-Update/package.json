@@ -1,0 +1,20 @@
+{
+  "name": "livewire-lighting-budget",
+  "version": "0.11.0",
+  "private": true,
+  "description": "Livewire lighting, controls and shading budget application",
+  "scripts": {
+    "test": "node model.test.js && node wizard.test.js && node scope.test.js && node pricing.test.js && node spreadsheet.test.js && node labor.test.js && node shades.test.js && node estate.test.js && node installation.test.js && node fan-budget.test.js && node release.test.js && node sales-workflow.test.js && node repository.test.js && node app-smoke.test.js && node --test server/shared.test.js",
+    "build": "node build-distribution.js",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "test:shared": "node --test server/shared.test.js",
+    "verify": "node verify-repository.js",
+    "manifest": "node generate-source-manifest.js"
+  },
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "dependencies": {
+    "google-auth-library": "11.3.4"
+  }
+}
