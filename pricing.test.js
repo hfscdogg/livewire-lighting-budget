@@ -13,7 +13,7 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   const older = { ...current, modelRevision: 9, settings: { ...current.settings, catalog: current.settings.catalog.filter(row => !M.LUMARIS_ADDED_ROWS.includes(row.id)) } };
   Object.assign(older.settings.catalog.find(row => row.id === 'driver_lumaris'), { sku: 'HWL-TWC-WH', system: 'HomeWorks', cost: 123.45, verified: true });
   const migrated = P.validate(older);
-  assert.equal(migrated.modelRevision, 10);
+  assert.equal(migrated.modelRevision, 12);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris_hw').cost, 123.45);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris').cost, null);
 }
@@ -24,7 +24,7 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   const state = M.initial();
   Object.assign(state.project, { travelBand: '0', scopeReviewed: true, permitAllowance: 100 });
   const room = M.addRoomNamed(state, 'Kitchen');
-  Object.assign(room, { surfaceMaterial: 'drywall', surfaceAccess: 'accessible', install: 'retrofit' });
+  Object.assign(room, { surfaceMaterial: 'drywall', surfaceAccess: 'accessible', install: 'retrofit',occupancy:'vacant',ceilingHeight:'standard',specialConditions:'standard' });
   room.recessGroups[0].qty = 1;
   Object.assign(state.config, { shippingHandling: true, rangeLowPct: -10, rangeHighPct: 15, electricalReviewed: true, loadCompatibilityReviewed: true });
   for (const item of state.config.catalog) Object.assign(item, { sku: 'TEST', cost: 0, msrp: 0, verified: true, pricing: 'msrp' });
@@ -42,4 +42,42 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   assert.deepEqual([24999.99, 25000, 37500, 50000, 50000.01, 62500.01, 75000.01].map(M.shippingRate), [10, 8.75, 7.5, 7.5, 6.25, 5, 4.75]);
   const olderRows = Sheet.rows(state).filter(row => !['shippingHandling','fixtureSpacingFt'].includes(row[1]));
   assert.equal(Sheet.importCSV(Sheet.csv(olderRows), state).settings.shippingHandling, false);
+}
+
+// Repository prices use the supplied workbook; hardware inclusions remain separate.
+{
+  const catalog=P.validate(require('./pricing/catalog.json'));
+  for(const [id,sku,cost,msrp] of [
+    ['hw_sunnata','HRST-W',265.5,531],
+    ['hw_sunnata_hybrid','HRST-HN',326.5,653],
+    ['hw_control_enclosure','HQ-LV21-120',352,704],
+  ]) {
+    const row=catalog.settings.catalog.find(row=>row.id===id);
+    assert.equal(row.sku,sku);assert.equal(row.cost,cost);assert.equal(row.msrp,msrp);
+    assert.equal(row.verified,true);assert.equal(row.includesPlate,false);assert.equal(row.includesPower,false);
+  }
+  const old=P.make(M.initial(),'saved-old-release','2026-11-12');
+  const saved=P.apply(M.initial(),old);
+  const repriced=P.apply(saved,catalog);
+  assert.equal(saved.config.catalog.find(row=>row.id==='hw_sunnata').cost,null);
+  assert.equal(repriced.config.catalog.find(row=>row.id==='hw_sunnata').cost,265.5);
+}
+
+// Supplier source preserves the entire provided list; partial assemblies cannot become complete prices.
+{
+ const source=require('./pricing/lutron-supplier-prices.json');
+ const audit=require('./pricing/assembly-audit.json');
+ assert.equal(source.rows.length,10086);
+ const bySku=new Map(source.rows.map(row=>[row.sku,row]));
+ for(const recipe of audit.recipes){
+   let knownCost=0,knownList=0;
+   for(const part of recipe.components){
+     if(bySku.has(part.sku)){const supplied=bySku.get(part.sku);assert.equal(part.cost,supplied.cost);assert.equal(part.list,supplied.list);knownCost+=part.cost;knownList+=part.list;}
+     else {assert.equal(part.cost,null);assert.equal(part.list,null);}
+   }
+   assert.equal(Math.round(knownCost*100)/100,recipe.knownComponentCost);
+   assert.equal(Math.round(knownList*100)/100,recipe.knownComponentList);
+   assert.equal(recipe.complete,false);
+   assert.equal(require('./pricing/catalog.json').settings.catalog.find(row=>row.id===recipe.catalogId).cost,null);
+ }
 }

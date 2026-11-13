@@ -5,13 +5,13 @@ const Report=require('./dist/customer-report');
 const S=require('./server/estimate');
 const catalog=P.validate(require('./pricing/catalog.json'));
 const reviewed=['designReviewed','electricalReviewed','loadCompatibilityReviewed','linearRunsReviewed','qsPowerReviewed','centralCapacityReviewed','networkReviewed','siteConditionsReviewed','shadeScopeReviewed','shadePowerReviewed','shadeMountReviewed'];
-function room(s,name,qty,opts={}){const r=M.addRoomNamed(s,name);Object.assign(r,{surfaceMaterial:'drywall',surfaceAccess:'accessible'},opts);r.recessGroups[0].qty=qty;return r;}
+function room(s,name,qty,opts={}){const r=M.addRoomNamed(s,name);Object.assign(r,{surfaceMaterial:'drywall',surfaceAccess:'accessible'},opts);Object.assign(r,{ceilingPath:r.surfaceAccess==='open'?'open':r.surfaceAccess==='accessible'?'attic':'closed',wallPath:r.surfaceAccess==='open'?'open':r.surfaceAccess==='accessible'?'accessible':'closed',openingPermission:r.surfaceAccess==='removable'?'selective':'none',occupancy:'vacant',ceilingHeight:'standard',specialConditions:'standard'});r.recessGroups[0].qty=qty;return r;}
 function qty(c,id){return c.materials.filter(x=>x.id===id).reduce((a,x)=>a+(x.qty||0),0);}
 function hours(c,id){return c.labor.filter(x=>x.id===id).reduce((a,x)=>a+x.hours,0);}
 function report(s,c){return Report.build(s,c);}
 function setup(system,install='remodel'){
  const s=P.apply(M.initial(),catalog);
- Object.assign(s.project,{system,install,systemPlan:'new',travelBand:'1',networkPlan:'new',scopeReviewed:true});
+ Object.assign(s.project,{system,install,sharedPath:'open',systemPlan:'new',travelBand:'1',networkPlan:'new',scopeReviewed:true});
  for(const k of reviewed)s.config[k]=true;
  return s;
 }
