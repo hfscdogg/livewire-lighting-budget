@@ -6,3 +6,14 @@ const valid=P.make(M.initial(),'draft-1','2027-01-01');assert.equal(valid.settin
 console.log('PASS: versioned company price-list validation, project isolation, snapshot roundtrip, explicit preview/reprice, cleared review approvals, unchanged room scope, null prices and rejected malformed imports.');
 
 {const old=M.initial();old.config.catalog.push({...old.config.catalog[0],id:"retired_example"});old.config.labor.retired_example=5;const packed=P.make(old,"legacy-clean","2026-11-10");assert.equal(packed.settings.catalog.length,M.initial().config.catalog.length);assert.ok(!("retired_example" in packed.settings.labor));assert.equal(old.config.catalog.length,M.initial().config.catalog.length+1);}
+
+{
+  const state = M.initial();
+  const current = P.make(state, 'migration-test', '2026-11-11');
+  const older = { ...current, modelRevision: 9, settings: { ...current.settings, catalog: current.settings.catalog.filter(row => !M.LUMARIS_ADDED_ROWS.includes(row.id)) } };
+  Object.assign(older.settings.catalog.find(row => row.id === 'driver_lumaris'), { sku: 'HWL-TWC-WH', system: 'HomeWorks', cost: 123.45, verified: true });
+  const migrated = P.validate(older);
+  assert.equal(migrated.modelRevision, 10);
+  assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris_hw').cost, 123.45);
+  assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris').cost, null);
+}

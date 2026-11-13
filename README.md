@@ -10,7 +10,7 @@ The shared app is a separate Node process with SQLite. The initial company price
 
 ## Shared application setup
 
-1. Verify the existing host can run a persistent Node process with a writable private data directory, HTTPS reverse proxy and backups. Test on a dedicated staging hostname. Keep WordPress and the estimator on separate origins and serve only the estimator process on that hostname. Do not serve the checkout, offline distribution, database or price files through the web server. GitHub stores the private source.
+1. Ask the Livewire hosting or IT owner whether the company already has a supported Node host with persistent private SQLite storage, backups and an HTTPS reverse proxy. Confirm that the pilot fits the existing service and obtain approval for the staging hostname. Test on a dedicated staging hostname. Keep WordPress and the estimator on separate origins and serve only the estimator process on that hostname. Do not serve the checkout, offline distribution, database or price files through the web server. GitHub stores the private source.
 2. Use a Livewire-owned Google Cloud project and configure an internal OAuth web application in the confirmed Workspace organization. Register the exact redirect URI `<LIVEWIRE_ORIGIN>/auth/google/callback` and allow only the scopes `openid email`. The app checks Google's verified hosted domain, verified email, approved employee list and stable Google account subject.
 3. Copy `.env.example` to `.env` on the app host. Set the HTTPS app origin, work domain, OAuth values, approved employees and an absolute path in the private persistent data directory. Keep configuration and backups private. Run `npm ci --omit=dev` and `npm start` from the checkout. The process listens on `127.0.0.1` at `LIVEWIRE_PORT` by default. The proxy must forward browser Origin and cookie headers, bypass its cache, and avoid logging OAuth callback query strings. Configure process restart and SQLite-aware backups through the host.
 4. Test with a Livewire sales account and a pricing administrator on staging. Verify sign-in, opening and editing a shared project, role separation and PDF output before onboarding staff. Google OAuth and hosting must be verified in Livewire's environment.
@@ -19,18 +19,23 @@ The shared app is a separate Node process with SQLite. The initial company price
 
 ## Shared estimating workflow
 
-- Sales uses the existing project, rooms, scope, access and budget steps. **Save project** saves the editable scope. **Shared projects** reopens a saved job or imports an older standalone project as scope only. A newer save from another employee is protected by a revision check.
-- Pricing administrators use **Company pricing** to publish a checked Livewire JSON or complete CSV. Keep a unique version in the file. New projects use the latest published version. Existing jobs keep their version until a pricing administrator explicitly applies the current version. Scope changes and repricing clear approval.
-- Before approving a saved project, check product mappings, Lutron compatibility and capacity, existing conditions, wiring allowances, task times and supplier costs. Compare any shade allowances with current fabrication quotes. Project review cannot release a range while required prices or model checks are unresolved. The customer report carries the approved selling range without supplier costs or labor breakdowns.
+- Sales starts with the project, adds or copies rooms, enters scope and access, then reviews the budget. **Help me choose** lets a salesperson save scope before the control system is decided. Additions to installed systems need an equipment and spare-capacity review. **Shared projects** searches by name, reopens saved jobs and imports older standalone projects as scope only. A revision check protects another employee’s newer save.
+- Pricing administrators use **Company pricing** to download and publish an editable CSV or checked Livewire JSON. Enter the exact SKU, current price, verified mapping, package inclusions and applicable labor. Use a unique release version. The bundled Excel workbook uses the previous format and remains importable. Use the current CSV for the separate Lumaris platforms and verification fields. Existing jobs retain their assigned version until a pricing administrator explicitly applies the current one. Changes to scope, pricing or calculation rules require review before a new range can be shared.
+- Before approving a saved project, check product mappings, Lutron compatibility and capacity, existing conditions, wiring allowances, task times and supplier costs. Enter the checked processor, gateway or repeater counts for the layout. Confirm wired HomeWorks QS links separately from the wireless processor selection. Compare shade allowances with current fabrication quotes. Project review cannot release a range while required prices or model checks are unresolved. The customer report carries the approved selling range without supplier costs or labor breakdowns.
 - Use **Customer budget PDF** to open the customer summary, then **Save / print PDF** and choose Save as PDF in the browser.
+
+## Pilot acceptance
+
+Have two employees sign in on the approved test site. Have one create and save a test job and the other find and reopen it. Confirm the sales account cannot access pricing administration. On an actual job with known scope and a current supplier quote, compare a manual takeoff with the modeled fixtures, control zones, shared headend, shade power, wiring and crew visits. Publish the checked pricing, review the project and open both the pending and reviewed PDF outputs. Confirm the backup can restore the saved project and price release before using the app with live jobs.
 
 ## Changelog
 
+- Streamlined sales qualification with room copying, project search, explicit system questions and an actionable room summary. Corrected new-construction defaults and modeled Lumaris equipment by platform, undercabinet controller limits, Palladiom drive variants and fan speed-control compatibility. Added layout review and editable CSV product verification fields.
 - Restored application and estimating files missing from the GitHub checkout. Added the shared estimator with Livewire Google sign-in, server-side calculations, versioned administrator pricing, revision-checked shared projects and customer reports gated by pricing and scope review.
 
 ## Standalone prototype reference
 
-# Livewire Lighting + Shades Budget v9
+# Livewire Lighting + Shades Budget
 
 A local, room-by-room budgeting application. It turns lighting selections into fixture packages, controls, wiring allowances, shared equipment and installation tasks. It is not an electrical design, verified bill of materials or fixed quote. Material costs remain unknown unless configured; labor standards are populated with explicit preliminary estimating judgments. Historical shade selling ranges are separate from costs.
 
@@ -70,7 +75,7 @@ The effective date labels the release; it does not schedule activation. New proj
 - USD and feet. Per-meter catalog prices convert with 1 m = 1 / 0.3048 ft.
 - Labor: flat $112.50/person-hour on every installation date. Company settings remain editable in this local application.
 - Small/large material gross margins: 65%/35%, using cost / (1 - margin). MSRP mode does not add margin. Material tax defaults to 6% of material selling price, a business assumption rather than tax-law verification.
-- Provisional medium runs: 50 ft per local branch; 75 ft per load home run, QS keypad/panel route, Ethernet route or circuit/module feeder; 15 ft per low-voltage driver lead. These are visible assumptions, not measurements or verified company standards. Sales does not enter exact cable footage.
+- Provisional medium runs: 50 ft per local branch; 75 ft per load home run, QS keypad/panel route, Ethernet route or circuit/module feeder; 15 ft per ordinary low-voltage driver lead. Lumaris controller-output budgets use dedicated wiring with a 10 ft basis and the selected tape’s run limits. These are visible assumptions, not measurements or verified company standards. Sales does not enter exact cable footage.
 - Undercabinet sizing uses zones and a verified driver limit; equal division is provisional. An internal driver-count override can increase the minimum after actual run review.
 - Travel: one two-person crew, eight on-site hours/day, rounded up from on-site person-hours / 16. Design and base programming default to off-site. Bands are 0–34 miles free; 35–60 miles $120/day; 61–85 $240; 86–111 $360; 112–137 $480; 138–163 $600. Beyond 163 miles is unresolved. Missing on-site task times leave charged travel unknown.
 

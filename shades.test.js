@@ -18,5 +18,17 @@ s=make('RA3');add(s,{family:'palladiom',power:'existing',qty:2});c=M.calculate(s
 s=make('RA3');add(s,{layers:2,qty:2});c=M.calculate(s);assert.equal(c.shades.count,4);assert.equal(c.shades.openings,2);assert.equal(c.typeA,4);assert.equal(tasks(c,'shade_measure')[0].qty,2);assert.equal(tasks(c,'shade_install')[0].qty,4);assert.equal(qty(c,'ra3_processor'),1);
 s=make();add(s,{name:'SECRET_SHADE_NAME',qty:2});s.project.notes='SECRET_COST';s.config.shadeLow.triathlon_60_60=1234;let doc=R.html(R.build(s,M.calculate(s)));assert.ok(doc.includes('2 Triathlon roller shade'));assert.ok(!doc.includes('SECRET_SHADE_NAME'));assert.ok(!doc.includes('1234'));assert.ok(!doc.includes('SECRET_COST'));assert.ok(doc.includes('Budget pending'));
 let back=M.validate(JSON.parse(JSON.stringify(s)));assert.deepEqual(back.rooms[0].shadeGroups,s.rooms[0].shadeGroups);let legacy=M.initial();delete legacy.rooms;legacy.rooms=[{...M.room('Old room')}];delete legacy.rooms[0].shadeGroups;delete legacy.config.shadeLow;delete legacy.config.shadeHigh;delete legacy.config.shadeAllowances;back=M.validate(legacy);assert.deepEqual(back.rooms[0].shadeGroups,[]);assert.equal(Object.keys(back.config.shadeLow).length,36);
-let pack=P.make(s,'shade-test','2026-11-11');let csv=Sheet.csv(Sheet.rows(s));assert.deepEqual(Sheet.importCSV(csv,s).settings,pack.settings);assert.equal(pack.modelRevision,9);const applied=P.apply(s,pack);assert.equal(applied.config.shadeScopeReviewed,false);assert.equal(applied.config.shadePowerReviewed,false);
+let pack=P.make(s,'shade-test','2026-11-11');let csv=Sheet.csv(Sheet.rows(s));assert.deepEqual(Sheet.importCSV(csv,s).settings,pack.settings);assert.equal(pack.modelRevision,10);const applied=P.apply(s,pack);assert.equal(applied.config.shadeScopeReviewed,false);assert.equal(applied.config.shadePowerReviewed,false);
 console.log('PASS: shade budget grids, known ranges/no second margin, RF/QS capacity, shared headends, voltage/power separation, package/labor dedup, conditions, dimensions/specialty gates, crew travel, persistence and PDF privacy.');
+
+s = make('RA3');
+add(s, { family: 'palladiom_wired', power: 'wired' });
+c = M.calculate(s);
+assert.ok(c.issues.some(x => x.key.startsWith('shade_qs_system_')));
+s = make('HomeWorks');
+add(s, { family: 'palladiom_wirefree', power: 'wired', qty: 2, widthFt: 1.5 });
+c = M.calculate(s);
+assert.equal(c.shades.rf, 2);
+assert.equal(c.shades.qs, 0);
+assert.equal(qty(c, 'shade_rf_receiver'), 2);
+assert.ok(c.issues.some(x => x.key.startsWith('shade_size_min_')));

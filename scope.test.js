@@ -8,7 +8,7 @@ function calibrated(s){for(const k of ['designReviewed','electricalReviewed','lo
 {const[s,r]=base('none');calibrated(s);let c=M.calculate(s);assert.equal(qty(c,'none_dimmer'),1);assert.equal(c.processors,0);assert.equal(qty(c,'lighting_branch_cable'),50);assert.ok(M.range(c,s.config));s.config.electricalReviewed=false;assert.equal(M.range(M.calculate(s),s.config),null);s.config.electricalReviewed=true;r.powerPlan='new';s.config.newCircuitsPerRoom=null;assert.equal(M.range(M.calculate(s),s.config),null);s.config.newCircuitsPerRoom=1;c=M.calculate(s);assert.equal(qty(c,'new_circuit_parts'),1);assert.equal(qty(c,'circuit_feeder_cable'),75);assert.ok(M.range(c,s.config));r.controlLocations=1.5;assert.equal(M.range(M.calculate(s),s.config),null);}
 {const[s,r]=base('RA3');r.keypadQty=1;r.keypadType='sunnata_hybrid';r.controlLocations=3;s.config.ra3Repeaters=2;let c=M.calculate(s);assert.equal(qty(c,'RA3_dimmer'),0);assert.equal(qty(c,'RA3_dimmer_companion'),2);assert.equal(hours(c,'companion_install'),2);assert.equal(qty(c,'lighting_branch_cable'),50);assert.equal(hours(c,'repeater_install'),2);s.config.catalog.find(x=>x.id==='ra3_processor').includesPower=true;c=M.calculate(s);assert.equal(qty(c,'control_poe'),0);assert.equal(hours(c,'poe_power_install'),c.processors);}
 {const[s,r]=base();r.recessGroups[0].behavior='ketra';let c=M.calculate(s);assert.equal(qty(c,'HomeWorks_dimmer'),0);assert.equal(qty(c,'constant_power_parts'),1);assert.equal(qty(c,'lighting_branch_cable'),50);assert.ok(c.issues.some(x=>x.key.startsWith('d2r_site')));r.recessGroups[0].behavior='lumaris';r.recessGroups[0].adjustable=true;calibrated(s);assert.ok(M.calculate(s).issues.some(x=>x.key.startsWith('lumaris_adjustable')));assert.equal(M.range(M.calculate(s),s.config),null);}
-{const[s,r]=base();r.recessGroups[0].qty=0;r.linearFt=18;r.linearZones=2;r.linearBehavior='lumaris';s.config.driverMax.lumaris=16;calibrated(s);s.config.linearRunsReviewed=false;assert.equal(M.range(M.calculate(s),s.config),null);s.config.linearRunsReviewed=true;r.driverCountOverride=3;let c=M.calculate(s);assert.equal(c.roomResults[0].driverQty,3);assert.equal(qty(c,'linear_lead'),45);assert.equal(hours(c,'linear_lead_run'),45);}
+{const[s,r]=base();r.recessGroups[0].qty=0;r.linearFt=18;r.linearZones=2;r.linearBehavior='lumaris';s.config.driverMax.lumaris=16;calibrated(s);s.config.linearRunsReviewed=false;assert.equal(M.range(M.calculate(s),s.config),null);s.config.linearRunsReviewed=true;r.driverCountOverride=3;let c=M.calculate(s);assert.equal(c.roomResults[0].driverQty,3);assert.equal(qty(c,'linear_lead_lumaris'),30);assert.equal(hours(c,'linear_lead_run'),30);}
 {const[s,r]=base();r.keypadType='alisse';r.keypadQty=1;r.recessGroups[0].qty=0;r.keypadLocation='existing';r.surfaceMaterial='drywall';r.surfaceAccess='removable';let c=M.calculate(s);assert.equal(c.roomResults[0].openings,0);assert.equal(qty(c,'keypad_qs_mount'),1);r.keypadLocation='new';assert.equal(M.calculate(s).roomResults[0].openings,1);s.config.qsDevicesPerLink=0;c=M.calculate(s);assert.ok(Number.isFinite(c.qsLinks));assert.ok(c.issues.some(x=>x.key==='qs_capacity_config'));}
 {const[s,r]=base('none');calibrated(s);r.routeLength='long';assert.equal(M.range(M.calculate(s),s.config),null);r.routeReviewed=true;assert.ok(M.range(M.calculate(s),s.config));s.config.feedsPerModule=1.5;assert.equal(M.range(M.calculate(s),s.config),null);}
 {const[s,r]=base();r.keypadType='alisse';r.keypadQty=1;r.recessGroups[0].qty=0;r.decorNew=10001;r.decorControlGroup='separate';calibrated(s);const c=M.calculate(s);assert.ok(c.issues.some(x=>x.key==='hw_switchlegs'));assert.equal(M.range(c,s.config),null);}
@@ -16,3 +16,38 @@ function calibrated(s){for(const k of ['designReviewed','electricalReviewed','lo
 console.log('PASS: centralized/distributed/mixed topology, shared modules/panels/feeds, QS/backbone/enclosures, electrical dependencies, medium runs, hybrid companions, bundled-power labor, intelligent constant power, linear overrides, finite/whole capacity limits, 10k output gate, onsite travel.');
 
 {const[s,r]=base();r.loadTopology="centralized";r.keypadQty=1;r.keypadType="sunnata_hybrid";s.config.catalog.find(x=>x.id==="hw_sunnata_hybrid").includesPlate=true;s.config.catalog.find(x=>x.id==="hw_sunnata").includesPlate=false;const c=M.calculate(s);assert.equal(qty(c,"hw_sunnata"),1);assert.equal(qty(c,"control_wallplate"),1);}
+
+// System-specific part numbers, manufacturer caps and actual unequal groups.
+{
+  const [s, r] = base('RA3');
+  r.install = 'new';
+  r.powerPlan = 'new';
+  r.recessGroups[0].qty = 41;
+  r.recessGroups[0].behavior = 'lumaris';
+  Object.assign(r, { linearFt: 20, linearZones: 2, linearZoneLengths: '18, 2', linearBehavior: 'lumaris' });
+  let c = M.calculate(s);
+  assert.equal(qty(c, 'new_circuit_parts'), 2);
+  assert.equal(qty(c, 'driver_lumaris'), 3);
+  assert.equal(qty(c, 'linear_lead_lumaris'), 30);
+  assert.equal(c.typeX, 45);
+  assert.match(c.materials.find(line => line.id === 'fixture_new_lumaris_fixed').sku, /^RRL-/);
+  s.project.system = 'HomeWorks';
+  c = M.calculate(s);
+  assert.match(c.materials.find(line => line.id === 'fixture_new_lumaris_fixed_hw').sku, /^HWL-/);
+  assert.match(c.materials.find(line => line.id === 'driver_lumaris_hw').sku, /^HWL-/);
+  assert.equal(qty(c, 'driver_lumaris'), 0);
+  assert.equal(c.hwX, 45);
+  r.linearZoneLengths = '4, 8';
+  assert.ok(M.calculate(s).issues.some(issue => issue.key.startsWith('linear_zone_lengths_')));
+}
+{
+  const [s, r] = base('RA3');
+  r.fanQty = 1;
+  r.fanControl = 'fan';
+  for (const motor of ['unknown', 'remote']) {
+    r.fanMotor = motor;
+    assert.ok(M.calculate(s).issues.some(issue => issue.key.startsWith('fan_speed_')));
+  }
+  r.fanMotor = 'ac';
+  assert.equal(M.calculate(s).issues.some(issue => issue.key.startsWith('fan_speed_')), false);
+}
