@@ -1,5 +1,5 @@
 {
-  "release": "2026-11-13-field-workflow-2",
+  "release": "2026-11-13-budget-workflow-1",
   "files": [
     {
       "path": ".env.example",
@@ -15,11 +15,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "1c060b40b04c0a48b21e699968271713a48b4ec580699635d8c529797e951a1b"
+      "sha256": "caededf7570f82167c441cdd66034a745ef5730d2f288603142d2af2e89fbb47"
     },
     {
       "path": "app-smoke.test.js",
-      "sha256": "3fdabcf0a0ebf0bca9b8c0d9dc532e5b46f939a5dc610d75df10d8e347cae461"
+      "sha256": "bb0bbe4105d5a62be005c43830bab787dc0a77dedf562474160dea9c81338966"
     },
     {
       "path": "build-distribution.js",
@@ -27,11 +27,11 @@
     },
     {
       "path": "dist/app.js",
-      "sha256": "e0f59617fcaa3ba33ccbcd71a5f479a50f3a5b58cb9584018a394e427a34d1fb"
+      "sha256": "57d1f9a0e428a8b2b7f0e368039b410db3a32d8dba6606579f174f2f5a93e347"
     },
     {
       "path": "dist/customer-report.js",
-      "sha256": "1ef261a004bc274ebcba9f2f1da56a7743db2c34b07fa341947ab68341ebc884"
+      "sha256": "75585902660011b6464a08c69bb541ee35f63e7f4582bd623e89e1ba40781d0c"
     },
     {
       "path": "dist/index.html",
@@ -47,7 +47,7 @@
     },
     {
       "path": "dist/model.js",
-      "sha256": "ea6d459539b29b01cf8c8b4589f2aae0a5c576e75143951629bc540a65b74eee"
+      "sha256": "437270f7f92d9a676281e56a617d37bb4bfee0f6da500ccec98f414168bbca19"
     },
     {
       "path": "dist/price-references.js",
@@ -55,11 +55,11 @@
     },
     {
       "path": "dist/pricing.js",
-      "sha256": "7ef70c2f85731c1eeaffc8e260067cafaac251ad23576af952a91d2d65f4a10e"
+      "sha256": "5ce8516037379193df0e2f9c14d0cf59eee1f3c7975c1ef1acfa1797bb9eae55"
     },
     {
       "path": "dist/sales-workflow.js",
-      "sha256": "96d3d072687609f62cc67d2d53ecc9f4d2c28bfab008d39890d8946127c1562b"
+      "sha256": "2dfbae041a1d4b572962ab9fb7e20ca11ead8159c36946b65083cdaaf890ffa4"
     },
     {
       "path": "dist/shades.js",
@@ -71,11 +71,11 @@
     },
     {
       "path": "dist/styles.css",
-      "sha256": "edbea933b21e4341438c1333b9c4900fa86ceb15ac783e736adf2c4c593036db"
+      "sha256": "29fa41b91790a854d62fb0d14d6ecff6f439134ad88d5f08c3140717d38a8903"
     },
     {
       "path": "distribution-docs/FIELD-WORKFLOW-REVIEW.md",
-      "sha256": "4b78491f2185c81be1e204d420e0c3199bb77c65cda7702a72bcc8856cb96e09"
+      "sha256": "5bf8c0da3d7bfaf06a8551f99b4f0dfe4cc41bf197d3944e6cb4a8afafaa7404"
     },
     {
       "path": "distribution-docs/LABOR-ASSUMPTIONS.txt",
@@ -94,8 +94,12 @@
       "sha256": "cd4cdafc276c2280e12cfe0a82cd3530896a1a0fc4769bca6b8006d93c0982bd"
     },
     {
+      "path": "distribution-docs/RANIA-TAPE-BASIS.md",
+      "sha256": "87b3c384fc5270f1c534b1b247c8f0248cd80f5e95814a352bbdbe8ba500a7f2"
+    },
+    {
       "path": "distribution-docs/RELEASE-STATUS.md",
-      "sha256": "37a33b688842bf00fcad75780d412149e6218e36029e98aba2fc96be1ca966a7"
+      "sha256": "6781355050c6d5d0e6b9aceb734e562fda7c2ec14720d8dc70af3760a648c8b2"
     },
     {
       "path": "distribution-docs/SCOPE-MATRIX.txt",
@@ -119,15 +123,15 @@
     },
     {
       "path": "fan-budget.test.js",
-      "sha256": "00fb2c154baa06a95bfeea11d2b13a2d469f401dd74c84b1fcbf74f881b98ac5"
+      "sha256": "a07a7e71283b3b1039866a2fd433ccff0b417dd64b318255f35a534ffdd35978"
     },
     {
       "path": "generate-source-manifest.js",
-      "sha256": "ec2c09a51dd1d0f92e28e977570ecfa7014f23a25c11c813ef69cdde9f34018d"
+      "sha256": "514a1f039715492dc7df7ba6080c4a44d89e75f7ffa073bea2acaf79562e001c"
     },
     {
       "path": "installation.test.js",
-      "sha256": "51ffef68c2a8c039c3a24ec70aa143720d0aadaee14b17c9c1549ed6cc4cd732"
+      "sha256": "5f850dcace5c39dbe0e5af96ecdd31ea08ff72b042cee246f68052a211046e7a"
     },
     {
       "path": "labor.test.js",
@@ -143,11 +147,15 @@
     },
     {
       "path": "package.json",
-      "sha256": "ffba119adb3ee80f6c32322638ef81b13ee45652551e9cf0a908619ba52105a7"
+      "sha256": "c66a7c4343dd07ad36fdd93eee081c6e4d78faa5c6cedcd60e393521c6189c5c"
+    },
+    {
+      "path": "payoff.test.js",
+      "sha256": "67de488096ef83bb3d2aae90694cd86a0bc6b338cbc03773ab80995dc2fce857"
     },
     {
       "path": "pricing.test.js",
-      "sha256": "188bdf65d2e8ef4d09f7dd82a673efa4e98ff26dc567f55a94bf2b08ee1273e2"
+      "sha256": "e227c790bfb305ce4c58f00466e7e83d8636a38345440c564014a4e0827d597a"
     },
     {
       "path": "pricing/assembly-audit.json",
@@ -155,7 +163,7 @@
     },
     {
       "path": "pricing/catalog.json",
-      "sha256": "4a19984e83b97671aced2be67c4bd5d7259835ed1debd36bdab614f59536a9d6"
+      "sha256": "5efc7da929161089b81cccfe9af8aaa73aa3a8ea4ea322859a540c27b5f12eeb"
     },
     {
       "path": "pricing/lutron-supplier-prices.json",
@@ -203,11 +211,11 @@
     },
     {
       "path": "shades.test.js",
-      "sha256": "72943be13fc82c1e6b5eb2e2842941899bf502a5832da8d6e8b91eb79369d63c"
+      "sha256": "8d434962a45e13cc3a4a075020c34b30fc46c94d4d395b2e4aae568d19b2e887"
     },
     {
       "path": "spreadsheet.test.js",
-      "sha256": "45c6005abacd7febba8e50e6bf53615b015e892588ba837b7caf0fc70e9b610e"
+      "sha256": "6daf580e8c68b83d5157defd739d43bafac2985bd6afcf8337e9c427821e46ad"
     },
     {
       "path": "verify-repository.js",

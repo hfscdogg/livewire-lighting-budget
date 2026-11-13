@@ -13,7 +13,7 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   const older = { ...current, modelRevision: 9, settings: { ...current.settings, catalog: current.settings.catalog.filter(row => !M.LUMARIS_ADDED_ROWS.includes(row.id)) } };
   Object.assign(older.settings.catalog.find(row => row.id === 'driver_lumaris'), { sku: 'HWL-TWC-WH', system: 'HomeWorks', cost: 123.45, verified: true });
   const migrated = P.validate(older);
-  assert.equal(migrated.modelRevision, 12);
+  assert.equal(migrated.modelRevision, 13);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris_hw').cost, 123.45);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris').cost, null);
 }

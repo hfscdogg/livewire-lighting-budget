@@ -21,15 +21,16 @@ async function main(){
   const change=(path,value,type='select-one')=>events.get('change')({target:{dataset:{path},value,type,tagName:type==='select-one'?'SELECT':'INPUT'}});
   click({action:'pick-room',name:'Kitchen'});click({action:'go',step:'2'});
   assert.match(element('app').innerHTML,/Room overview/);
-  assert.match(element('app').innerHTML,/Number of recessed lights/);
+  assert.doesNotMatch(context.testScope('roomOverview(state.rooms[0])'),/<input|<select/);
+  click({action:'layer',id:'recessed'});
+  assert.match(element('app').innerHTML,/data-path="rooms.0.recessGroups.0.qty"/);
   assert.equal(context.testScope('state.rooms[0].linearBehavior'),'lumaris');
   change('rooms.0.recessGroups.0.qty','-4','number');
   assert.equal(context.testScope('state.rooms[0].recessGroups[0].qty'),-4,'Invalid quantities must not silently become zero');
   assert.equal(context.testScope('M.range(M.calculate(state),state.config)'),null);
   change('rooms.0.recessGroups.0.qty','4','number');
   change('rooms.0.recessGroups.0.behavior','rania');
-  assert.match(element('app').innerHTML,/Use the matching system/);
-  click({action:'fit-system'});
+  assert.doesNotMatch(element('app').innerHTML,/Use the matching system/);
   assert.equal(context.testScope('state.project.system'),'HomeWorks');
   change('rooms.0.recessGroups.0.behavior','warm');
   click({action:'choose',path:'project.system',value:'none'});
@@ -52,7 +53,7 @@ async function main(){
   assert.equal(context.testScope('state.rooms[0].recessGroups[0].qty'),4);
   click({action:'condition-preset',id:'noCuts'});
   click({action:'go',step:'4'});
-  click({action:'resolve-check',target:'conditions',index:'0'});
+  assert.equal(context.testScope('step'),3,'Unresolved no-cut routes prevent advancing to budget');
   assert.equal(context.testScope('detailedConditions'),false,'Budget checks must open quick choices first');
   assert.match(element('app').innerHTML,/What can you see in this room/);
   click({action:'condition-preset',id:'drywall'});
@@ -70,8 +71,9 @@ async function main(){
   for(const [key,value]of Object.entries({surfaceMaterial:'drywall',ceilingPath:'closed',wallPath:'closed',openingPermission:'none',occupancy:'vacant',ceilingHeight:'standard',specialConditions:'standard'}))change('rooms.0.'+key,value);
   assert.match(element('app').innerHTML,/No attic access by itself/);
   click({action:'go',step:'4'});
-  assert.match(element('app').innerHTML,/cutting is not permitted/);
-  assert.match(element('app').innerHTML,/See wiring and task allowances/);
+  assert.equal(context.testScope('step'),3);
+  assert.match(element('app').innerHTML,/Confirm access without extra cuts/);
+  assert.match(element('app').innerHTML,/Ceiling fishing route/);
   click({action:'print'});
   assert.match(element('customer-report').innerHTML,/Openings or a confirmed alternative route/);
   assert.doesNotMatch(element('customer-report').innerHTML,/supplier|hoursPer|M4NCRS/);
@@ -82,7 +84,7 @@ async function main(){
   assert.equal(JSON.parse(storage.get('lighting-budget-lab.v2')).rooms[0].openingPermission,'selective');
   // Every new input is saved independently, so selecting one does not erase another.
   assert.equal(JSON.parse(storage.get('lighting-budget-lab.v2')).rooms[0].ceilingPath,'closed');
-  assert.match(element('app').innerHTML,/Finish these checks/);
+  assert.match(element('app').innerHTML,/Scope of work/);
   click({action:'edit-room',index:'0'});
   assert.match(element('app').innerHTML,/Back to budget/);
   click({action:'layer',id:'fans'});
@@ -141,6 +143,29 @@ async function main(){
   assert.equal(copied.ceilingFishing,'unknown');assert.equal(copied.wallFishing,'unknown');
   assert.equal(copied.routeEvidence,'');assert.equal(copied.routeReviewed,false);
   assert.equal(copied.notes,'');assert.equal(copied.ceilingPath,'unknown');
+  // Complete the salesperson path without an estimator approval checkbox.
+  context.testScope('resetOfflineProject()');
+  assert.doesNotMatch(context.testScope('projectView()'),/project.networkPlan|Schedule and network|<details/);
+  assert.match(context.testScope('projectView()'),/Expected installation/);
+  change('project.install','remodel');change('project.travelBand','0');
+  click({action:'pick-room',name:'Kitchen'});click({action:'go',step:'2'});
+  click({action:'layer',id:'recessed'});change('rooms.0.recessGroups.0.qty','6','number');
+  click({action:'add-group'});change('rooms.0.recessGroups.1.qty','2','number');change('rooms.0.recessGroups.1.zone','separate');
+  click({action:'layer',id:'overview'});
+  const overview=context.testScope('roomOverview(state.rooms[0])');
+  assert.doesNotMatch(overview,/<input|<select/);assert.match(overview,/6 fixed lights/);assert.match(overview,/2 adjustable lights/);assert.match(overview,/Separate control group/);
+  click({action:'go',step:'3'});click({action:'condition-preset',id:'noCuts'});click({action:'ordinary-room'});change('rooms.0.occupancy','vacant');
+  change('project.sharedPath','open');click({action:'next'});assert.equal(context.testScope('step'),3);
+  change('rooms.0.ceilingFishing','verified');change('rooms.0.wallFishing','verified');click({action:'next'});assert.equal(context.testScope('step'),3,'Verification needs a supporting reference');
+  change('rooms.0.routeEvidence','Electrician checked ceiling route and wall drop','text');click({action:'next'});assert.equal(context.testScope('step'),4);
+  assert.equal(context.testScope('state.project.scopeReviewed'),false);
+  assert.match(element('app').innerHTML,/Design retainer/);assert.doesNotMatch(element('app').innerHTML,/Not ready yet|Let’s finish your budget/);
+  click({action:'edit-room',index:'0'});click({action:'layer',id:'linear'});
+  change('rooms.0.linearFt','12','number');change('rooms.0.linearBehavior','rania');
+  assert.equal(context.testScope('state.project.system'),'HomeWorks');click({action:'next'});
+  assert.equal(context.testScope('step'),4);assert.match(element('app').innerHTML,/Design retainer/);
+  click({action:'print'});assert.match(element('customer-report').innerHTML,/to support the selected Ketra or Rania lighting/);
+  assert.doesNotMatch(element('customer-report').innerHTML,/LU-T05|supplier cost|person-hours/);
   console.log('PASS: application startup, room entry, conditions navigation, access warnings, task breakdown, customer scope, save/reopen, safe new-job reset, pricing rejection and copied-room verification (DOM event simulation).');
 }
-main().catch(error=>{console.error(error);process.exitCode=1;});
+main().catch(error=>{console.error(error.stack);process.exitCode=1;});

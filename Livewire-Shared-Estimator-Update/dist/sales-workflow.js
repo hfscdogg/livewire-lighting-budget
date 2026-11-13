@@ -39,11 +39,22 @@
     let system=state.project.system;
     for(const room of state.rooms){
       const active=room.recessGroups.filter(group=>Number(group.qty)>0);
+      if(Number(room.linearFt)>0&&room.linearBehavior==='rania')return 'HomeWorks';
       if(room.shadeGroups.some(group=>Number(group.qty)>0&&group.family==='palladiom_wired'))return 'HomeWorks';
       if(active.some(group=>['rania','ketra'].includes(group.behavior))||Number(room.keypadQty)>0&&['palladiom','alisse','aviena'].includes(room.keypadType)||room.loadTopology==='centralized')return 'HomeWorks';
       if(active.some(group=>group.behavior==='lumaris')||Number(room.linearFt)>0&&['lumaris','lumaris_rgb'].includes(room.linearBehavior))if(!['RA3','HomeWorks'].includes(system))system='RA3';
     }
     return system;
+  }
+  function synchronize(state){
+    const next=recommendation(state),before=state.project.system;
+    if(next!==before){state.project.system=next;return true;}
+    return false;
+  }
+  function noCutSegments(room,routes){
+    if(room.openingPermission!=='none')return [];
+    const segments=(routes||[]).filter(route=>route.roomId===room.id).flatMap(route=>route.segments).filter(segment=>segment.kind!=='shared');
+    return [...new Map(segments.map(segment=>[segment.kind,segment])).values()];
   }
   // A pricing/system review is one estimating handoff, not a sales question per line item.
   function reviewGroup(issue,rooms){
@@ -57,6 +68,6 @@
     if(/^(travel|system_plan|system_unsure)/.test(issue.key))return {kind:'project',index:-1,target:'project'};
     return {kind:'estimator',index,target:'pricing'};
   }
-  const api={PRESETS,CONDITION_KEYS,preset,match,ordinary,copyConditions,copyRoom,recommendation,reviewGroup};
+  const api={PRESETS,CONDITION_KEYS,preset,match,ordinary,copyConditions,copyRoom,recommendation,synchronize,noCutSegments,reviewGroup};
   root.SalesWorkflow=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

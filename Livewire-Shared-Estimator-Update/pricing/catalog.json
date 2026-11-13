@@ -1,9 +1,9 @@
 {
   "kind": "livewire-company-catalog",
   "schemaVersion": 1,
-  "modelRevision": 12,
+  "modelRevision": 13,
   "currency": "USD",
-  "catalogVersion": "2026-11-13-livewire-pilot-4",
+  "catalogVersion": "2026-11-13-livewire-pilot-5",
   "effectiveAt": "2026-11-13",
   "settings": {
     "installationAllowances": {
@@ -16,7 +16,7 @@
     "catalog": [
       {
         "id": "fixture_new_warm_fixed",
-        "name": "DMF Artafex 4 warm dim, fixed 60°, new, complete assembly",
+        "name": "DMF Artafex 4 warm dim, fixed 60\u00b0, new, complete assembly",
         "sku": "ART4D-10T3WWFT + M4NCRS + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -34,7 +34,7 @@
       },
       {
         "id": "fixture_new_warm_adj",
-        "name": "DMF Artafex 4 warm dim, adjustable 40°, new, complete assembly",
+        "name": "DMF Artafex 4 warm dim, adjustable 40\u00b0, new, complete assembly",
         "sku": "ART4A-10T3WFLWT + M4NCRS + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -52,7 +52,7 @@
       },
       {
         "id": "fixture_new_rania_fixed",
-        "name": "Rania · tunable white new construction downlight · fixed request · complete assembly",
+        "name": "Rania \u00b7 tunable white new construction downlight \u00b7 fixed request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -70,7 +70,7 @@
       },
       {
         "id": "fixture_new_rania_adj",
-        "name": "Rania · tunable white new construction downlight · adjustable request · complete assembly",
+        "name": "Rania \u00b7 tunable white new construction downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -88,7 +88,7 @@
       },
       {
         "id": "fixture_new_lumaris_fixed",
-        "name": "Lumaris · tunable white new construction downlight · fixed request · RadioRA 3 · complete assembly",
+        "name": "Lumaris \u00b7 tunable white new construction downlight \u00b7 fixed request \u00b7 RadioRA 3 \u00b7 complete assembly",
         "sku": "RRL-CD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -106,7 +106,7 @@
       },
       {
         "id": "fixture_new_lumaris_adj",
-        "name": "Lumaris · tunable white new construction downlight · adjustable request · complete assembly",
+        "name": "Lumaris \u00b7 tunable white new construction downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -124,7 +124,7 @@
       },
       {
         "id": "fixture_new_ketra_fixed",
-        "name": "Ketra new construction downlight · fixed request · complete assembly",
+        "name": "Ketra new construction downlight \u00b7 fixed request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -142,7 +142,7 @@
       },
       {
         "id": "fixture_new_ketra_adj",
-        "name": "Ketra new construction downlight · adjustable request · complete assembly",
+        "name": "Ketra new construction downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -160,7 +160,7 @@
       },
       {
         "id": "fixture_retrofit_warm_fixed",
-        "name": "DMF Artafex 4 warm dim, fixed 60°, compatible 6-inch can conversion, complete assembly",
+        "name": "DMF Artafex 4 warm dim, fixed 60\u00b0, compatible 6-inch can conversion, complete assembly",
         "sku": "ART4D-10T3WWFT + M4KRRETRO6 + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -178,7 +178,7 @@
       },
       {
         "id": "fixture_retrofit_warm_adj",
-        "name": "DMF Artafex 4 warm dim, adjustable 40°, compatible 6-inch can conversion, complete assembly",
+        "name": "DMF Artafex 4 warm dim, adjustable 40\u00b0, compatible 6-inch can conversion, complete assembly",
         "sku": "ART4A-10T3WFLWT + M4KRRETRO6 + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -196,7 +196,7 @@
       },
       {
         "id": "fixture_retrofit_rania_fixed",
-        "name": "Rania · tunable white retrofit downlight · fixed request · complete assembly",
+        "name": "Rania \u00b7 tunable white retrofit downlight \u00b7 fixed request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -214,7 +214,7 @@
       },
       {
         "id": "fixture_retrofit_rania_adj",
-        "name": "Rania · tunable white retrofit downlight · adjustable request · complete assembly",
+        "name": "Rania \u00b7 tunable white retrofit downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -232,7 +232,7 @@
       },
       {
         "id": "fixture_retrofit_lumaris_fixed",
-        "name": "Lumaris · tunable white retrofit downlight · fixed request · RadioRA 3 · complete assembly",
+        "name": "Lumaris \u00b7 tunable white retrofit downlight \u00b7 fixed request \u00b7 RadioRA 3 \u00b7 complete assembly",
         "sku": "RRL-RD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -250,7 +250,7 @@
       },
       {
         "id": "fixture_retrofit_lumaris_adj",
-        "name": "Lumaris · tunable white retrofit downlight · adjustable request · complete assembly",
+        "name": "Lumaris \u00b7 tunable white retrofit downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -268,7 +268,7 @@
       },
       {
         "id": "fixture_retrofit_ketra_fixed",
-        "name": "Ketra retrofit downlight · fixed request · complete assembly",
+        "name": "Ketra retrofit downlight \u00b7 fixed request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -286,7 +286,7 @@
       },
       {
         "id": "fixture_retrofit_ketra_adj",
-        "name": "Ketra retrofit downlight · adjustable request · complete assembly",
+        "name": "Ketra retrofit downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -304,7 +304,7 @@
       },
       {
         "id": "fixture_remodel_warm_fixed",
-        "name": "DMF Artafex 4 warm dim, fixed 60°, remodel, complete assembly",
+        "name": "DMF Artafex 4 warm dim, fixed 60\u00b0, remodel, complete assembly",
         "sku": "ART4D-10T3WWFT + M4RMRS + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -322,7 +322,7 @@
       },
       {
         "id": "fixture_remodel_warm_adj",
-        "name": "DMF Artafex 4 warm dim, adjustable 40°, remodel, complete assembly",
+        "name": "DMF Artafex 4 warm dim, adjustable 40\u00b0, remodel, complete assembly",
         "sku": "ART4A-10T3WFLWT + M4RMRS + M4TRSWH",
         "kind": "large",
         "unit": "each",
@@ -340,7 +340,7 @@
       },
       {
         "id": "fixture_remodel_rania_fixed",
-        "name": "Rania D2R fixed assembly · trim price pending",
+        "name": "Rania D2R fixed assembly \u00b7 trim price pending",
         "sku": "HW-D2RTWF1840H11 + UN-D2R-RD-F-S + D2R-PS-120 + UN-D2RDFBWHXX",
         "kind": "large",
         "unit": "each",
@@ -358,7 +358,7 @@
       },
       {
         "id": "fixture_remodel_rania_adj",
-        "name": "Rania D2R adjustable assembly · trim price pending",
+        "name": "Rania D2R adjustable assembly \u00b7 trim price pending",
         "sku": "HW-D2RTWA1840H11 + UN-D2R-RD-F-S + D2R-PS-120 + UN-D2RDFBWHXX",
         "kind": "large",
         "unit": "each",
@@ -376,7 +376,7 @@
       },
       {
         "id": "fixture_remodel_lumaris_fixed",
-        "name": "Lumaris · tunable white remodel downlight · fixed request · RadioRA 3 · complete assembly",
+        "name": "Lumaris \u00b7 tunable white remodel downlight \u00b7 fixed request \u00b7 RadioRA 3 \u00b7 complete assembly",
         "sku": "RRL-CD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -394,7 +394,7 @@
       },
       {
         "id": "fixture_remodel_lumaris_adj",
-        "name": "Lumaris · tunable white remodel downlight · adjustable request · complete assembly",
+        "name": "Lumaris \u00b7 tunable white remodel downlight \u00b7 adjustable request \u00b7 complete assembly",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -412,7 +412,7 @@
       },
       {
         "id": "fixture_remodel_ketra_fixed",
-        "name": "Ketra D2R fixed assembly · trim price pending",
+        "name": "Ketra D2R fixed assembly \u00b7 trim price pending",
         "sku": "HW-D2RFSF1840H11 + UN-D2R-RD-F-S + D2R-PS-120 + UN-D2RDFBWHXX",
         "kind": "large",
         "unit": "each",
@@ -430,7 +430,7 @@
       },
       {
         "id": "fixture_remodel_ketra_adj",
-        "name": "Ketra D2R adjustable assembly · trim price pending",
+        "name": "Ketra D2R adjustable assembly \u00b7 trim price pending",
         "sku": "HW-D2RFSA1840H11 + UN-D2R-RD-F-S + D2R-PS-120 + UN-D2RDFBWHXX",
         "kind": "large",
         "unit": "each",
@@ -484,7 +484,7 @@
       },
       {
         "id": "linear_lumaris",
-        "name": "Lumaris · tunable white undercabinet lighting",
+        "name": "Lumaris \u00b7 tunable white undercabinet lighting",
         "sku": "LU-T05-TW-IN",
         "kind": "large",
         "unit": "ft",
@@ -502,7 +502,7 @@
       },
       {
         "id": "driver_lumaris",
-        "name": "Lumaris · tunable white controller + compatible power-supply package · RadioRA 3 and two tape connectors",
+        "name": "Lumaris \u00b7 tunable white controller + compatible power-supply package \u00b7 RadioRA 3 and two tape connectors",
         "sku": "RRL-TWC-WH + LU-CK1-TW (2 connectors)",
         "kind": "large",
         "unit": "each",
@@ -520,7 +520,7 @@
       },
       {
         "id": "linear_lumaris_rgb",
-        "name": "Lumaris · RGB + tunable white undercabinet lighting",
+        "name": "Lumaris \u00b7 RGB + tunable white undercabinet lighting",
         "sku": "LU-T05-RT-IN",
         "kind": "large",
         "unit": "ft",
@@ -538,7 +538,7 @@
       },
       {
         "id": "driver_lumaris_rgb",
-        "name": "Lumaris · RGB + tunable white controller + compatible power-supply package · RadioRA 3 and two tape connectors",
+        "name": "Lumaris \u00b7 RGB + tunable white controller + compatible power-supply package \u00b7 RadioRA 3 and two tape connectors",
         "sku": "RRL-MWCL-WH + LU-PH3-B + LU-CK1-6W (2 connectors)",
         "kind": "large",
         "unit": "each",
@@ -628,7 +628,7 @@
       },
       {
         "id": "hw_processor",
-        "name": "HomeWorks QSX wired processor · HQP7-2 basis",
+        "name": "HomeWorks QSX wired processor \u00b7 HQP7-2 basis",
         "sku": "HQP7-2",
         "kind": "large",
         "unit": "each",
@@ -880,8 +880,8 @@
       },
       {
         "id": "hw_palladiom",
-        "name": "Palladiom glass keypad · rectangular 1-gang 3-button raise/lower",
-        "sku": "HQWT-U-PRW-CWH-E · glass package basis",
+        "name": "Palladiom glass keypad \u00b7 rectangular 1-gang 3-button raise/lower",
+        "sku": "HQWT-U-PRW-CWH-E \u00b7 glass package basis",
         "kind": "large",
         "unit": "each",
         "system": "HomeWorks",
@@ -988,7 +988,7 @@
       },
       {
         "id": "lighting_branch_cable",
-        "name": "Lighting branch cable allowance · correct gauge / method to verify",
+        "name": "Lighting branch cable allowance \u00b7 correct gauge / method to verify",
         "sku": "14/2 and 14/3 NM-B dry-route blended allowance",
         "kind": "small",
         "unit": "ft",
@@ -998,7 +998,7 @@
         "msrp": 1.3,
         "pricing": "msrp",
         "verified": true,
-        "source": "Bozeman-Electrical-Estimate-Revised.xlsx, Sheet1 C91:C92 cost basis (80/20 budget mix); Livewire instructed $1.10–$1.50/ft sell, midpoint $1.30/ft before surcharge and shipping. Confirm protected dry 15 A wiring method.",
+        "source": "Bozeman-Electrical-Estimate-Revised.xlsx, Sheet1 C91:C92 cost basis (80/20 budget mix); Livewire instructed $1.10\u2013$1.50/ft sell, midpoint $1.30/ft before surcharge and shipping. Confirm protected dry 15 A wiring method.",
         "includesPower": false,
         "includesPlate": false,
         "includesEnclosure": false,
@@ -1016,7 +1016,7 @@
         "msrp": 1.3,
         "pricing": "msrp",
         "verified": true,
-        "source": "Bozeman-Electrical-Estimate-Revised.xlsx, Sheet1 C91:C92 cost basis (80/20 budget mix); Livewire instructed $1.10–$1.50/ft sell, midpoint $1.30/ft before surcharge and shipping. Confirm protected dry 15 A wiring method.",
+        "source": "Bozeman-Electrical-Estimate-Revised.xlsx, Sheet1 C91:C92 cost basis (80/20 budget mix); Livewire instructed $1.10\u2013$1.50/ft sell, midpoint $1.30/ft before surcharge and shipping. Confirm protected dry 15 A wiring method.",
         "includesPower": false,
         "includesPlate": false,
         "includesEnclosure": false,
@@ -1078,7 +1078,7 @@
       },
       {
         "id": "panel_dim_module",
-        "name": "HomeWorks 4-zone adaptive phase DPM · load review required",
+        "name": "HomeWorks 4-zone adaptive phase DPM \u00b7 load review required",
         "sku": "LQSE-4A5-120-D",
         "kind": "large",
         "unit": "each",
@@ -1096,7 +1096,7 @@
       },
       {
         "id": "panel_switch_module",
-        "name": "HomeWorks 4-zone switched DPM · load review required",
+        "name": "HomeWorks 4-zone switched DPM \u00b7 load review required",
         "sku": "LQSE-4S8-120-D",
         "kind": "large",
         "unit": "each",
@@ -1222,7 +1222,7 @@
       },
       {
         "id": "hw_dual_processor",
-        "name": "HomeWorks dual-radio processor · HQP7-RF-2 basis",
+        "name": "HomeWorks dual-radio processor \u00b7 HQP7-RF-2 basis",
         "sku": "HQP7-RF-2",
         "kind": "large",
         "unit": "each",
@@ -1258,7 +1258,7 @@
       },
       {
         "id": "hw_control_enclosure",
-        "name": "QSX processor enclosure · HQ-LV21-120 · supply separate",
+        "name": "QSX processor enclosure \u00b7 HQ-LV21-120 \u00b7 supply separate",
         "sku": "HQ-LV21-120",
         "kind": "large",
         "unit": "each",
@@ -1528,7 +1528,7 @@
       },
       {
         "id": "keypad_qs_power",
-        "name": "QS link / power-supply allowance · topology to confirm",
+        "name": "QS link / power-supply allowance \u00b7 topology to confirm",
         "sku": "",
         "kind": "large",
         "unit": "each",
@@ -1618,7 +1618,7 @@
       },
       {
         "id": "shade_12v_supply",
-        "name": "Triathlon 12 V ten-output supply package · model / output loading review",
+        "name": "Triathlon 12 V ten-output supply package \u00b7 model / output loading review",
         "sku": "CSPS-P1-10-6",
         "kind": "large",
         "unit": "each",
@@ -1654,7 +1654,7 @@
       },
       {
         "id": "shade_qs_cable",
-        "name": "Shade QS control / backbone cable · gauge and power-group review",
+        "name": "Shade QS control / backbone cable \u00b7 gauge and power-group review",
         "sku": "QSH-CBL-M-500",
         "kind": "small",
         "unit": "ft",
@@ -1816,7 +1816,7 @@
       },
       {
         "id": "fixture_new_lumaris_fixed_hw",
-        "name": "Lumaris · tunable white new construction downlight · fixed request · HomeWorks · complete assembly",
+        "name": "Lumaris \u00b7 tunable white new construction downlight \u00b7 fixed request \u00b7 HomeWorks \u00b7 complete assembly",
         "sku": "HWL-CD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -1834,7 +1834,7 @@
       },
       {
         "id": "fixture_remodel_lumaris_fixed_hw",
-        "name": "Lumaris · tunable white remodel downlight · fixed request · HomeWorks · complete assembly",
+        "name": "Lumaris \u00b7 tunable white remodel downlight \u00b7 fixed request \u00b7 HomeWorks \u00b7 complete assembly",
         "sku": "HWL-CD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -1852,7 +1852,7 @@
       },
       {
         "id": "fixture_retrofit_lumaris_fixed_hw",
-        "name": "Lumaris · tunable white retrofit downlight · fixed request · HomeWorks · complete assembly",
+        "name": "Lumaris \u00b7 tunable white retrofit downlight \u00b7 fixed request \u00b7 HomeWorks \u00b7 complete assembly",
         "sku": "HWL-RD4WH-TW",
         "kind": "large",
         "unit": "each",
@@ -1870,7 +1870,7 @@
       },
       {
         "id": "driver_lumaris_hw",
-        "name": "Lumaris · tunable white controller + compatible power-supply package · HomeWorks and two tape connectors",
+        "name": "Lumaris \u00b7 tunable white controller + compatible power-supply package \u00b7 HomeWorks and two tape connectors",
         "sku": "HWL-TWC-WH + LU-CK1-TW (2 connectors)",
         "kind": "large",
         "unit": "each",
@@ -1888,7 +1888,7 @@
       },
       {
         "id": "driver_lumaris_rgb_hw",
-        "name": "Lumaris · RGB + tunable white controller + compatible power-supply package · HomeWorks and two tape connectors",
+        "name": "Lumaris \u00b7 RGB + tunable white controller + compatible power-supply package \u00b7 HomeWorks and two tape connectors",
         "sku": "HWL-MWCL-WH + LU-PH3-B + LU-CK1-6W (2 connectors)",
         "kind": "large",
         "unit": "each",
@@ -1924,7 +1924,7 @@
       },
       {
         "id": "linear_lead_lumaris_rgb",
-        "name": "Lumaris RGB 6-conductor controller-to-tape cable · LU-WK1-6W basis",
+        "name": "Lumaris RGB 6-conductor controller-to-tape cable \u00b7 LU-WK1-6W basis",
         "sku": "LU-WK1-6W",
         "kind": "small",
         "unit": "ft",
@@ -1971,6 +1971,96 @@
         "pricing": "margin",
         "verified": true,
         "source": "Previously supplied Livewire material cost, used as budget allowance. https://www.aifittings.com/catalog/fan-fixture-boxes/steel-fan-and-fixture-box-with-adjustable-mounting-bracket-for-existing-construction/FBRS4200R",
+        "includesPower": false,
+        "includesPlate": false,
+        "includesEnclosure": false,
+        "pdus": null
+      },
+      {
+        "id": "linear_rania",
+        "name": "Rania natural-white high-output tape",
+        "sku": "LU-T05-RANIA-IN",
+        "kind": "large",
+        "unit": "ft",
+        "system": "any",
+        "device": "none",
+        "cost": 17.8436016,
+        "msrp": 32.442912,
+        "pricing": "margin",
+        "verified": true,
+        "source": "Livewire supplied Lutron 20261113 USD net-price workbook. Rania high-output assembly: https://assets.lutron.com/a/documents/3663290.pdf",
+        "includesPower": false,
+        "includesPlate": false,
+        "includesEnclosure": false,
+        "pdus": null
+      },
+      {
+        "id": "driver_rania",
+        "name": "Rania HomeWorks controller and 96 W power interface",
+        "sku": "HWL-MWCL-WH + LU-PH3-B",
+        "kind": "large",
+        "unit": "each",
+        "system": "HomeWorks",
+        "device": "none",
+        "cost": 522.5,
+        "msrp": 950,
+        "pricing": "margin",
+        "verified": true,
+        "source": "Livewire supplied Lutron 20261113 USD net-price workbook. Rania high-output assembly: https://assets.lutron.com/a/documents/3663290.pdf",
+        "includesPower": true,
+        "includesPlate": false,
+        "includesEnclosure": false,
+        "pdus": null
+      },
+      {
+        "id": "linear_lead_rania",
+        "name": "Rania four-conductor controller-to-tape cable",
+        "sku": "LU-WK1-4W",
+        "kind": "small",
+        "unit": "ft",
+        "system": "any",
+        "device": "none",
+        "cost": 1.375,
+        "msrp": 2.5,
+        "pricing": "margin",
+        "verified": true,
+        "source": "Livewire supplied Lutron 20261113 USD net-price workbook. Rania high-output assembly: https://assets.lutron.com/a/documents/3663290.pdf",
+        "includesPower": false,
+        "includesPlate": false,
+        "includesEnclosure": false,
+        "pdus": null
+      },
+      {
+        "id": "rania_connector",
+        "name": "Rania four-pin wire-to-tape connector",
+        "sku": "LU-CK1-4W (one connector)",
+        "kind": "small",
+        "unit": "each",
+        "system": "any",
+        "device": "none",
+        "cost": 1.925,
+        "msrp": 3.5,
+        "pricing": "margin",
+        "verified": true,
+        "source": "Livewire supplied Lutron 20261113 USD net-price workbook. Rania high-output assembly: https://assets.lutron.com/a/documents/3663290.pdf",
+        "includesPower": false,
+        "includesPlate": false,
+        "includesEnclosure": false,
+        "pdus": null
+      },
+      {
+        "id": "rania_power_lead",
+        "name": "Rania co-located 18/2 power lead allowance",
+        "sku": "18/2 plenum cable allowance",
+        "kind": "small",
+        "unit": "ft",
+        "system": "any",
+        "device": "none",
+        "cost": 0.28,
+        "msrp": 0.8,
+        "pricing": "margin",
+        "verified": true,
+        "source": "Previously supplied Livewire 18/2 plenum cable cost, $0.28/ft. Two feet per co-located power interface/controller; longer power routes require design.",
         "includesPower": false,
         "includesPlate": false,
         "includesEnclosure": false,
@@ -2164,7 +2254,7 @@
     },
     "driverMax": {
       "warm": null,
-      "rania": null,
+      "rania": 16.4,
       "lumaris": null,
       "lumaris_rgb": null,
       "ketra": null

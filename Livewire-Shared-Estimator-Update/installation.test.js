@@ -112,7 +112,7 @@ for(const ceilingPath of ['unknown','open','attic','below','closed'])for(const w
   assert.equal(M.validate(saved).project.scopeReviewed,false);
   const old=structuredClone(require('./pricing/catalog.json'));old.modelRevision=10;delete old.settings.installationAllowances;
   for(const [id] of M.Installation.TASKS){delete old.settings.labor[id];delete old.settings.laborOnsite[id];}
-  assert.equal(P.validate(old).modelRevision,12);
+  assert.equal(P.validate(old).modelRevision,13);
   const bad=structuredClone(require('./pricing/catalog.json'));bad.settings.installationAllowances.selectiveOpeningSpacingFt=0;assert.throws(()=>P.validate(bad));
 }
 console.log(`PASS: ${combinations} route/permission combinations; blocked access, verified fishing, selective/broad removal, replacements, all cable types, independent hours, site holds, scope/PDF privacy, migration and drawing provenance.`);

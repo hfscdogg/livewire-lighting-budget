@@ -1,13 +1,13 @@
 # Livewire Lighting and Shading Estimator
 
-The estimator develops room-by-room budgets for lighting, controls and motorized shades. The standalone application saves editable project files. The shared application implements Livewire Google sign-in and shared project storage; company deployment and live sign-in verification remain pending. Pricing administrators review the takeoff and approve customer PDFs.
+The estimator develops room-by-room budgets for lighting, controls and motorized shades. The standalone application saves editable project files. The shared application implements Livewire Google sign-in and shared project storage; company deployment and live sign-in verification remain pending. The standalone application produces preliminary customer budgets from company allowances. The shared application retains pricing-administrator approval before releasing customer ranges.
 
 ## Sales workflow
 
-1. Start with the project, travel distance and customer control experience. Schedule and network options are under Details.
-2. Add rooms. Use Room overview for quantities and Copy for repeated layouts. Use Details for mixed fixtures, separate controls, window sizes and exceptions.
-3. Choose visible room conditions, ordinary or special working space, and occupancy. Reuse these answers only in selected rooms with matching conditions. Detailed access remains available for attics, mixed routes, high work and checked fishing.
-4. Save the project with notes and photos. The Budget screen separates room questions from the estimating handoff. Customer budget PDF contains the approved range, credited design retainer, scope and exclusions. The editable project and application remain internal company files.
+1. Enter the project, expected installation date, travel distance and customer control experience. An operational property network is assumed. Required control-system connection work remains in the takeoff.
+2. Add rooms. Use Edit details for quantities, fixture groups, controls, shades and exceptions. Room overview is a read-only summary of those selections. Copy supports repeated layouts. Ketra, Rania and supported wired-keypad choices automatically select HomeWorks; existing-system additions still require compatibility review.
+3. Choose visible room conditions, ordinary or special working space, and occupancy. Reuse these answers only in selected rooms with matching conditions. A no-extra-cuts selection exposes only the routes required by the selected work and prevents continuing to Budget until those routes are resolved. Change this choice and Undo remain available. Detailed access remains available for mixed routes and exceptions.
+4. Save the project with notes and photos. The Budget screen leads with the complete planning range and credited design retainer, followed by a room-by-room scope of work. Unresolved items link to the relevant room, access or pricing settings. Customer budget PDF contains the available range, scope and exclusions. The editable project and application remain internal company files.
 
 ## Source package integrity
 
@@ -34,6 +34,8 @@ The GitHub **Verify estimator source** workflow performs the same checks when th
 Labor is estimated by task at $112.50 per person-hour. The takeoff includes applicable rough-in, trim, equipment installation, circuit and control wiring, setup, programming, commissioning and handoff. Each new cable run has an installation method. Open framing, accessible attic/cavity work, documented fishing, selective openings and continuous access removal use distinct allowances. Cable preparation, pulling, device installation and access removal are separate tasks. Blocked or unknown routes hold the customer budget until the method is resolved. The customer scope describes included removal and excludes drywall and plaster repair and painting. Long routes require reviewed lengths or a documented multiplier. Labor standards and medium-run lengths are estimating allowances.
 
 The pricing release applies a 6% materials surcharge and tiered shipping and handling to the material selling amount. The glass Palladiom keypad uses the supplied $510 complete-package list price as its selling basis; dealer cost is not inferred. The budget is 10% below to 15% above the complete planning amount. The design retainer is 4% of the displayed low end and is credited toward the job if the customer proceeds.
+
+Standalone planning separates general design reminders from missing prices and physical constraints. `BudgetModel.planning` leaves actual approval flags unchanged and retains missing-price, unsupported-product, capacity, no-cut route, specialty-site and existing-system holds. The strict calculation and shared-server approval process remain separate. A planning range is not a fixed-price quote or a completed system design.
 
 Review system capacity, fixture and load compatibility, routing and job conditions before approval. Confirm the physical processor, repeater, gateway and panel layout for larger systems. Configured shades use the company’s upper historical size-band allowance unless a job-specific quote overrides it. Customer scopes identify historical allowances; final fabrication and selected options must be checked before ordering. Existing-system changes, specialty products and unsupported configurations require an estimator takeoff. Unresolved scope produces a scope summary while pricing is pending. Review the approved scope and exclusions when comparing the final proposal with the budget. Reprice added work or changed conditions separately.
 
@@ -63,6 +65,8 @@ Drawing references and revisions are retained with room facts and derived route 
 - [Standalone operation](distribution-docs/SETUP.txt)
 
 ## Changelog
+
+- Rebuilt the standalone budget page around the range, credited retainer, narrative scope and direct resolution actions. Made room overviews read-only, moved installation date into project details, assumed an available property network, automatically selected required HomeWorks systems, and required only applicable no-cut route answers. Added Rania high-output tape assemblies using the supplied Lutron prices and manufacturer run/feed limits. General design reminders no longer suppress an otherwise complete standalone planning budget; actual pricing and physical constraints still do.
 
 - Added Change this choice and Undo last choice for room access selections. Budget warnings now open quick conditions first, and detailed mode resets during room and step navigation.
 

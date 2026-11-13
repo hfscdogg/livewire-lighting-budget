@@ -14,23 +14,25 @@ Labor is populated at $112.50 per person-hour using task estimates, condition fa
 
 ## Completed additions
 
-The sales interface now opens with a room quantity overview, explicit condition shortcuts and selected-room reuse. Advanced access remains available. Room copying works in standalone mode and clears site-specific proof. Technical checks are grouped into an estimating handoff. [Field workflow review](FIELD-WORKFLOW-REVIEW.md) records the changes and adversarial checks.
+The sales interface uses a read-only room summary, detail editing, explicit condition shortcuts and selected-room reuse. No-cut continuation checks are limited to wiring required by the entered scope. The standalone budget screen shows narrative scope and direct fixes; ordinary design reminders do not suppress a complete planning range. Shared approval remains enforced. Advanced access remains available. Room copying works in standalone mode and clears site-specific proof. Technical checks are grouped into an estimating handoff. [Field workflow review](FIELD-WORKFLOW-REVIEW.md) records the changes and adversarial checks.
 
 Source packaging uses a checked file inventory. A missing application, pricing, server or documentation folder fails verification. The private GitHub contents still require comparison with a downloaded repository archive; a screenshot is not a file-content verification.
 
 Fan scope now distinguishes retention, replacement and a new location. The takeoff includes installation/removal, support verification or replacement, new wiring where selected, access factors and testing. Owner-supplied fan equipment remains excluded from material supply. Incompatible speed controls, unknown support and specialty mounting retain explicit holds.
 
-All 36 historical shade low/high bands remain unchanged. Catalog release `2026-11-13-livewire-pilot-4` uses the upper size-band amount as the assembly budget, with a matching job quote taking precedence. Installation, required infrastructure, material surcharge and shipping remain separate calculated items. Customer documents identify historical allowances.
+All 36 historical shade low/high bands remain unchanged. Catalog release `2026-11-13-livewire-pilot-5` uses the upper size-band amount as the assembly budget, with a matching job quote taking precedence. Installation, required infrastructure, material surcharge and shipping remain separate calculated items. Customer documents identify historical allowances.
 
 The glass Palladiom rectangular 1-gang three-button raise/lower package carries $510 list/selling price, including its faceplate. Dealer cost remains unset. The matte $377.50 package is not the selected estimating basis.
 
 Review actions link directly to room conditions, room scope or pricing. Changed answers remain populated and can return directly to the budget. Input targets, labels and focus states are larger. Customer documents use flowing room sections rather than an oversized table row for each room.
 
+Rania high-output tape is included with a HomeWorks controller, 96 W power interface, four-conductor cable, wire-to-tape connectors and extrusion. The recipe uses the supplied supplier catalog and Lutron specification 3663290. Dedicated power per controller is a conservative budgeting assumption. See [Rania tape basis](RANIA-TAPE-BASIS.md). The new regression cases exercise single/dual feeds, controller boundaries, separate groups and price-source matches.
+
 ## Remaining limits
 
 The private supplier reference now retains all 10,086 rows from the supplied workbook. `pricing/assembly-audit.json` records exact D2R module, mount and supply matches. For the selected round flanged white bevel assembly, trim `UN-D2RDFBWHXX` is absent from the supplied workbook. Known component subtotals are not complete fixture prices. Configured D2 new-construction housings, Alisse faceplate/button packages and Aviena installation keypads also need complete configured prices; samples and demonstration kits are not substitutes.
 
-Non-Lumaris warm-dim tape/driver packages and selected shade accessories require a verified package price. Specialty construction remains subject to a separately reviewed method and price. Generic scope approval cannot make unknown routes viable.
+Unmapped conventional warm-dim tape/driver packages and selected shade accessories require a verified package price. Specialty construction remains subject to a separately reviewed method and price. Generic scope approval cannot make unknown routes viable.
 
 Automated arithmetic, data separation, save/reopen, fan/shade transitions, access and estate-scale scenarios pass. Actual browser visual and print testing remains unverified because this environment rejected opening the local application in its browser. No test result establishes measured field productivity or guarantees hidden conditions.
 

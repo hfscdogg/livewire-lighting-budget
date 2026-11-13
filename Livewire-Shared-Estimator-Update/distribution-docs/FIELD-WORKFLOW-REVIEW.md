@@ -1,12 +1,12 @@
 # Field workflow and source integrity review
 
-November 13, 2026. Source release `2026-11-13-field-workflow-2`.
+November 13, 2026. Source release `2026-11-13-budget-workflow-1`.
 
 ## Sales workflow changes
 
-The room overview accepts recessed quantities and experience, undercabinet footage, decorative fixture locations and fan work together. Matching window groups remain a separate shade form. Mixed recessed groups, cabinet gaps, multiple control locations and special mounting remain available under Details.
+The room overview summarizes each detailed fixture group, cabinet lighting selection, decorative fixture scope, fan selection and shade group. It contains no editable quantities. Edit details opens the corresponding scope category. Installation date appears with the project name and travel choice. An operational property network is assumed; control equipment connection work is still calculated.
 
-Project control choices describe customer outcomes before platform names. A selected intelligent-lighting or wired-keypad package can recommend its required platform. Applying the recommendation is explicit and restricted to a new-system plan; existing systems are not silently replaced. Quantities continue to determine shared headend equipment through the existing calculation engine.
+Intelligent-lighting and supported wired-keypad choices automatically select the necessary platform. Ketra and Rania select HomeWorks. The scope explains this choice, and shared equipment remains calculated once for the project. Removing intelligent lighting does not silently downgrade an already selected HomeWorks project. Existing-system additions retain their compatibility hold and are not represented as verified retrofits.
 
 New rooms entered through the sales interface use Lumaris tunable-white as the undercabinet preference. Existing jobs retain their selected product family. Selecting a product does not resolve a missing configured price or approve an unsupported installation.
 
@@ -14,7 +14,9 @@ Quick room conditions combine explicit facts into four selectable starting point
 
 Condition reuse requires selecting the destination rooms and confirming the facts also apply there. It replaces the selected condition fields only. Fishing verification, route evidence, fan-support verification, approvals, photos, notes and quantities do not transfer through condition reuse. Room duplication copies scope quantities with fresh identifiers and clears site-specific observations, notes and photos.
 
-Budget checks are grouped by room. Product pricing and technical approval appear in a separate estimating handoff. The detailed takeoff remains available, and customer output still excludes supplier costs and internal notes. Grouping or collapsing a check does not clear it.
+The standalone budget page leads with the range and credited retainer, followed by narrative installation scope. Only actionable missing information appears in fix cards. General design and commissioning checks are retained as planning reminders; they no longer imply that every sales budget requires design approval first. Physical restrictions, incomplete costs, unsupported assemblies and actual capacity limits still hold the range. Shared-server approval is unchanged. Customer output excludes supplier costs and internal notes.
+
+With no extra access cuts allowed, Continue and the Budget navigation check the actual new room routes. Only required ceiling/wall routes are shown, and concealed fishing requires both confirmation and a reference. Existing-location replacement without new concealed cable does not trigger unrelated route questions. Back, Change this choice and Undo remain available.
 
 ## Defects corrected
 
@@ -42,7 +44,7 @@ The deterministic mixed-scope stress run includes 180 projects with 1–16 rooms
 
 Interaction tests use simulated application events and inspect generated markup. Real iPad Safari, keyboard behavior, camera uploads and PDF pagination have not been visually verified. The interface uses responsive grids, large touch controls and 16-pixel form inputs, but device acceptance remains outstanding. Local HTML is a standalone delivery; shared iPad use will require the later company-hosting deployment.
 
-Configured assembly pricing gaps identified in Release status remain open. The simplified flow does not invent those prices or convert unknown access into a verified route.
+Rania tape budgeting now uses the complete high-output recipe in the company supplier reference; downlight trim and other configured assembly pricing gaps identified in Release status remain open. The simplified flow does not invent those prices or convert unknown access into a verified route.
 
 ## Design references
 
