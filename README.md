@@ -30,8 +30,16 @@ Have two employees sign in on the approved test site. Have one create and save a
 
 ## Changelog
 
+- Added a next-job action on the Budget screen and room photo attachments that travel with the saved estimate. Customer PDFs exclude internal handoff notes and photos.
+
 - Streamlined sales qualification with room copying, project search, explicit system questions and an actionable room summary. Corrected new-construction defaults and modeled Lumaris equipment by platform, undercabinet controller limits, Palladiom drive variants and fan speed-control compatibility. Added layout review and editable CSV product verification fields.
 - Restored application and estimating files missing from the GitHub checkout. Added the shared estimator with Livewire Google sign-in, server-side calculations, versioned administrator pricing, revision-checked shared projects and customer reports gated by pricing and scope review.
+
+## Standalone priced pilot
+
+Open `distribution/Livewire-Lighting-Budget.html` in a desktop browser. **Open priced example** demonstrates a budget from Livewire's historical shade allowances and a published Pico price. The example PDF is labeled internal. Start a new project for a real job. After entering scope and access, open **Enter prices for this job** to price the products and allowances used in the estimate, add current shade selling amounts for supported groups, and complete estimator review. **Advanced estimator settings** opens the full settings in the same estimate. Save the editable project locally and use the customer PDF for external sharing. The workbook's public price references are kept distinct from supplier costs. No hosted app or GitHub commit is required to run the HTML.
+
+On **Conditions**, use **Notes & photos for estimating** to attach JPEG, PNG or WebP photos to each room. The estimator compresses photos for the handoff. A job supports up to eight photos per room and 24 total, subject to the saved file size limit. **Save project** downloads the editable job with its notes, photos and pricing. The Budget screen's **Estimator handoff** section links back to room details. The customer PDF omits internal notes and photos. Choose **Start next job** on the Budget screen after saving, or save and start from the confirmation dialog.
 
 ## Standalone prototype reference
 

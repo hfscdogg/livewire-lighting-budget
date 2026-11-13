@@ -32,3 +32,18 @@ assert.equal(c.shades.rf, 2);
 assert.equal(c.shades.qs, 0);
 assert.equal(qty(c, 'shade_rf_receiver'), 2);
 assert.ok(c.issues.some(x => x.key.startsWith('shade_size_min_')));
+
+{
+  const job = M.initial();
+  job.project.travelBand = '0';
+  const room = M.addRoomNamed(job,'Living room');
+  const group = {...M.Shade.group(M.uid),widthFt:4,heightFt:5,qty:2};
+  room.shadeGroups.push(group);
+  job.config.offlineShadePrices = {[group.id]:{low:1000,high:1300,scope:M.Shade.quoteSignature(group)}};
+  const priced = M.calculate(job);
+  assert.equal(priced.shades.productLow,2000);
+  assert.equal(priced.shades.productHigh,2600);
+  group.widthFt = 5.5;
+  assert.equal(M.calculate(job).shades.productLow, 2*M.Shade.lookup(group,job.config).low);
+  assert.equal(Object.hasOwn(P.make(job,'test','2026-11-11').settings,'offlineShadePrices'),false);
+}
