@@ -1,5 +1,5 @@
 {
-  "release": "2026-11-13-budget-workflow-1",
+  "release": "2026-11-13-project-review-1",
   "files": [
     {
       "path": ".env.example",
@@ -15,11 +15,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "caededf7570f82167c441cdd66034a745ef5730d2f288603142d2af2e89fbb47"
+      "sha256": "c7c220356c181e1d210b1d06051184805fab7f3a221605d338e54e0941f7cb72"
     },
     {
       "path": "app-smoke.test.js",
-      "sha256": "bb0bbe4105d5a62be005c43830bab787dc0a77dedf562474160dea9c81338966"
+      "sha256": "6b7224f3cabc799414507d32f1176dadef089ce421f8e862921199f7d3d1b3fa"
+    },
+    {
+      "path": "automatic-defaults.test.js",
+      "sha256": "70668acf48245b5ddbba212875e0792d8b09fe1dbc3463b8a5fb0e6b86648d7d"
     },
     {
       "path": "build-distribution.js",
@@ -27,11 +31,11 @@
     },
     {
       "path": "dist/app.js",
-      "sha256": "57d1f9a0e428a8b2b7f0e368039b410db3a32d8dba6606579f174f2f5a93e347"
+      "sha256": "b7b20fe53bdfddc788aee2f53487a58ed905ef987eac431cf5367daecccc4bd2"
     },
     {
       "path": "dist/customer-report.js",
-      "sha256": "75585902660011b6464a08c69bb541ee35f63e7f4582bd623e89e1ba40781d0c"
+      "sha256": "da27f4475cfdcee5a3b5f2bf6b9d602003eaa9ac155cb8ce66a3f10d812d8d05"
     },
     {
       "path": "dist/index.html",
@@ -39,7 +43,7 @@
     },
     {
       "path": "dist/installation.js",
-      "sha256": "2008d4d71fb08986b8dba4bc7845ddab1c09cbe556139f2a0d59e5fb44c34050"
+      "sha256": "aa0beb1982b244a133bdcf03415b61939b3c81814a74860cc17b021158f040a0"
     },
     {
       "path": "dist/job-photos.js",
@@ -47,7 +51,7 @@
     },
     {
       "path": "dist/model.js",
-      "sha256": "437270f7f92d9a676281e56a617d37bb4bfee0f6da500ccec98f414168bbca19"
+      "sha256": "6f9c347518bd89177c6b6b5b92d67c030ecc1d8f3bb8aef6d75e2a4a243b72d3"
     },
     {
       "path": "dist/price-references.js",
@@ -55,11 +59,11 @@
     },
     {
       "path": "dist/pricing.js",
-      "sha256": "5ce8516037379193df0e2f9c14d0cf59eee1f3c7975c1ef1acfa1797bb9eae55"
+      "sha256": "d0f59e8d139bc71d1786047d6756000ece9449f53513ca94d58233e139dd9d50"
     },
     {
       "path": "dist/sales-workflow.js",
-      "sha256": "2dfbae041a1d4b572962ab9fb7e20ca11ead8159c36946b65083cdaaf890ffa4"
+      "sha256": "23dbb9a705db22f039ae7ad2fb80ee215fb87a9812318187cb0ae5ef7e464b29"
     },
     {
       "path": "dist/shades.js",
@@ -67,15 +71,15 @@
     },
     {
       "path": "dist/spreadsheet.js",
-      "sha256": "b37a1c934c900283377a9eaba22166d78591d7e76828d7abdc4135d6cb575f60"
+      "sha256": "4ec5c6461720358159188cb0cb1b0b56b871e65a3435c73d9e1145cd29d888ee"
     },
     {
       "path": "dist/styles.css",
-      "sha256": "29fa41b91790a854d62fb0d14d6ecff6f439134ad88d5f08c3140717d38a8903"
+      "sha256": "b1c1dba0047886c3eaaf48ebe1e74c5efae1ffd00d01bc84e76b3eef57acd54f"
     },
     {
       "path": "distribution-docs/FIELD-WORKFLOW-REVIEW.md",
-      "sha256": "5bf8c0da3d7bfaf06a8551f99b4f0dfe4cc41bf197d3944e6cb4a8afafaa7404"
+      "sha256": "44275869f6bf0bac944c66491736d0b6e6d9e063e618652fd23edc49fa970f0b"
     },
     {
       "path": "distribution-docs/LABOR-ASSUMPTIONS.txt",
@@ -94,12 +98,16 @@
       "sha256": "cd4cdafc276c2280e12cfe0a82cd3530896a1a0fc4769bca6b8006d93c0982bd"
     },
     {
+      "path": "distribution-docs/PROJECT-REVIEW.md",
+      "sha256": "bbd34da4762972d3b8d628ef2f8317906f0790efc051865305f054da2b7a048b"
+    },
+    {
       "path": "distribution-docs/RANIA-TAPE-BASIS.md",
       "sha256": "87b3c384fc5270f1c534b1b247c8f0248cd80f5e95814a352bbdbe8ba500a7f2"
     },
     {
       "path": "distribution-docs/RELEASE-STATUS.md",
-      "sha256": "6781355050c6d5d0e6b9aceb734e562fda7c2ec14720d8dc70af3760a648c8b2"
+      "sha256": "0b4b147e95b165f20e4a3e25eae458771c09f0a4b31f58e7fc2e1b322f523d15"
     },
     {
       "path": "distribution-docs/SCOPE-MATRIX.txt",
@@ -123,11 +131,11 @@
     },
     {
       "path": "fan-budget.test.js",
-      "sha256": "a07a7e71283b3b1039866a2fd433ccff0b417dd64b318255f35a534ffdd35978"
+      "sha256": "23ed5fb75104718e315ff2794d4f56bb69cc6c6f3d816d9c6b2aba0954b3f4ba"
     },
     {
       "path": "generate-source-manifest.js",
-      "sha256": "514a1f039715492dc7df7ba6080c4a44d89e75f7ffa073bea2acaf79562e001c"
+      "sha256": "32f153006649ca8d2d997b792dcf13131506860bd0e7d098d12e6272c8d17f1e"
     },
     {
       "path": "installation.test.js",
@@ -147,27 +155,31 @@
     },
     {
       "path": "package.json",
-      "sha256": "c66a7c4343dd07ad36fdd93eee081c6e4d78faa5c6cedcd60e393521c6189c5c"
+      "sha256": "c550e671e2e0ba452f1e197299ef7e2f1f943ce1428d3a4b3a46bff011efabbf"
     },
     {
       "path": "payoff.test.js",
-      "sha256": "67de488096ef83bb3d2aae90694cd86a0bc6b338cbc03773ab80995dc2fce857"
+      "sha256": "973842d1c9c3cc32683e8051ddfa36b0a6d67dc2feb8b453ab872f22d00de6a8"
     },
     {
       "path": "pricing.test.js",
-      "sha256": "e227c790bfb305ce4c58f00466e7e83d8636a38345440c564014a4e0827d597a"
+      "sha256": "c2052de50382a2fbd5c6748aeefe246acadf3011c46c84bfb47213dfa255b333"
     },
     {
       "path": "pricing/assembly-audit.json",
-      "sha256": "c07e118ddc9b7b722e11a2ca9d224818270f2cb256eb7523d38785abae6625e2"
+      "sha256": "a8adea2723604645cc6a120f36a1c41bd45fd528f2ab8636d140081eba28c5e2"
     },
     {
       "path": "pricing/catalog.json",
-      "sha256": "5efc7da929161089b81cccfe9af8aaa73aa3a8ea4ea322859a540c27b5f12eeb"
+      "sha256": "a7b3d4e98115b7eb8373ccdd0cb17fcf43a88e7ff59a54837a91e3e4bbd1ac7d"
     },
     {
       "path": "pricing/lutron-supplier-prices.json",
       "sha256": "a27cf0090d81bd4eac9d1e331428979e5edc93b0392dbbd01a27ce6d7829bafb"
+    },
+    {
+      "path": "project-review.test.js",
+      "sha256": "af9dc33d4756550f3f48a6d028e743fe41122c0f48404760fa517b98fb08c1b2"
     },
     {
       "path": "release.test.js",
@@ -176,6 +188,10 @@
     {
       "path": "repository.test.js",
       "sha256": "eea629bcb398c9f09f8747ee06b57aec365be8be548f762ac2588a581891bfce"
+    },
+    {
+      "path": "required-workflow.test.js",
+      "sha256": "96ab92d9d0ee497498ca67eb6c2e6d5cf7188f59c48bfc2ad9d54d5713a89298"
     },
     {
       "path": "sales-workflow.test.js",
@@ -191,7 +207,7 @@
     },
     {
       "path": "server/estimate.js",
-      "sha256": "6ca4a63a85dfbc7f27bba47eee89d0fbe51e205ab07ee52d96883680f6b6e1f9"
+      "sha256": "40612697bda3737ec919fda8a01015066f7083635281e68e41a8225d626e4fdd"
     },
     {
       "path": "server/index.html",

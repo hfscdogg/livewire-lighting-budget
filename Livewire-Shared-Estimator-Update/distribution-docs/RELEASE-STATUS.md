@@ -8,19 +8,22 @@ The standalone version does not depend on hosting or employee sign-in. It embeds
 
 The current regression suite verifies 23 complete lighting scenarios using the shipped catalog. These cover fixed and adjustable DMF fixtures in new construction, remodel and retrofit work; conventional, RadioRA 3 and HomeWorks controls; Lumaris tunable-white and RGB/tunable-white tape; and a wired HomeWorks layout. Project conditions and design checks are explicitly supplied in these scenarios. A passing scenario does not approve an actual site or its RF layout.
 
-New HomeWorks projects select a planning architecture from the equipment: wired QSX for QS devices, otherwise a dual-radio wireless processor. Capacity and coverage review still apply. Existing saved projects retain explicit architecture selections and unresolved legacy status.
+New RadioRA 3 projects exceeding the configured device capacity automatically select HomeWorks; existing-system additions remain held for compatibility review. New HomeWorks projects select a planning architecture from the equipment: wired QSX for QS devices, otherwise a dual-radio wireless processor. Capacity and coverage review still apply. Existing saved projects retain explicit architecture selections and unresolved legacy status.
 
 Labor is populated at $112.50 per person-hour using task estimates, condition factors, routing, removal, commissioning, setup and crew travel. Field productivity calibration is ongoing maintenance, not a requirement to supply a representative completed job before using estimated hours. Estimated hours are not a guarantee for concealed conditions.
 
 ## Completed additions
 
+Required answers now appear at the step where the selection is made, with forward-navigation checks before Budget. Wiring to control equipment is inferred from room construction/access and described as a planning allowance in customer scope. It is no longer a sales questionnaire field. The reported Ketra selection is covered by an interaction regression: the assembly receives a sourced trim allowance and its physical ceiling check appears on Conditions, while a priced selection with completed room conditions reaches the range without an extra connection-route answer.
+
+
 The sales interface uses a read-only room summary, detail editing, explicit condition shortcuts and selected-room reuse. No-cut continuation checks are limited to wiring required by the entered scope. The standalone budget screen shows narrative scope and direct fixes; ordinary design reminders do not suppress a complete planning range. Shared approval remains enforced. Advanced access remains available. Room copying works in standalone mode and clears site-specific proof. Technical checks are grouped into an estimating handoff. [Field workflow review](FIELD-WORKFLOW-REVIEW.md) records the changes and adversarial checks.
 
 Source packaging uses a checked file inventory. A missing application, pricing, server or documentation folder fails verification. The private GitHub contents still require comparison with a downloaded repository archive; a screenshot is not a file-content verification.
 
-Fan scope now distinguishes retention, replacement and a new location. The takeoff includes installation/removal, support verification or replacement, new wiring where selected, access factors and testing. Owner-supplied fan equipment remains excluded from material supply. Incompatible speed controls, unknown support and specialty mounting retain explicit holds.
+Fan scope now distinguishes retention, replacement and a new location. The takeoff includes installation/removal, support verification or replacement, new wiring where selected, access factors and testing. Owner-supplied fan equipment remains excluded from material supply. Unchecked existing support carries replacement fan-rated boxes, braces and installation labor. Incompatible speed controls and specialty mounting retain explicit holds.
 
-All 36 historical shade low/high bands remain unchanged. Catalog release `2026-11-13-livewire-pilot-5` uses the upper size-band amount as the assembly budget, with a matching job quote taking precedence. Installation, required infrastructure, material surcharge and shipping remain separate calculated items. Customer documents identify historical allowances.
+All 36 historical shade low/high bands remain unchanged. Catalog release `2026-11-13-livewire-pilot-6` uses the upper size-band amount as the assembly budget, with a matching job quote taking precedence. Installation, required infrastructure, material surcharge and shipping remain separate calculated items. Customer documents identify historical allowances.
 
 The glass Palladiom rectangular 1-gang three-button raise/lower package carries $510 list/selling price, including its faceplate. Dealer cost remains unset. The matte $377.50 package is not the selected estimating basis.
 
@@ -30,7 +33,7 @@ Rania high-output tape is included with a HomeWorks controller, 96 W power inter
 
 ## Remaining limits
 
-The private supplier reference now retains all 10,086 rows from the supplied workbook. `pricing/assembly-audit.json` records exact D2R module, mount and supply matches. For the selected round flanged white bevel assembly, trim `UN-D2RDFBWHXX` is absent from the supplied workbook. Known component subtotals are not complete fixture prices. Configured D2 new-construction housings, Alisse faceplate/button packages and Aviena installation keypads also need complete configured prices; samples and demonstration kits are not substitutes.
+The private supplier reference now retains all 10,086 rows from the supplied workbook. `pricing/assembly-audit.json` records exact D2R module, mount and supply matches. For the selected round flanged white bevel assembly, trim `UN-D2RDFBWHXX` is absent from the supplied workbook. The four remodel assemblies now add $99 cost and $180 list-equivalent per trim as a separately identified budget allowance, based on five supplied S30 decorative trim-only prices plus 20%. This completes the budget assembly without representing the allowance as an exact D2R quote. The specified D2R trim remains the intended part. Installer confirmation of physical ceiling suitability is separate. Configured D2 new-construction housings, Alisse faceplate/button packages and Aviena installation keypads also need complete configured prices; samples and demonstration kits are not substitutes.
 
 Unmapped conventional warm-dim tape/driver packages and selected shade accessories require a verified package price. Specialty construction remains subject to a separately reviewed method and price. Generic scope approval cannot make unknown routes viable.
 

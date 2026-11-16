@@ -6,7 +6,7 @@ function setup(work){const s=P.apply(M.initial(),catalog);Object.assign(s.projec
 const hours=(c,id)=>c.labor.filter(x=>x.id===id).reduce((sum,x)=>sum+x.hours,0);
 let s=setup('controls'),c=M.calculate(s);assert.equal(hours(c,'fan_install'),0);assert.equal(hours(c,'fan_remove'),0);assert.equal(c.routes.length,0);
 s=setup('replace');c=M.calculate(s);assert.equal(hours(c,'fan_install'),4);assert.equal(hours(c,'fan_remove'),1);assert.equal(hours(c,'fan_support_check'),.5);assert.equal(c.routes.length,0);assert.ok(M.range(c,s.config));assert.match(R.html(R.build(s,c)),/remove 2 existing ceiling fans and install owner-supplied replacements/);assert.doesNotMatch(R.html(R.build(s,c)),/supply and installation.*excluded/);
-s.rooms[0].fanSupport='unknown';assert.equal(M.range(M.calculate(s),s.config),null);
+s.rooms[0].fanSupport='unknown';assert.ok(M.range(M.calculate(s),s.config));assert.equal(hours(M.calculate(s),'fan_support_install'),2);assert.match(R.html(R.build(s,M.calculate(s))),/includes replacement fan-rated boxes/);
 s.rooms[0].fanSupport='replace';c=M.calculate(s);assert.equal(c.materials.find(x=>x.id==='fan_support').qty,2);assert.equal(hours(c,'fan_support_install'),2);assert.equal(hours(c,'fan_support_check'),0);
 s=setup('new');c=M.calculate(s);assert.equal(hours(c,'fan_remove'),0);assert.equal(c.materials.find(x=>x.id==='fan_support').qty,2);assert.equal(c.routes.reduce((sum,x)=>sum+x.totalFeet,0),100);assert.ok(c.routes.every(x=>x.segments.some(x=>x.kind==='ceiling')));assert.ok(M.range(c,s.config));
 s.rooms[0].ceilingHeight='tall';assert.equal(hours(M.calculate(s),'fan_install'),5);

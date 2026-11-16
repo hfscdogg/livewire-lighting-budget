@@ -19,6 +19,7 @@ async function main(){
   await vm.runInContext(fs.readFileSync('dist/app.js','utf8').replace('save();render();})();','save();render();window.testScope=code=>eval(code);})();'),context,{filename:'app.js'});
   const click=dataset=>events.get('click')({target:{closest:()=>({dataset})}});
   const change=(path,value,type='select-one')=>events.get('change')({target:{dataset:{path},value,type,tagName:type==='select-one'?'SELECT':'INPUT'}});
+  change('project.travelBand','0');
   click({action:'pick-room',name:'Kitchen'});click({action:'go',step:'2'});
   assert.match(element('app').innerHTML,/Room overview/);
   assert.doesNotMatch(context.testScope('roomOverview(state.rooms[0])'),/<input|<select/);
@@ -166,6 +167,31 @@ async function main(){
   assert.equal(context.testScope('step'),4);assert.match(element('app').innerHTML,/Design retainer/);
   click({action:'print'});assert.match(element('customer-report').innerHTML,/to support the selected Ketra or Rania lighting/);
   assert.doesNotMatch(element('customer-report').innerHTML,/LU-T05|supplier cost|person-hours/);
+  // Reproduce the reported Ketra / hidden connecting-wiring problem.
+  context.testScope('resetOfflineProject()');change('project.travelBand','0');change('project.install','remodel');
+  click({action:'pick-room',name:'Living room'});click({action:'go',step:'2'});click({action:'layer',id:'recessed'});
+  change('rooms.0.recessGroups.0.qty','6','number');change('rooms.0.recessGroups.0.adjustable','true');change('rooms.0.recessGroups.0.behavior','ketra');
+  assert.doesNotMatch(element('app').innerHTML,/module, mount and power supply are priced/);
+  click({action:'next'});assert.equal(context.testScope('step'),3,'Physical ceiling check belongs on Conditions');
+  assert.match(element('app').innerHTML,/D2R ceiling suitability/);assert.match(element('app').innerHTML,/Not checked yet/);
+  click({action:'go',step:'4'});assert.equal(context.testScope('step'),3,'Budget navigation cannot skip physical suitability');
+  click({action:'back'});assert.equal(context.testScope('step'),2,'Backward navigation remains available');
+  click({action:'go',step:'2'});change('rooms.0.recessGroups.0.behavior','warm');click({action:'next'});
+  assert.equal(context.testScope('step'),3);
+  assert.doesNotMatch(element('app').innerHTML,/data-path="project.shared|Shared wiring outside/);
+  click({action:'condition-preset',id:'drywall'});click({action:'ordinary-room'});click({action:'next'});
+  assert.equal(context.testScope('step'),3,'Occupancy must be answered on Conditions, not at Budget');
+  change('rooms.0.occupancy','vacant');click({action:'next'});
+  assert.equal(context.testScope('step'),4);assert.equal(context.testScope('state.project.sharedPath'),'unknown','No extra route question or fabricated saved verification');
+  assert.match(element('app').innerHTML,/Design retainer/);assert.doesNotMatch(element('app').innerHTML,/things to finish|Let’s finish your budget/);
+  assert.match(element('app').innerHTML,/Wiring between rooms and the control equipment is budgeted/);
+  click({action:'edit-room',index:'0'});click({action:'layer',id:'recessed'});
+  change('rooms.0.recessGroups.0.behavior','ketra');click({action:'next'});
+  assert.equal(context.testScope('step'),3);
+  change('rooms.0.d2rConditions','suitable');click({action:'next'});
+  assert.equal(context.testScope('step'),4,'Priced Ketra with suitable ceiling reaches the payoff through the visible form');
+  assert.match(element('app').innerHTML,/conservative allowance for standard white decorative trims/);
+  assert.doesNotMatch(element('app').innerHTML,/Let’s finish your budget/);
   console.log('PASS: application startup, room entry, conditions navigation, access warnings, task breakdown, customer scope, save/reopen, safe new-job reset, pricing rejection and copied-room verification (DOM event simulation).');
 }
 main().catch(error=>{console.error(error.stack);process.exitCode=1;});

@@ -1,6 +1,7 @@
 'use strict';
 
 const Photos = require('../dist/job-photos');
+const Workflow = require('../dist/sales-workflow');
 const M = require('../dist/model');
 const Pricing = require('../dist/pricing');
 const Report = require('../dist/customer-report');
@@ -227,6 +228,7 @@ function calculate(scopeData, release, approval = null, review = false, design =
     },
     labor: calculation.labor.map(({group,name,qty,hoursPer,factor,hours})=>({group,name,qty,hoursPer,factor,hours})),
     routes: calculation.routes,
+    requirements: Workflow.requirements(state, M.planning(state, calculation)),
     issues: calculation.issues.map(({ message }) => message),
   };
 }

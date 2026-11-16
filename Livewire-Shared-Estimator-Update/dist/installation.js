@@ -7,7 +7,7 @@
     ceilingPath: 'unknown', wallPath: 'unknown', openingPermission: 'unknown',
     ceilingFishing: 'unknown', wallFishing: 'unknown', routeEvidence: '',
     occupancy: 'unknown', ceilingHeight: 'unknown', specialConditions: 'unknown',
-    decorativeComplexity: 'standard', planReference: '', planRevision: '',
+    d2rConditions: 'unknown', decorativeComplexity: 'standard', planReference: '', planRevision: '',
   };
   const PROJECT_DEFAULTS = {
     sharedPath: 'unknown', sharedFishing: 'unknown', sharedOpenings: 'unknown',
@@ -21,6 +21,7 @@
     occupancy: ['unknown', 'vacant', 'occupied'],
     ceilingHeight: ['unknown', 'standard', 'tall', 'special'],
     specialConditions: ['unknown', 'standard', 'masonry', 'rated', 'hazard', 'structural'],
+    d2rConditions: ['unknown', 'suitable', 'incompatible'],
     decorativeComplexity: ['standard', 'special'],
     sharedPath: ['unknown', 'open', 'accessible', 'closed'],
     sharedFishing: ['unknown', 'verified', 'blocked'],
@@ -75,7 +76,8 @@
     } else out.message = 'Confirm how this cable route can be reached. The construction label alone does not establish access.';
     if (fishing === 'verified' && path === 'closed' && !evidence && !['selective', 'extensive'].includes(permission)) out.message = 'Record the observed route or survey reference supporting the no-opening installation.';
     if (!Number.isFinite(out.factor) || out.factor < 1) { out.status = 'hold'; out.factor = 1; out.message = 'The installation method allowance needs pricing review.'; }
-    out.description = pathNames[kind] + ' using ' + METHODS[out.method];
+    out.inferred=kind==='shared'&&facts.sharedInferred===true;
+    out.description = pathNames[kind] + ' using ' + (out.inferred&&out.method==='fish'?'inferred fishing allowance':METHODS[out.method]);
     return out;
   }
   function plan(room, project, taskId, reason, cfg) {
@@ -100,6 +102,38 @@
     if ((room.decorExisting || room.decorNew) && room.decorativeComplexity !== 'standard') out.push('Heavy, fragile or assembly-intensive decorative fixtures require a fixture-specific handling and support allowance.');
     return out;
   }
+  function sharedFacts(project, rooms) {
+    // An explicit estimator override wins. Otherwise carry a planning allowance
+    // from the observed room access, without recording a new field verification.
+    if (project.sharedPath && project.sharedPath !== 'unknown') return project;
+    const active=rooms.filter(r=>r.recessGroups?.some(g=>Number(g.qty)>0)||Number(r.linearFt)>0||Number(r.decorNew)>0||Number(r.decorExisting)>0||Number(r.fanQty)>0||Number(r.keypadQty)>0||r.shadeGroups?.some(g=>Number(g.qty)>0));
+    if (!active.length) return project;
+    const inferred={...project,sharedInferred:true,sharedPath:'unknown',sharedSurface:active.some(r=>r.surfaceMaterial==='plaster')?'plaster':'drywall',sharedOpenings:'unknown',sharedFishing:'unknown',sharedEvidence:''};
+    const methods=active.map(r=>{
+      if(r.ceilingPath==='open')return 'open';
+      if(['attic','below'].includes(r.ceilingPath)||r.wallPath==='accessible')return 'accessible';
+      if(r.ceilingPath==='unknown'||!r.ceilingPath)return 'unknown';
+      if(r.ceilingPath==='closed'){
+        if(['selective','extensive'].includes(r.openingPermission))return r.openingPermission;
+        if(r.ceilingFishing==='verified'&&String(r.routeEvidence||'').trim())return 'fish';
+        return 'unknown';
+      }
+      return 'unknown';
+    });
+    if(methods.includes('unknown'))return inferred;
+    if(methods.every(x=>x==='open'))inferred.sharedPath='open';
+    else if(methods.every(x=>['open','accessible'].includes(x)))inferred.sharedPath='accessible';
+    else {
+      inferred.sharedPath='closed';
+      if(methods.includes('fish')){
+        // No opening permission is invented for a no-cut room. Carry fishing
+        // across the connection allowance and identify it explicitly as inferred.
+        inferred.sharedOpenings='none';inferred.sharedFishing='verified';
+        inferred.sharedEvidence='Planning allowance inferred from documented room fishing access; connecting routes have not been separately surveyed.';
+      } else inferred.sharedOpenings=methods.includes('selective')?'selective':'extensive';
+    }
+    return inferred;
+  }
   function roomScope(room, routes, result) {
     const lines = [];
     const methods = [...new Set(routes.flatMap(x => x.segments.filter(y => y.kind !== 'shared').map(y => y.description)))];
@@ -120,15 +154,16 @@
   function sharedScope(routes) {
     const segments = routes.flatMap(route=>route.segments.filter(segment=>segment.kind==='shared'));
     const lines=[];
+    if(segments.some(segment=>segment.inferred))lines.push('Wiring between rooms and the control equipment is budgeted using the construction and access conditions entered for the rooms, with typical medium runs. This is an installation allowance; final routing will be coordinated during design.');
     if(segments.some(segment=>segment.method==='open'))lines.push('Run shared equipment cabling through open framing provided for rough-in.');
     if(segments.some(segment=>segment.method==='accessible'))lines.push('Run shared equipment cabling through the accessible ceiling, floor or chase routes.');
-    if(segments.some(segment=>segment.method==='fish'))lines.push('Fish shared equipment cabling through the verified concealed routes.');
+    if(segments.some(segment=>segment.method==='fish'))lines.push(segments.some(segment=>segment.inferred)?'Allow for fishing cable between rooms and control equipment using the entered no-opening access conditions. No additional access openings are assumed.':'Fish shared equipment cabling through the verified concealed routes.');
     if(segments.some(segment=>segment.method==='selective'))lines.push('Provide selective drywall or plaster openings for shared equipment cabling. Repair and painting are excluded.');
     if(segments.some(segment=>segment.method==='extensive'))lines.push('Remove drywall or plaster in access strips for shared equipment cabling. Reinstatement, patching and painting are excluded.');
     if(segments.some(segment=>segment.status==='hold'))lines.push('Shared equipment wiring requires a confirmed route and any necessary opening permission before a customer budget can be released.');
     return lines;
   }
-  const api = { ROOM_DEFAULTS, PROJECT_DEFAULTS, ENUMS, TASKS, ALLOWANCES, METHODS, plan, roomIssues, roomScope, sharedScope };
+  const api = { sharedFacts, ROOM_DEFAULTS, PROJECT_DEFAULTS, ENUMS, TASKS, ALLOWANCES, METHODS, plan, roomIssues, roomScope, sharedScope };
   root.InstallationModel = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

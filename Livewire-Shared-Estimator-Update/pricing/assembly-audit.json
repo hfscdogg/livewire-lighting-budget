@@ -50,6 +50,22 @@
         "https://assets.lutron.com/a/documents/3663306.pdf",
         "https://assets.lutron.com/a/documents/rania_d2r_adjustable_downlight.pdf",
         "https://assets.lutron.com/a/documents/ketra_d2r_fixed_downlight.pdf"
+      ],
+      "budgetComplete": true,
+      "allowances": [
+        {
+          "component": "UN-D2RDFBWHXX",
+          "cost": 99,
+          "listEquivalent": 180,
+          "basis": "Five Ketra S30 decorative trim-only finishes in the supplied workbook are each $82.50 cost / $150 list. Carry 20% above that same-brand decorative-trim reference for the D2R trim: $99 cost / $180 list-equivalent. This is a cross-family budget allowance, not an exact D2R supplier quote or a part substitution.",
+          "comparables": [
+            "UN-S30A-TM5K-CWH",
+            "UN-S30A-TM5K-PBK",
+            "UN-S30A-TM5K-PBZ",
+            "UN-S30A-TM5K-PSR",
+            "UN-S30A-TM5K-PWH"
+          ]
+        }
       ]
     },
     {
@@ -100,6 +116,22 @@
         "https://assets.lutron.com/a/documents/3663306.pdf",
         "https://assets.lutron.com/a/documents/rania_d2r_adjustable_downlight.pdf",
         "https://assets.lutron.com/a/documents/ketra_d2r_fixed_downlight.pdf"
+      ],
+      "budgetComplete": true,
+      "allowances": [
+        {
+          "component": "UN-D2RDFBWHXX",
+          "cost": 99,
+          "listEquivalent": 180,
+          "basis": "Five Ketra S30 decorative trim-only finishes in the supplied workbook are each $82.50 cost / $150 list. Carry 20% above that same-brand decorative-trim reference for the D2R trim: $99 cost / $180 list-equivalent. This is a cross-family budget allowance, not an exact D2R supplier quote or a part substitution.",
+          "comparables": [
+            "UN-S30A-TM5K-CWH",
+            "UN-S30A-TM5K-PBK",
+            "UN-S30A-TM5K-PBZ",
+            "UN-S30A-TM5K-PSR",
+            "UN-S30A-TM5K-PWH"
+          ]
+        }
       ]
     },
     {
@@ -150,6 +182,22 @@
         "https://assets.lutron.com/a/documents/3663306.pdf",
         "https://assets.lutron.com/a/documents/rania_d2r_adjustable_downlight.pdf",
         "https://assets.lutron.com/a/documents/ketra_d2r_fixed_downlight.pdf"
+      ],
+      "budgetComplete": true,
+      "allowances": [
+        {
+          "component": "UN-D2RDFBWHXX",
+          "cost": 99,
+          "listEquivalent": 180,
+          "basis": "Five Ketra S30 decorative trim-only finishes in the supplied workbook are each $82.50 cost / $150 list. Carry 20% above that same-brand decorative-trim reference for the D2R trim: $99 cost / $180 list-equivalent. This is a cross-family budget allowance, not an exact D2R supplier quote or a part substitution.",
+          "comparables": [
+            "UN-S30A-TM5K-CWH",
+            "UN-S30A-TM5K-PBK",
+            "UN-S30A-TM5K-PBZ",
+            "UN-S30A-TM5K-PSR",
+            "UN-S30A-TM5K-PWH"
+          ]
+        }
       ]
     },
     {
@@ -200,6 +248,22 @@
         "https://assets.lutron.com/a/documents/3663306.pdf",
         "https://assets.lutron.com/a/documents/rania_d2r_adjustable_downlight.pdf",
         "https://assets.lutron.com/a/documents/ketra_d2r_fixed_downlight.pdf"
+      ],
+      "budgetComplete": true,
+      "allowances": [
+        {
+          "component": "UN-D2RDFBWHXX",
+          "cost": 99,
+          "listEquivalent": 180,
+          "basis": "Five Ketra S30 decorative trim-only finishes in the supplied workbook are each $82.50 cost / $150 list. Carry 20% above that same-brand decorative-trim reference for the D2R trim: $99 cost / $180 list-equivalent. This is a cross-family budget allowance, not an exact D2R supplier quote or a part substitution.",
+          "comparables": [
+            "UN-S30A-TM5K-CWH",
+            "UN-S30A-TM5K-PBK",
+            "UN-S30A-TM5K-PBZ",
+            "UN-S30A-TM5K-PSR",
+            "UN-S30A-TM5K-PWH"
+          ]
+        }
       ]
     }
   ],
@@ -222,5 +286,15 @@
     "list": 510,
     "cost": null,
     "source": "User-provided MyLutron configuration and glass-price correction, 2026-11-13"
+  },
+  "sourceVerification": {
+    "date": "2026-11-13",
+    "workbook": "LIVEWIRE,LLC @RICHMOND,VA - 147258_Net Price.xlsx",
+    "worksheet": "Lutron 20261113 USD",
+    "retainedSupplierRows": 10086,
+    "checkedTrim": "UN-D2RDFBWHXX",
+    "trimFound": false,
+    "note": "Original workbook XML and retained supplier rows were checked. Module, mount and power supply matches remain priced; no matching D2 round flanged white bevel trim entry was found. A trim lens or retainer is not substituted for the trim assembly. The exact quote remains absent. A separately identified conservative decorative-trim budget allowance now completes these four remodel assemblies; supplier source rows remain unchanged.",
+    "trimOrderingReference": "https://assets.lutron.com/a/documents/rania_d2r_adjustable_downlight.pdf, trim ordering guide, page 7"
   }
 }

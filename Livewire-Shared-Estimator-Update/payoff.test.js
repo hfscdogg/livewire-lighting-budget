@@ -33,7 +33,7 @@ r.ceilingFishing='blocked';assert.equal(M.range(M.planning(s),s.config),null);
 W.preset(r,'drywall');assert.ok(M.range(M.planning(s),s.config),'Changing mistaken no-cut selection restores viable route');
 r.install='retrofit';W.preset(r,'noCuts');assert.equal(W.noCutSegments(r,M.calculate(s).routes).length,0,'Existing-location replacement does not ask for unrelated fishing proof');
 // Both intelligent fixture families and Rania tape upgrade the platform automatically.
-for(const behavior of ['ketra','rania']){s=job();s.rooms[0].recessGroups[0].behavior=behavior;assert.equal(W.synchronize(s),true);assert.equal(s.project.system,'HomeWorks');assert.equal(W.synchronize(s),false);assert.equal(M.range(M.planning(s),s.config),null,'Incomplete downlight assembly stays a price hold');assert.match(R.html(R.build(s,M.planning(s))),/to support the selected Ketra or Rania lighting/);}
+for(const behavior of ['ketra','rania']){s=job();s.rooms[0].recessGroups[0].behavior=behavior;assert.equal(W.synchronize(s),true);assert.equal(s.project.system,'HomeWorks');assert.equal(W.synchronize(s),false);assert.equal(M.range(M.planning(s),s.config),null,'Unknown D2R ceiling suitability remains a physical check');assert.match(R.html(R.build(s,M.planning(s))),/to support the selected Ketra or Rania lighting/);}
 // Manufacturer boundaries: 16.4 ft per high-output package; dual-ended feeds above 11 ft.
 for(const [feet,controllers,feedFeet,reels] of [[4,1,15,1],[11,1,15,1],[11.1,1,30,1],[12,1,30,1],[16.4,1,30,1],[16.5,2,45,2],[32.8,2,60,2]]){
  s=job();Object.assign(s.rooms[0],{linearFt:feet,linearBehavior:'rania'});W.synchronize(s);c=M.planning(s);

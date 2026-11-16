@@ -1,6 +1,6 @@
 # Field workflow and source integrity review
 
-November 13, 2026. Source release `2026-11-13-budget-workflow-1`.
+November 13, 2026. Source release `2026-11-13-required-workflow-1`.
 
 ## Sales workflow changes
 
@@ -17,6 +17,16 @@ Condition reuse requires selecting the destination rooms and confirming the fact
 The standalone budget page leads with the range and credited retainer, followed by narrative installation scope. Only actionable missing information appears in fix cards. General design and commissioning checks are retained as planning reminders; they no longer imply that every sales budget requires design approval first. Physical restrictions, incomplete costs, unsupported assemblies and actual capacity limits still hold the range. Shared-server approval is unchanged. Customer output excludes supplier costs and internal notes.
 
 With no extra access cuts allowed, Continue and the Budget navigation check the actual new room routes. Only required ceiling/wall routes are shown, and concealed fishing requires both confirmation and a reference. Existing-location replacement without new concealed cable does not trigger unrelated route questions. Back, Change this choice and Undo remain available.
+
+## Required information and inference
+
+Sales provides observed project facts and customer selections. The application derives quantities, compatible systems, equipment counts and installation allowances whenever those facts are sufficient. Derived estimating terms are not additional sales questions.
+
+Connecting wiring now inherits the room access basis. Open framing uses open-route labor; accessible ceilings/chases use accessible-route labor; permitted cuts include the relevant opening work; documented no-cut fishing carries an inferred fishing allowance. Unknown or blocked room access stays unresolved on the Conditions step. The calculation does not write inferred access back as a surveyed project fact. Customer scope names the medium-run connection allowance and its basis. Explicit estimator overrides remain authoritative; a saved unresolved override can be deliberately replaced with the room-based allowance.
+
+The workflow checks each step before forward continuation. The same calculation identifies missing information on Project, Lighting or Conditions before allowing the Budget page. Numeric input changes refresh requirements without replacing the active input. Back, room editing and project saving remain available. Required multiple-group tape lengths are expanded in the lighting form.
+
+Missing configured prices appear when the equipment is selected. Ketra/Rania D2R remodel assemblies now carry a documented trim allowance alongside exact supplied module, mount and power prices. Their physical ceiling suitability is answered on Conditions. A price allowance does not approve insulation clearance or a fire-rated ceiling.
 
 ## Defects corrected
 
@@ -44,7 +54,7 @@ The deterministic mixed-scope stress run includes 180 projects with 1–16 rooms
 
 Interaction tests use simulated application events and inspect generated markup. Real iPad Safari, keyboard behavior, camera uploads and PDF pagination have not been visually verified. The interface uses responsive grids, large touch controls and 16-pixel form inputs, but device acceptance remains outstanding. Local HTML is a standalone delivery; shared iPad use will require the later company-hosting deployment.
 
-Rania tape budgeting now uses the complete high-output recipe in the company supplier reference; downlight trim and other configured assembly pricing gaps identified in Release status remain open. The simplified flow does not invent those prices or convert unknown access into a verified route.
+Rania tape budgeting now uses the complete high-output recipe in the company supplier reference; the four D2R remodel assemblies now include a documented decorative-trim allowance. Other configured assembly limits are identified in Release status. Comparable allowances are distinct from exact supplier prices, and unknown access is never converted into a verified route.
 
 ## Design references
 
@@ -52,3 +62,9 @@ Rania tape budgeting now uses the complete high-output recipe in the company sup
 - Nielsen Norman Group, progressive disclosure: https://www.nngroup.com/articles/progressive-disclosure/
 - Apple interface design tips: https://developer.apple.com/design/tips/
 - GitHub file/folder upload guidance: https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
+
+## Project review update
+
+The current review covers project entry, room detail, access, pricing, calculation, saved drafts, customer scope and source packaging. [Decision policy](PROJECT-REVIEW.md) records which inputs remain client choices, which decisions are inferred and which conditions need an estimating handoff.
+
+Additional regression cases cover four complete D2R remodel combinations, conservative fan-support replacement, price supplements without overwriting custom prices, repeated products in multiple rooms, shade-access routing and mixed estates of 1, 4, 16 and 32 rooms. The 32-room case includes 256 Ketra fixtures, 384 feet of Rania tape, 64 shades, 32 replacement fans and 64 new decorative locations. These are arithmetic, scope and workflow checks, not a site-specific installation design or measured production validation.

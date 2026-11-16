@@ -78,6 +78,11 @@ console.log('PASS: versioned company price-list validation, project isolation, s
    assert.equal(Math.round(knownCost*100)/100,recipe.knownComponentCost);
    assert.equal(Math.round(knownList*100)/100,recipe.knownComponentList);
    assert.equal(recipe.complete,false);
-   assert.equal(require('./pricing/catalog.json').settings.catalog.find(row=>row.id===recipe.catalogId).cost,null);
+   assert.equal(recipe.budgetComplete,true);
+   const allowance=recipe.allowances[0];
+   for(const sku of allowance.comparables){assert.equal(bySku.get(sku).cost,82.5);assert.equal(bySku.get(sku).list,150);}
+   assert.equal(allowance.cost,82.5*1.2);assert.equal(allowance.listEquivalent,150*1.2);
+   const priced=require('./pricing/catalog.json').settings.catalog.find(row=>row.id===recipe.catalogId);
+   assert.equal(priced.cost,Math.round((knownCost+allowance.cost)*100)/100);assert.equal(priced.msrp,knownList+180);assert.equal(priced.priceBasis,'comparable-allowance');
  }
 }
