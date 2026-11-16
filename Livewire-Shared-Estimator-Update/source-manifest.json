@@ -15,7 +15,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "c7c220356c181e1d210b1d06051184805fab7f3a221605d338e54e0941f7cb72"
+      "sha256": "544a45ef4127028e68fe2c26e35b730973e66dd373b4c97531f23dfc9cc18bd7"
     },
     {
       "path": "app-smoke.test.js",
@@ -31,11 +31,11 @@
     },
     {
       "path": "dist/app.js",
-      "sha256": "b7b20fe53bdfddc788aee2f53487a58ed905ef987eac431cf5367daecccc4bd2"
+      "sha256": "3c4075c2ee70b913878caa1d2ac8cb0aa9769fdc9c5d689d3ce6ab6bddfcfa7f"
     },
     {
       "path": "dist/customer-report.js",
-      "sha256": "da27f4475cfdcee5a3b5f2bf6b9d602003eaa9ac155cb8ce66a3f10d812d8d05"
+      "sha256": "4a648b1aca38e68b549769eafc1da76666b954d5592b2a35e96510090e1e5271"
     },
     {
       "path": "dist/index.html",
@@ -51,7 +51,7 @@
     },
     {
       "path": "dist/model.js",
-      "sha256": "6f9c347518bd89177c6b6b5b92d67c030ecc1d8f3bb8aef6d75e2a4a243b72d3"
+      "sha256": "25363715edbd510a846968e84f5e353469f2963015198d8e6e3f2f7ae3c5c887"
     },
     {
       "path": "dist/price-references.js",
@@ -59,15 +59,15 @@
     },
     {
       "path": "dist/pricing.js",
-      "sha256": "d0f59e8d139bc71d1786047d6756000ece9449f53513ca94d58233e139dd9d50"
+      "sha256": "3edb4a681a08b996ba0f3ae88c03a92692d11c5315e10d72ad83a5585e6330be"
     },
     {
       "path": "dist/sales-workflow.js",
-      "sha256": "23dbb9a705db22f039ae7ad2fb80ee215fb87a9812318187cb0ae5ef7e464b29"
+      "sha256": "19f872c9ef1ddb64ec499c094a205cf757bef31b03b00256bb70a0a8b9048ec2"
     },
     {
       "path": "dist/shades.js",
-      "sha256": "471e04d0f3895efba81167a03c4daee7207dd511d8485ef060543cf1c3b38ae4"
+      "sha256": "a7b045d239f62cfbb6bc80550749ba855e845e1cbca5ccc7c2f27aeb82a75e91"
     },
     {
       "path": "dist/spreadsheet.js",
@@ -143,7 +143,7 @@
     },
     {
       "path": "labor.test.js",
-      "sha256": "67a8629114f2ee00f35533908afb5d6b89e612c5ef016324a199e99e50bfe2fd"
+      "sha256": "003974a0b49829663ccd8f39a12bcac4c780bdab74598422abfd7e0d15aaff13"
     },
     {
       "path": "model.test.js",
@@ -155,7 +155,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "c550e671e2e0ba452f1e197299ef7e2f1f943ce1428d3a4b3a46bff011efabbf"
+      "sha256": "f7acb82b28cc42ed391776821c155c6a7ed33207309e96e9a82443d8b8927012"
     },
     {
       "path": "payoff.test.js",
@@ -171,7 +171,7 @@
     },
     {
       "path": "pricing/catalog.json",
-      "sha256": "a7b3d4e98115b7eb8373ccdd0cb17fcf43a88e7ff59a54837a91e3e4bbd1ac7d"
+      "sha256": "481cb094ce667170f2bab1253453a3e27cdded605696e490edac71c918a9cf8d"
     },
     {
       "path": "pricing/lutron-supplier-prices.json",
@@ -199,7 +199,7 @@
     },
     {
       "path": "scope.test.js",
-      "sha256": "4cb32746a82141e871dd082dc1df23dd6ab43606d88979bed890e0ada697b721"
+      "sha256": "bff8d05a5ee8d45c87cbeec3166e191531ab9501dd406220c0d40a578bba6f71"
     },
     {
       "path": "server/auth.js",
@@ -226,8 +226,12 @@
       "sha256": "4d855ba81bceb679bda195215cb415bfadd4e31d07dc0b66cbcaf043f816f11f"
     },
     {
+      "path": "shade-defaults.test.js",
+      "sha256": "01c6676c0f4f90917b4fd584809da2e2ad682c2de025df552af4664f2871b40a"
+    },
+    {
       "path": "shades.test.js",
-      "sha256": "8d434962a45e13cc3a4a075020c34b30fc46c94d4d395b2e4aae568d19b2e887"
+      "sha256": "1d174d2f705014ee5cd8fd5f18bba84cd2f790ae5558cf0a091287226d4330ff"
     },
     {
       "path": "spreadsheet.test.js",

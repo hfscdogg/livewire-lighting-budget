@@ -94,3 +94,13 @@ Drawing references and revisions are retained with room facts and derived route 
 - Versioned the company catalog with the application, added long-route estimating inputs, and expanded regression coverage for estate-scale layouts and access labor. Customer PDFs continue to omit supplier pricing.
 - Added tiered shipping and handling, the material surcharge, the budget range and a separate creditable design retainer. Expanded Lumaris, wiring and retrofit takeoffs.
 - Added room photos, estimator handoff notes, shared project search and a Start next job action.
+
+## November 16 budget-default correction
+
+Rooms needing a keypad and a conventional dimmed group default to a Sunnata hybrid. The hybrid replaces one compatible dimmer and its installation task; additional groups retain their controls. Explicit keypad selections persist. Intelligent-only and switched-only rooms use a standard keypad. The room overview shows a compact Wall controls summary. Expanding it offers normal local dimmers/switches or keypads only; this setting is not repeated on individual lighting tabs. Central dimming panels and load home runs are added only for an explicit centralized choice. A wired designer keypad alone does not imply a lighting panel.
+
+New shades start with battery-powered Triathlon and wireless commands. Sivoia selects wired power but defaults to wireless commands with a receiver; explicit wired QS communication and Palladiom Wired remain supported. Power is visible in the primary shade form and is described separately from communication in customer scope. Groups of one through four new 35 V shades use one QSPS-J-1-35V per shade; larger groups retain ten-output panel sizing. Mains connection parts and installation labor remain included. Supply selection and drive loading require final design verification. Catalog release 2026-11-16-livewire-pilot-7 uses the supplied single-output price of $169.40 cost / $308 list.
+
+The reported customer PDF included a central lighting panel for one room with eight recessed fixtures and one shade. Reconstructed cases confirmed that automatic panelization and a ten-output shade supply inflated the equipment and installation scope. The PDF lacks the original grouping, keypad model, travel and detailed settings, so an exact revised project price requires its saved project file. No replacement customer price was asserted from the PDF alone.
+
+Manufacturer reference: https://support.lutron.com/us/en/product/shades/article/installation/Wiring-a-Sivoia-QS-Palladiom-Shade-for-Power-with-RF-Wireless-Communication

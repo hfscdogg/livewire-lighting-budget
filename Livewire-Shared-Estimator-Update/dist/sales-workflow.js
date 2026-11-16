@@ -49,12 +49,12 @@
     }
     return system;
   }
-  const AUTO_FIELDS=['powerPlan','keypadLocation','controlLocation','keypadQSWiring','routeLength'];
-  function defaults(room){return {powerPlan:room.install==='new'?'new':'existing',keypadLocation:room.install==='new'?'new':'existing',controlLocation:room.install==='new'?'new':'existing',keypadQSWiring:'new',routeLength:'medium'};}
+  const AUTO_FIELDS=['powerPlan','keypadLocation','controlLocation','keypadQSWiring','routeLength','keypadType'];
+  function defaults(room){const dimmed=room.recessGroups.some(g=>Number(g.qty)>0&&!['ketra','rania','lumaris'].includes(g.behavior)&&g.control==='dimmer')||Number(room.linearFt)>0&&room.linearBehavior==='warm'&&room.linearControl==='dimmer'||(Number(room.decorExisting)+Number(room.decorNew)>0&&room.decorControl==='dimmer');return {keypadType:dimmed&&room.loadTopology!=='centralized'?'sunnata_hybrid':'sunnata',powerPlan:room.install==='new'?'new':'existing',keypadLocation:room.install==='new'?'new':'existing',controlLocation:room.install==='new'?'new':'existing',keypadQSWiring:'new',routeLength:'medium'};}
   function override(room,key){if(!AUTO_FIELDS.includes(key))return;room.budgetOverrides=[...new Set((room.budgetOverrides||'').split(',').filter(Boolean).concat(key))].join(',');}
   function resetDefaults(room){room.autoBudgetDefaults=true;room.budgetOverrides='';Object.assign(room,defaults(room));}
   function synchronize(state){
-    for(const room of state.rooms)if(room.autoBudgetDefaults){const overrides=(room.budgetOverrides||'').split(',');for(const [key,value]of Object.entries(defaults(room)))if(!overrides.includes(key))room[key]=value;}
+    for(const room of state.rooms)if(room.autoBudgetDefaults){const overrides=(room.budgetOverrides||'').split(',');for(const [key,value]of Object.entries(defaults(room)))if(!overrides.includes(key)&&!(key==='keypadType'&&!['sunnata','sunnata_hybrid'].includes(room[key])))room[key]=value;}
 
     const next=recommendation(state),before=state.project.system;
     if(next!==before){state.project.system=next;return true;}
