@@ -15,7 +15,7 @@ if(cfg.timezone!=='America/New_York'||cfg.travelBasis!=='crew'||cfg.dayHours!==8
 function make(state,version,effectiveAt){const defaults=M.initial().config,settings=Object.fromEntries(KEYS.map(k=>[k,copy(state.config[k])]));settings.catalog=settings.catalog.filter(x=>defaults.catalog.some(d=>d.id===x.id));for(const k of ['labor','laborOnsite','travelBands','driverMax'])settings[k]=Object.fromEntries(Object.keys(defaults[k]).map(id=>[id,settings[k][id]]));return validate({kind:'livewire-company-catalog',schemaVersion:1,modelRevision:13,currency:'USD',catalogVersion:version,effectiveAt,settings});}
 function apply(state,input){const p=validate(input),next=copy(state);next.config={...next.config,...copy(p.settings)};for(const k of REVIEWS)next.config[k]=false;next.project.scopeReviewed=false;next.config.roomRoutes={};for(const r of next.rooms)r.routeReviewed=false;next.pricingMeta={version:p.catalogVersion,effectiveAt:p.effectiveAt,draft:false};return next;}
 function supplement(state,input){
- const p=validate(input),ids=['shade_35v_single',...M.RANIA_ADDED_ROWS,'fixture_remodel_rania_fixed','fixture_remodel_rania_adj','fixture_remodel_ketra_fixed','fixture_remodel_ketra_adj'],changed=[];
+ const p=validate(input),ids=[...M.RANIA_ADDED_ROWS,'fixture_remodel_rania_fixed','fixture_remodel_rania_adj','fixture_remodel_ketra_fixed','fixture_remodel_ketra_adj'],changed=[];
  for(const id of ids){const row=state.config.catalog.find(x=>x.id===id),fresh=p.settings.catalog.find(x=>x.id===id);
   if(row&&fresh&&row.cost===null&&row.msrp===null&&!row.verified&&fresh.verified){Object.assign(row,copy(fresh));changed.push(id);}
  }
