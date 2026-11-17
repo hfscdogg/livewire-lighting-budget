@@ -58,7 +58,7 @@ assert.ok(M.calculate(legacy).issues.some(issue => issue.key === 'hw_arch'));
 for (const behavior of ['rania', 'ketra']) {
   const s = project('HomeWorks', 'new');
   s.rooms[0].recessGroups[0].behavior = behavior;
-  assert.equal(M.range(M.calculate(s), s.config), null, `${behavior} assembly still requires pricing`);
+  assert.ok(M.range(M.calculate(s), s.config), `${behavior} complete new-construction assembly has a stated budget allowance`);
 }
 const shade = project('RA3', 'remodel');
 shade.rooms[0].shadeGroups.push({ ...M.Shade.group(M.uid), qty: 2, widthFt: 4, heightFt: 5 });
@@ -67,4 +67,4 @@ assert.equal(M.range(M.calculate(shade), shade.config), null, 'Historical shade 
 const blocked = project('RA3', 'remodel');
 Object.assign(blocked.rooms[0], { ceilingPath: 'closed', wallPath: 'closed', openingPermission: 'none', ceilingFishing: 'blocked', wallFishing: 'blocked' });
 assert.equal(M.range(M.calculate(blocked), blocked.config), null, 'Global review cannot bypass blocked routing');
-console.log(`PASS: ${complete} complete catalog-backed lighting scenarios; automatic HomeWorks planning; pending assemblies, shade review and blocked-route safeguards.`);
+console.log(`PASS: ${complete} complete catalog-backed lighting scenarios; automatic HomeWorks planning; assembly allowances, shade review and blocked-route safeguards.`);

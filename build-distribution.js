@@ -1,31 +1,25 @@
+'use strict';
 const fs=require('node:fs'),path=require('node:path');
-const installation=fs.readFileSync('dist/installation.js','utf8');
-const photos=fs.readFileSync('dist/job-photos.js','utf8');
-const catalog = require('./dist/pricing').validate(JSON.parse(fs.readFileSync('pricing/catalog.json', 'utf8')));
-const catalogScript = '<script>window.LivewireRepositoryCatalog=' + JSON.stringify(catalog).replaceAll('<', '\\u003c') + ';</script>';
-const shades=fs.readFileSync('dist/shades.js','utf8');
-const css=fs.readFileSync('dist/styles.css','utf8'),model=fs.readFileSync('dist/model.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),pricing=fs.readFileSync('dist/pricing.js','utf8');
-const sheet=fs.readFileSync('dist/spreadsheet.js','utf8'),report=fs.readFileSync('dist/customer-report.js','utf8'),refs=fs.readFileSync('dist/price-references.js','utf8');
-let html=fs.readFileSync('dist/index.html','utf8').replace('<link rel="stylesheet" href="styles.css">','<style>'+css+'</style>').replace('<script src="job-photos.js"></script>','<script>'+photos+'</script>').replace('<script src="shades.js"></script>','<script>'+shades+'</script>').replace('<script src="installation.js"></script>','<script>'+installation+'</script>').replace('<script src="model.js"></script>','<script>'+model+'</script>').replace('<script src="pricing.js"></script>','<script>'+pricing+'</script>'+catalogScript).replace('<script src="spreadsheet.js"></script>','<script>'+sheet+'</script>').replace('<script src="customer-report.js"></script>','<script>'+report+'</script>').replace('<script src="price-references.js"></script>','<script>'+refs+'</script>').replace('<script src="app.js"></script>','<script>'+app+'</script>');
+require('./verify-repository').verify(__dirname);
+const catalog=require('./dist/pricing').validate(JSON.parse(fs.readFileSync('pricing/catalog.json','utf8')));
+const script=body=>'<script>'+body+'</script>';
+let html=fs.readFileSync('dist/index.html','utf8').replace('<link rel="stylesheet" href="styles.css">','<style>'+fs.readFileSync('dist/styles.css','utf8')+'</style>');
+for(const name of ['job-photos','shades','installation','model','pricing','sales-workflow','spreadsheet','customer-report','estimator-report','price-references','app']){
+ const tag='<script src="'+name+'.js"></script>';
+ if(!html.includes(tag))throw Error('Missing standalone script: '+name);
+ html=html.replace(tag,script(fs.readFileSync('dist/'+name+'.js','utf8'))+(name==='pricing'?script('window.LivewireRepositoryCatalog='+JSON.stringify(catalog).replaceAll('<','\\u003c')+';'):''));
+}
+for(const name of ['sunnata','palladiom'])html=html.replaceAll('assets/keypad-'+name+'.jpg','data:image/jpeg;base64,'+fs.readFileSync('dist/assets/keypad-'+name+'.jpg').toString('base64'));
 if(/@import|<script[^>]+src=|<link[^>]+href=/.test(html))throw Error('Standalone file has an external asset dependency.');
-fs.rmSync('distribution/apps-script',{recursive:true,force:true});fs.rmSync('distribution/source',{recursive:true,force:true});fs.mkdirSync('distribution/source/dist',{recursive:true});fs.mkdirSync('distribution/source/distribution-docs',{recursive:true});
+fs.mkdirSync('distribution',{recursive:true});
 fs.writeFileSync('distribution/Livewire-Lighting-Budget.html',html);
 fs.writeFileSync('distribution/Livewire-Internal-Setup.html',html.replace('<body>','<body><script>window.LIVEWIRE_INTERNAL=true;</script>'));
-for(const name of ['index.html','styles.css','job-photos.js','shades.js','installation.js','model.js','pricing.js','spreadsheet.js','customer-report.js','price-references.js','app.js'])fs.copyFileSync('dist/'+name,'distribution/source/dist/'+name);
-for(const name of ['model.test.js','wizard.test.js','scope.test.js','estate.test.js','installation.test.js','app-smoke.test.js','release.test.js','fan-budget.test.js','pricing.test.js','spreadsheet.test.js','labor.test.js','shades.test.js','build-distribution.js','README.md','package.json','package-lock.json','.gitignore','.env.example'])fs.copyFileSync(name,'distribution/source/'+name);
-fs.cpSync('server','distribution/source/server',{recursive:true});
-fs.cpSync('pricing','distribution/source/pricing',{recursive:true});
-fs.copyFileSync('distribution-docs/SETUP.txt','distribution/SETUP.txt');fs.copyFileSync('distribution-docs/SETUP.txt','distribution/source/distribution-docs/SETUP.txt');
-console.log('Created offline HTML, internal setup, documentation and source. No site identity, credentials, or project records included.');
-
-fs.copyFileSync('distribution-docs/SCOPE-MATRIX.txt','distribution/SCOPE-MATRIX.txt');fs.copyFileSync('distribution-docs/SCOPE-MATRIX.txt','distribution/source/distribution-docs/SCOPE-MATRIX.txt');
-
-
-fs.copyFileSync('distribution-docs/LABOR-ASSUMPTIONS.txt','distribution/LABOR-ASSUMPTIONS.txt');fs.copyFileSync('distribution-docs/LABOR-ASSUMPTIONS.txt','distribution/source/distribution-docs/LABOR-ASSUMPTIONS.txt');
-
-for(const name of ['SHADING-ASSUMPTIONS.txt','SHARED-APP-PLAN.txt']){fs.copyFileSync('distribution-docs/'+name,'distribution/'+name);fs.copyFileSync('distribution-docs/'+name,'distribution/source/distribution-docs/'+name);}
-
-for(const name of ['Livewire-Price-List.csv','Livewire-Lighting-Price-List.xlsx'])fs.rmSync('distribution/'+name,{force:true});
-fs.copyFileSync('distribution-docs/PLAN-IMPORT.md','distribution/source/distribution-docs/PLAN-IMPORT.md');
-
-fs.copyFileSync('distribution-docs/RELEASE-STATUS.md','distribution/source/distribution-docs/RELEASE-STATUS.md');
+// The same inventory drives verification and packaging, so nested source files cannot silently disappear.
+fs.rmSync('distribution/source',{recursive:true,force:true});
+const inventory=JSON.parse(fs.readFileSync('source-manifest.json','utf8'));
+for(const name of [...inventory.files.map(file=>file.path),'source-manifest.json']){
+ const destination=path.join('distribution/source',name);fs.mkdirSync(path.dirname(destination),{recursive:true});fs.copyFileSync(name,destination);
+}
+for(const name of ['SETUP.txt','SCOPE-MATRIX.txt','LABOR-ASSUMPTIONS.txt','SHADING-ASSUMPTIONS.txt','SHARED-APP-PLAN.txt'])fs.copyFileSync('distribution-docs/'+name,'distribution/'+name);
+require('./verify-repository').verify(path.resolve('distribution/source'));
+console.log('Built offline HTML with embedded pricing and a verified complete source package. No customer projects or credentials included.');

@@ -1,0 +1,51 @@
+LIVEWIRE SHARED APPLICATION ARCHITECTURE
+November 17, 2026 | R9 shared application
+
+PURPOSE
+Staff open the estimator at its approved HTTPS address, sign in with their
+work Google accounts and use shared projects and centrally managed pricing.
+The private GitHub repository stores code and catalog source. The company
+Vercel account runs the web application. Employee sign-in is separate from
+GitHub access. The public Livewire website does not need to change.
+
+APPLICATION AND STORAGE
+Vercel routes requests to api/index.js. The function serves an explicit asset
+allowlist and authenticated APIs. Calculation and catalog source stay in the
+function bundle, outside public output. PostgreSQL holds shared projects,
+photos, notes, catalog releases, enrolled identities, sessions and temporary
+upload sections. Local SQLite is supported only outside Vercel. The package
+does not provision a database, purchase a service or establish whether company
+storage is already available. See VERCEL-DEPLOYMENT.md for setup.
+
+ACCESS
+Google identity verification requires a verified work-domain account, an
+approved membership entry and its enrolled Google subject. Sales can create
+and edit shared scope, view company pricing and generate authorized customer
+reports. Pricing administrators and owners can publish price releases,
+reprice jobs and approve customer budgets. Customer reports omit supplier
+costs and private notes/photos. Removing a membership and redeploying revokes
+application access. No shared employee password is used.
+
+DATA AND PRICE UPDATES
+Catalog releases are immutable. Each saved project retains its assigned
+release until explicitly repriced. Optimistic revision checks prevent silent
+overwriting of another employee's changes. Failed photo transfers leave the
+saved revision intact. Large project requests are divided into authenticated
+sections. Temporary sections expire after 15 minutes. Project and image limits
+remain bounded. Photos require no separate object-storage service in this
+implementation.
+
+MIGRATION AND RECOVERY
+Existing project JSON files can be imported after employee sign-in. Imported
+pricing and approvals cannot replace central company settings or hosted review.
+Existing SQLite databases are not automatically migrated. PostgreSQL backups
+and restoration are the company database administrator's responsibility.
+GitHub history preserves code and pricing source, not saved customer projects.
+
+VALIDATION AND STATUS
+Automated HTTP checks cover local SQLite and PostgreSQL through PGlite,
+including cross-instance sessions, role controls, conflict handling, pricing
+history and interrupted photo transfers. Actual Vercel routing, external
+storage networking, Google sign-in, PDF printing, physical iPad use and backup
+restoration require company deployment acceptance. No public website change
+or paid-service provisioning is included.

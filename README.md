@@ -1,61 +1,79 @@
 # Livewire Lighting and Shading Estimator
 
-The estimator develops room-by-room budgets for lighting, controls and motorized shades. The standalone application saves editable project files. The shared application implements Livewire Google sign-in and shared project storage; company deployment and live sign-in verification remain pending. Pricing administrators review the takeoff and approve customer PDFs.
+An internal sales tool for developing room-by-room budgets for lighting, Lutron controls and motorized shades. The guided workflow turns customer preferences and installation conditions into an equipment takeoff, task-based labor, a budget range and a scope of work.
+
+Release: **R9, November 17, 2026**. The standalone application is available for company review. Shared operation supports the company Vercel environment and requires deployment configuration and acceptance testing.
 
 ## Sales workflow
 
-1. Start a project and select the installation type, travel band and control system. Use **Help me choose** to capture scope while system selection is open.
-2. Add rooms and enter the fixtures, controls, undercabinet lighting and shades. Under **Conditions**, record ceiling and wall access separately, permitted openings, working height, occupancy and unusual construction. Record project-wide routes when new cable connects to shared equipment. Add photos and handoff notes where useful.
-3. Save the project. Pricing review resolves the outstanding items on the Budget screen. Use **Customer budget PDF** to print or save the approved range and design retainer. The PDF includes customer scope and exclusions. The editable estimate and company catalog are internal files.
+1. Create a project and add the rooms involved.
+2. Select the work in each room: recessed lighting, undercabinet lighting, owner-supplied fixtures or fans, existing-light controls, keypads and shades.
+3. Record the finished surface, permission for access cuts, attic access, working height and occupancy. Common installation settings are inferred and remain editable.
+4. Review the budget range and room-by-room scope. Save the project or generate a customer budget PDF and a separate estimator handoff PDF.
 
-## Pricing and approvals
+Lighting choices determine the compatible control platform and shared equipment. Conventional lighting can use local dimmers and hybrid keypads. Central lighting panels are included when the selected wall-control arrangement requires them. Intelligent lighting, shades and controls share compatible processors and infrastructure.
 
-[`pricing/catalog.json`](pricing/catalog.json) is the versioned company catalog in this private repository. It contains supplier prices, verified equipment mappings, estimated task hours and company allowances. The standalone build embeds this catalog. A shared deployment registers the repository version when it starts. Employees can view company pricing. Pricing administrators and owners can publish a new version and approve or reprice a saved project. A catalog version identifies an immutable price list. Change its version when changing rates, equipment or assumptions. Saved projects retain their assigned release until repriced.
+Required questions appear in the relevant workflow step. Unchecked D2/D2R ceiling suitability becomes an estimator follow-up before ordering. Recorded incompatibility, blocked wiring routes and unsupported scope still require resolution. Access and product assumptions remain visible in the handoff.
 
-Labor is estimated by task at $112.50 per person-hour. The takeoff includes applicable rough-in, trim, equipment installation, circuit and control wiring, setup, programming, commissioning and handoff. Each new cable run has an installation method. Open framing, accessible attic/cavity work, documented fishing, selective openings and continuous access removal use distinct allowances. Cable preparation, pulling, device installation and access removal are separate tasks. Blocked or unknown routes hold the customer budget until the method is resolved. The customer scope describes included removal and excludes drywall and plaster repair and painting. Long routes require reviewed lengths or a documented multiplier. Labor standards and medium-run lengths are estimating allowances.
+## Budget policy
 
-The pricing release applies a 6% materials surcharge and tiered shipping and handling to the material selling amount. The glass Palladiom keypad uses the supplied $510 complete-package list price as its selling basis; dealer cost is not inferred. The budget is 10% below to 15% above the complete planning amount. The design retainer is 4% of the displayed low end and is credited toward the job if the customer proceeds.
+| Item | Calculation |
+| --- | --- |
+| Labor | $112.50 per person-hour |
+| Labor increments | Each completed task rounds up to 0.25 hour after quantity and condition adjustments |
+| Programming | One startup hour, then device-specific programming, activation and response testing |
+| Large-system programming | Progressive device-count allowances, independent of installation access |
+| Travel | One two-person crew; applicable company daily travel band |
+| Materials | Company catalog pricing, 6% materials surcharge and tiered shipping and handling |
+| Customer range | 10% below to 15% above the complete planning amount |
+| Design retainer | 4% of the displayed low end, credited toward the project; not added to the budget |
 
-Review system capacity, fixture and load compatibility, routing and job conditions before approval. Confirm the physical processor, repeater, gateway and panel layout for larger systems. Configured shades use the company’s upper historical size-band allowance unless a job-specific quote overrides it. Customer scopes identify historical allowances; final fabrication and selected options must be checked before ordering. Existing-system changes, specialty products and unsupported configurations require an estimator takeoff. Unresolved scope produces a scope summary while pricing is pending. Review the approved scope and exclusions when comparing the final proposal with the budget. Reprice added work or changed conditions separately.
+Cable quantities, load controls, processor capacity, power supplies and installation work follow the selected scope. Access adjustments apply only to affected tasks. Unit rates retain precision so per-foot and per-device calculations are not inflated before task rounding. Drywall/plaster repair and painting are excluded.
 
-## Local build and shared deployment
+The versioned company catalog is [pricing/catalog.json](pricing/catalog.json). Product records identify exact supplier prices, comparable assembly allowances and historical shade budgets. Shade amounts remain budget allowances pending final measurement and fabrication pricing. Task times are estimating standards, not a guarantee against concealed conditions or changes in scope. Final installation design and ordering review remain required.
 
-Use Node.js 22.16 or newer. From the repository root, run `npm ci`, `npm test` and `npm run build`. The build produces `distribution/Livewire-Lighting-Budget.html` for estimating and `distribution/Livewire-Internal-Setup.html` for catalog and job review. Both are internal company files. Use **Save project** to retain an editable estimate and **Start next job** to clear the working scope.
+## Project files and reports
 
-The shared application runs as a separate Node.js process on `127.0.0.1` behind an HTTPS reverse proxy, with persistent private SQLite storage and backups. The runtime serves application assets from a defined allowlist. Keep the checkout, SQLite database, backups and environment configuration outside the web document root.
+**Save project** retains an editable job, including room notes and photos. **Open project** resumes it. **Start next job** provides a save opportunity before clearing the draft. Browser storage is temporary; keep exported jobs in the company project location.
 
-Deployment configuration is documented in [`.env.example`](.env.example). Use the approved estimator origin and a Livewire-owned Google Workspace OAuth web client. Register `<LIVEWIRE_ORIGIN>/auth/google/callback` with `openid email` scopes. `LIVEWIRE_MEMBERS` maps approved work accounts to `sales`, `pricing` or `owner`. Start the service with `npm start`. Verify Google sign-in, role permissions, shared saves, catalog release, PDF output and backup restoration on staging before rollout.
+The customer PDF contains the budget, credited retainer, scope and exclusions. The estimator handoff adds room selections, access assumptions, ordering notes, material quantities, labor, private notes and photos. Customer documents omit supplier costs and internal information. The application and editable project files are for internal company use.
 
-## Installation verification
+## Delivery options
 
-[Release status](distribution-docs/RELEASE-STATUS.md) separates the standalone release from company hosting and identifies outstanding scope and pricing work.
+| Mode | Use |
+| --- | --- |
+| Standalone HTML | Runs locally, saves editable project files and produces both reports; no employee sign-in or shared database |
+| Shared application | Google work-account sign-in, shared projects and central pricing through a company Vercel deployment with PostgreSQL |
 
-The Budget screen shows generated room scope and an expandable task-hours breakdown. Customer PDFs include the room methods and shared installation work while omitting supplier costs, internal task hours and private notes. An approval checkbox cannot override unresolved access. A retrofit fixture replacement can reuse verified existing wiring without requiring a new route. Adding new cable introduces the route checks even in a retrofit room.
+GitHub stores source and pricing; Vercel runs the shared application. A public repository is not required. The repository and standalone application contain internal pricing and should remain restricted to authorized staff. GitHub Pages does not run the shared application's server and database. The public Livewire website is separate from this application.
 
-The automated suite includes 480 ceiling/wall access and permission combinations, fixture replacement versus relocation, shade-only wiring, shared routes, independent labor arithmetic and estate-scale systems. These tests validate software behavior. The task standards and removal quantities remain estimating assumptions and require field calibration. Full company-browser visual/print validation and hosted Google sign-in remain release checks.
+Shared projects retain their assigned catalog release until repriced. Sales users can view company pricing; pricing administrators and owners maintain releases and approve customer budgets. Shared deployment requires approved company storage, Google identity configuration and backup arrangements. See [Vercel deployment](distribution-docs/VERCEL-DEPLOYMENT.md).
 
-Drawing references and revisions are retained with room facts and derived route records. Plan reading is not implemented. [Plan import design](distribution-docs/PLAN-IMPORT.md) defines how future measured takeoffs can enter the estimator without bypassing field-access checks.
+## Repository installation and verification
 
-## Estimating references
+The source archive contains repository files directly at its root. Extract it, then upload all enclosed files and folders to the repository root, preserving `dist/`, `pricing/`, `server/`, `api/`, `distribution-docs/` and `.github/`. Upload the extracted contents, not the ZIP itself or an enclosing folder.
 
-- [Modeled scope and dependencies](distribution-docs/SCOPE-MATRIX.txt)
-- [Labor assumptions](distribution-docs/LABOR-ASSUMPTIONS.txt)
-- [Shading assumptions](distribution-docs/SHADING-ASSUMPTIONS.txt)
+With Node.js 22.x, version 22.16 or later:
+
+```sh
+npm run verify
+npm ci
+npm test
+npm run build
+npm run test:bundle
+```
+
+The standalone output is `distribution/Livewire-Lighting-Budget.html`. The company configuration view is `distribution/Livewire-Internal-Setup.html`. For Vercel, use `npm run build:vercel`, the Other framework preset and `public` as the output directory; the deployment guide specifies environment settings.
+
+The source inventory detects missing folders and mixed versions. After intentional source edits, regenerate it with `npm run manifest`. The GitHub verification workflow checks source integrity, tests and builds. Automated checks cover calculation, access, complete assemblies, controls-only work, large systems, saved projects, reports and shared authorization. Physical iPad/browser printing and live company sign-in, storage and backups remain deployment acceptance checks.
+
+## Reference documentation
+
+- [Release status](distribution-docs/RELEASE-STATUS.md)
+- [Release history](CHANGELOG.md)
 - [Standalone operation](distribution-docs/SETUP.txt)
-
-## Changelog
-
-- Added owner-supplied fan installation, replacement and support/wiring allowances; preserved all 36 historical shade bands and enabled upper-band budgets; selected the $510 glass Palladiom package including its faceplate. Added direct review actions, larger form controls and flowing room sections in customer documents.
-- Preserved all 10,086 supplied Lutron workbook rows in the private pricing source and documented component-level D2R matches and unresolved configured assemblies.
-
-- Added automatic HomeWorks planning for new projects and 23 regression scenarios using the shipped company catalog without substitute equipment prices. Existing unresolved architecture selections and site-review requirements remain intact.
-
-- Added workbook pricing for HomeWorks Sunnata standard and hybrid keypads and the QSX processor enclosure in catalog release `2026-11-13-livewire-pilot-3`. Wallplates and processor power supplies remain separate takeoff items.
-
-- Separated project downloads from clearing the working draft, isolated new-job settings, required fresh access checks for copied rooms, rejected invalid pricing inputs, and removed an outdated priced example.
-
-- Added route-based installation planning, access feasibility holds, separate cable preparation and removal labor, working-condition inputs, generated customer scope and drawing provenance. Updated the company catalog and preserved approval checks for saved projects.
-
-- Versioned the company catalog with the application, added long-route estimating inputs, and expanded regression coverage for estate-scale layouts and access labor. Customer PDFs continue to omit supplier pricing.
-- Added tiered shipping and handling, the material surcharge, the budget range and a separate creditable design retainer. Expanded Lumaris, wiring and retrofit takeoffs.
-- Added room photos, estimator handoff notes, shared project search and a Start next job action.
+- [Labor basis and task register](distribution-docs/LABOR-REVIEW.md)
+- [Scope coverage](distribution-docs/SCOPE-MATRIX.txt)
+- [Shading allowances](distribution-docs/SHADING-ASSUMPTIONS.txt)
+- [Sales inference policy](distribution-docs/PROJECT-REVIEW.md)
+- [Future drawing import](distribution-docs/PLAN-IMPORT.md)

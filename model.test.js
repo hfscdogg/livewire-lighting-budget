@@ -20,18 +20,18 @@ const v1=M.validate({schema:1,project:{name:'Old',lengthUnit:'m'},rooms:[{name:'
   const room = M.addRoomNamed(state, 'Kitchen');
   room.surfaceAccess = room.surfaceMaterial = 'open';Object.assign(room,{ceilingPath:'open',wallPath:'open',occupancy:'vacant',ceilingHeight:'standard',specialConditions:'standard'});
   room.recessGroups[0].qty = 4;
-  const prices = { fixture_remodel_warm_fixed: 100, recess_parts: 5, none_dimmer: 30, control_wallplate: 2, lighting_branch_cable: 0.75 };
+  const prices = { fixture_new_warm_fixed: 100, recess_parts: 5, none_dimmer: 30, control_wallplate: 2, lighting_branch_cable: 0.75 };
   for (const item of state.config.catalog.filter(item => Object.hasOwn(prices, item.id))) {
     Object.assign(item, { sku: `TEST-${item.id}`, verified: true, cost: prices[item.id] });
   }
   const estimate = M.calculate(state);
   assert.deepEqual(estimate.materials.map(({ id, qty }) => [id, qty]), [
-    ['fixture_remodel_warm_fixed', 4], ['recess_parts', 4], ['none_dimmer', 1],
+    ['fixture_new_warm_fixed', 4], ['recess_parts', 4], ['none_dimmer', 1],
     ['control_wallplate', 1], ['lighting_branch_cable', 50],
   ]);
   const materials = (4 * 100 + 30) / 0.65 + (4 * 5 + 2 + 50 * 0.75) / 0.70;
-  const labor = (4 * 1.1 + 0.65 + 0.75 + 50 * 0.035 + 0.20 + 2 + 1.5) * 112.50;
-  assert.equal(estimate.travel, 120);
-  assert.ok(Math.abs(estimate.total - (materials * 1.06 + labor + 120)) < 0.0001);
+  const labor = (3.75 + 0.5 + 0.75 + 1.5 + 0.25 + 1.5 + 0.75 + 0.75) * 112.50;
+  assert.equal(estimate.travel, 240);
+  assert.ok(Math.abs(estimate.total - (materials * 1.06 + labor + 240)) < 0.0001);
   assert.ok(M.range(estimate, state.config));
 }

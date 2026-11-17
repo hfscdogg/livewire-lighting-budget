@@ -13,7 +13,7 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   const older = { ...current, modelRevision: 9, settings: { ...current.settings, catalog: current.settings.catalog.filter(row => !M.LUMARIS_ADDED_ROWS.includes(row.id)) } };
   Object.assign(older.settings.catalog.find(row => row.id === 'driver_lumaris'), { sku: 'HWL-TWC-WH', system: 'HomeWorks', cost: 123.45, verified: true });
   const migrated = P.validate(older);
-  assert.equal(migrated.modelRevision, 12);
+  assert.equal(migrated.modelRevision, 16);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris_hw').cost, 123.45);
   assert.equal(migrated.settings.catalog.find(row => row.id === 'driver_lumaris').cost, null);
 }
@@ -25,7 +25,7 @@ console.log('PASS: versioned company price-list validation, project isolation, s
   Object.assign(state.project, { travelBand: '0', scopeReviewed: true, permitAllowance: 100 });
   const room = M.addRoomNamed(state, 'Kitchen');
   Object.assign(room, { surfaceMaterial: 'drywall', surfaceAccess: 'accessible', install: 'retrofit',occupancy:'vacant',ceilingHeight:'standard',specialConditions:'standard' });
-  room.recessGroups[0].qty = 1;
+  room.recessGroups[0].qty = 1; room.recessGroups[0].housing = 'reuse';
   Object.assign(state.config, { shippingHandling: true, rangeLowPct: -10, rangeHighPct: 15, electricalReviewed: true, loadCompatibilityReviewed: true });
   for (const item of state.config.catalog) Object.assign(item, { sku: 'TEST', cost: 0, msrp: 0, verified: true, pricing: 'msrp' });
   state.config.catalog.find(row => row.id === 'fixture_retrofit_warm_fixed').msrp = 500;
@@ -78,6 +78,11 @@ console.log('PASS: versioned company price-list validation, project isolation, s
    assert.equal(Math.round(knownCost*100)/100,recipe.knownComponentCost);
    assert.equal(Math.round(knownList*100)/100,recipe.knownComponentList);
    assert.equal(recipe.complete,false);
-   assert.equal(require('./pricing/catalog.json').settings.catalog.find(row=>row.id===recipe.catalogId).cost,null);
+   assert.equal(recipe.budgetComplete,true);
+   const allowance=recipe.allowances[0];
+   for(const sku of allowance.comparables){assert.equal(bySku.get(sku).cost,82.5);assert.equal(bySku.get(sku).list,150);}
+   assert.equal(allowance.cost,82.5*1.2);assert.equal(allowance.listEquivalent,150*1.2);
+   const priced=require('./pricing/catalog.json').settings.catalog.find(row=>row.id===recipe.catalogId);
+   assert.equal(priced.cost,Math.round((knownCost+allowance.cost)*100)/100);assert.equal(priced.msrp,knownList+180);assert.equal(priced.priceBasis,'comparable-allowance');
  }
 }

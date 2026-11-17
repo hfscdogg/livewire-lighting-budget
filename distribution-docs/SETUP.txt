@@ -1,0 +1,64 @@
+LIVEWIRE LIGHTING AND SHADING ESTIMATOR
+
+STANDALONE OPERATION
+Open Livewire-Lighting-Budget.html in the approved company browser. This is an
+internal company file containing pricing. Share only the customer PDF with a
+client. The internal setup file exposes catalog settings and review controls.
+
+Start a project, add rooms and enter fixtures, controls and shades. Conditions
+records ceiling and wall access separately, opening permission, working height,
+occupancy and specialty construction. Unknown is an acceptable draft answer.
+The customer price remains pending until required facts and prices are resolved.
+Shared equipment routes are recorded once for the project.
+
+The Budget screen includes the generated installation scope and an expandable
+quantity, task-hours and condition-factor breakdown. Review the scope and
+applicable equipment dependencies before approving a customer range. A review
+checkbox does not clear a blocked route or manufacture missing prices.
+
+Use Save project to keep the editable JSON, including room notes and photos.
+Use Open project to resume it. Start next job offers a download while leaving
+the draft open. Confirm that the file is saved, then choose Clear draft and
+start next job. Cancelling a download does not clear the working job. Browser storage is a temporary convenience. Keep the saved project
+in the company's project folder. There is no automatic Drive synchronization.
+
+CUSTOMER PDF
+Choose Customer budget PDF, review the scope, then Save / print PDF in the
+browser. The PDF includes room work, installation methods, shared work,
+exclusions and the planning range. The retainer is 4% of the displayed low
+budget, credited toward the eventual project, not added to its total.
+Supplier prices, internal labor data, private notes and photos are excluded.
+A pending estimate produces a scope summary without customer dollar amounts.
+
+ESTIMATOR HANDOFF PDF
+Choose Estimator handoff PDF for the internal report. It includes the range,
+retainer, room selections, access, materials, labor, ordering notes and room
+photos/notes. Keep this report internal; it is separate from the customer PDF.
+
+PRICING
+The private repository's pricing/catalog.json is the maintained source. New
+builds embed that release. Saved projects retain their price-list snapshot
+until deliberately repriced. Use a new version when publishing changed prices
+or assumptions. The internal setup page exports the current editable CSV.
+Historical spreadsheet templates are not part of the current source release.
+The catalog and exports generated from it are the current pricing source.
+
+Labor uses $112.50 per person-hour. Task estimates, medium cable lengths,
+installation factors and access-removal quantities are estimating allowances.
+Completed tasks round up to quarter-hours after quantities and conditions.
+Programming includes one startup hour plus per-device entry, activation and
+response testing. Unit rates retain precision for calculation.
+See LABOR-ASSUMPTIONS.txt and SCOPE-MATRIX.txt for inclusions and limits.
+
+SHARED DEPLOYMENT
+The source includes the Google employee sign-in, roles, shared-project database,
+pricing release and server-side approval implementation. A company hosting
+configuration is still required. See README.md and .env.example. Do not place
+standalone HTML, source, company catalogs or saved project files on a public site.
+Use an approved staging environment to verify sign-in, saves, roles and backups.
+
+VALIDATION
+From source run npm ci, npm test and npm run build. Tests cover model arithmetic,
+access holds, customer data separation, saved projects, pricing and estate-scale
+layouts. Complete visual, save/open and print testing on company browsers before
+rollout. Plans are not read automatically by this version.

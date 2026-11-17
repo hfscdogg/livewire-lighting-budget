@@ -45,13 +45,13 @@ const held = c => c.issues.some(x => x.key.startsWith('installation_'));
   assert.ok(held(M.calculate(s)));r.routeEvidence='Site visit: clear switch drop checked';
   const c=M.calculate(s);assert.equal(held(c),false);assert.ok(hours(c,'attic_setup')>0);
   assert.equal(hours(c,'remove_drywall'),0);assert.ok(hours(c,'route_fish_setup')>0);
-  // Worst route factor applies to the cable; device work does not get fishing uplift.
-  assert.equal(c.labor.find(x=>x.id==='branch_run').factor,1.75);
+  // Attic and wall-fishing factors apply to their respective halves; device work does not get fishing uplift.
+  assert.equal(c.labor.find(x=>x.id==='branch_run').factor,1.5);
   assert.equal(c.labor.find(x=>x.id==='control').factor,1);
 }
 // Existing replacement does not invent a cable route or demand ceiling access.
 {
-  const [s,r]=job('retrofit');Object.assign(r,{ceilingPath:'closed',wallPath:'closed',openingPermission:'none'});
+  const [s,r]=job('retrofit');r.recessGroups[0].housing='reuse';Object.assign(r,{ceilingPath:'closed',wallPath:'closed',openingPermission:'none'});
   let c=M.calculate(s);assert.equal(c.routes.length,0);assert.equal(held(c),false);assert.ok(M.range(c,s.config));
   assert.equal(hours(c,'branch_run'),0);assert.ok(hours(c,'fixture_remove')>0);
   assert.match(R.html(R.build(s,c)),/reuse suitable existing wiring/);
@@ -66,7 +66,8 @@ for(const install of ['new','remodel','retrofit']){
 // Independent labor takeoff: four remodel fixtures, one local control, 80 ft cable.
 {
   const [s,r]=job();const c=M.calculate(s);
-  const expected=4*1.1+.65+.75+80*.035+4*.20+2+1.5;
+  // Per-task ceiling: 4.4 -> 4.5; cable 1.5 + .9 -> 1.5 + 1; two .2 pull setups -> .25 each.
+  const expected=4.5+.5+.75+1.5+1+2*.25+1.5+.75;
   close(c.knownHours,expected);close(c.laborSell,expected*112.5);
   assert.equal(c.routes.reduce((n,x)=>n+x.totalFeet,0),80);
   assert.equal(c.labor.some(x=>/repair|patch|paint/.test(x.id)),false);
@@ -112,7 +113,7 @@ for(const ceilingPath of ['unknown','open','attic','below','closed'])for(const w
   assert.equal(M.validate(saved).project.scopeReviewed,false);
   const old=structuredClone(require('./pricing/catalog.json'));old.modelRevision=10;delete old.settings.installationAllowances;
   for(const [id] of M.Installation.TASKS){delete old.settings.labor[id];delete old.settings.laborOnsite[id];}
-  assert.equal(P.validate(old).modelRevision,12);
+  assert.equal(P.validate(old).modelRevision,16);
   const bad=structuredClone(require('./pricing/catalog.json'));bad.settings.installationAllowances.selectiveOpeningSpacingFt=0;assert.throws(()=>P.validate(bad));
 }
 console.log(`PASS: ${combinations} route/permission combinations; blocked access, verified fishing, selective/broad removal, replacements, all cable types, independent hours, site holds, scope/PDF privacy, migration and drawing provenance.`);
