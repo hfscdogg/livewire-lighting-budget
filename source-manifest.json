@@ -3,15 +3,15 @@
   "files": [
     {
       "path": ".env.example",
-      "sha256": "7da0a11517585c27c20b6d2fdf2b32c44f68a2d6ba841f4d4afa87a1d490be53"
+      "sha256": "11f0ae9edc35c0229a456aec6b314526b76fb48a0d746b84edf3e37904d03466"
     },
     {
       "path": ".github/workflows/verify.yml",
-      "sha256": "c5605861ded1bd7481ff77f6b6054f1ca3cf324f2451a55e53c4204e56d27457"
+      "sha256": "02eddfa439e5942769c5663be1baf83c6aa991fafd4f1b5b940d3a74ed8a899e"
     },
     {
       "path": ".gitignore",
-      "sha256": "11c7decf9a74df6709af7a6014e80f988d611082bc203d0beea9f8b4050a9daf"
+      "sha256": "4c282609a9cb07d2af45a4ca6a96bade41f18690d365f0c8c80fbd394dba677f"
     },
     {
       "path": "CHANGELOG.md",
@@ -235,7 +235,7 @@
     },
     {
       "path": "repository.test.js",
-      "sha256": "eea629bcb398c9f09f8747ee06b57aec365be8be548f762ac2588a581891bfce"
+      "sha256": "86257cd7cda21b180ebbd6d343b56fc5dd1ecd6d3e204b68d66c5cf5088d6ca0"
     },
     {
       "path": "required-workflow.test.js",
@@ -311,7 +311,7 @@
     },
     {
       "path": "verify-repository.js",
-      "sha256": "e650540e233c1e01a5dcf62b2d3157e26cc9f48a542d650b31743c5aad9202ff"
+      "sha256": "c17eb75d8b6154f96603aade51d2d5a55adb94a2a92c3ea7256d76cbab8494a5"
     },
     {
       "path": "wizard.test.js",
