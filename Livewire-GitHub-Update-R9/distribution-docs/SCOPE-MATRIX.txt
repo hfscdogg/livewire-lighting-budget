@@ -1,0 +1,263 @@
+LIVEWIRE LIGHTING BUDGET SCOPE MATRIX
+R9 scope coverage | November 17, 2026
+
+The estimator carries lighting choices through fixtures, controls, wiring,
+shared equipment and installation tasks. These are budgeting allowances, not
+a construction takeoff, electrical design or manufacturer-approved bill of
+materials. The repository catalog includes entered company prices. Unpriced configurations remain unresolved. Labor task times are populated with
+preliminary estimating judgments at $112.50 per person-hour. Catalog allowances provide a planning price; final assembly and site compatibility
+require review before ordering.
+
+WHAT EACH PATH MODELS
+
+1. Conventional warm-dim recessed lighting
+   Modeled: separate new-construction, retrofit and remodel assemblies; fixed
+   and adjustable requests; installation materials; installation-method labor;
+   shared or separate controls; branch wiring or centralized load wiring;
+   circuit assessment. Retrofit includes removal of the existing lamp/trim.
+   Still verify: exact module, housing/mount, trim/optic and driver inclusions,
+   ceiling ratings, aiming, dimming compatibility and load limits. DMF Artafex assemblies are mapped in the company catalog using the supplied module, housing and trim prices. Verify the assembly against the selected site condition.
+
+2. Rania and Ketra recessed lighting
+   Modeled: HomeWorks-only planning path, complete fixture assemblies, undimmed
+   power, existing-feed conversion where relevant, command keypads, physical
+   wireless endpoints, shared headend and commissioning. No phase dimmer is
+   added to these intelligent fixtures.
+   Still verify: exact generation and installation assembly. D2R remodel
+   requires the documented non-IC/non-fire-rated conditions and clearances;
+   a generic retrofit selection does not prove an available compatible kit. [2]
+
+3. Lumaris recessed lighting
+   Modeled: fixed downlight requests with RA3- or HomeWorks-specific mapping,
+   undimmed power, command controls, network/headend and activation. Adjustable
+   requests remain blocked.
+   Still verify: retrofit-can compatibility or the complete canless assembly,
+   ceiling/insulation conditions, system-specific model and RF placement. [3]
+
+4. Undercabinet lighting
+   Modeled: installed feet, independent zones, Lumaris warm-dim/tunable-white/RGB+tunable-white
+   and Rania natural-white selections; tape/accessory allowance;
+   driver/controller with compatible supply; low-voltage leads and their
+   installation; mains feed; local/central control or intelligent command path.
+   Still verify: actual segment lengths, outputs, voltage drop, controller
+   generation, supply sharing, connectors/channels and purchasing waste.
+   Equal-length zones are a budgeting assumption, not a validated layout; an
+   internal driver-count override can raise the minimum after actual run review.
+   An unknown driver limit remains unresolved. Unmapped Ketra tape is blocked. [4]
+
+5. Owner-supplied decorative fixtures
+   Modeled: mounting/hanging at existing or new locations, existing-fixture
+   removal allowance, new box/support where selected, separate cable routing,
+   dimmer/switch and explicit sharing with compatible conventional groups.
+   Still verify: fixture weight, assembly complexity, support, lamps/driver,
+   dimming compatibility, working height and owner delivery. Fixture purchase
+   is excluded. Hanging, new-box work and cable work are separate tasks.
+
+6. Owner-supplied ceiling fans and controls
+   Modeled: retain an existing fan, replace a fan or install at a new location.
+   Selected installation includes assembly, hanging, connection and balancing;
+   replacement includes removal. New locations add support, wiring and applicable
+   access work. Unchecked support includes a replacement fan-rated support
+   allowance. Controls can be on/off or compatible wall speed control.
+   Still verify: motor/receiver compatibility, load, neutral, mounting, ceiling
+   conditions and owner-supplied equipment. Specialty handling needs a separate
+   allowance. Fan equipment purchase remains excluded. [5]
+
+7. Local controls, multi-location controls and hybrid keypads
+   Modeled: one primary control per unique conventional load group; companion
+   hardware and labor for additional control locations; plate allowances and
+   new control-box fittings where selected. A hybrid offsets one local dimmer
+   and its installation, while retaining circuit wiring and companions.
+   Still verify: the assigned load, traveler/neutral wiring, gang/plate layout
+   and compatible companion. A standard keypad does not replace a dimmer. [5]
+
+8. Line-voltage and wired QS keypads
+   Modeled: existing/new line-voltage keypad work or QS mounting/backbox,
+   cable, installation, link termination, PDU demand and power infrastructure.
+   Wired HomeWorks seeTouch follows the QS path. Existing QS cable can be
+   selected for reuse, subject to review. New keypad locations add openings.
+   Still verify: complete keypad/base/column assembly, conductors, model-specific
+   PDU demand and included finish/engraving. Keypad quantity is a planning
+   policy, not a manufacturer-required minimum for every room. [6]
+
+9. Centralized HomeWorks load control
+   Modeled: dimming/switching outputs grouped by named panel location; separate
+   module types; panels, line-voltage harnesses, module feed circuits, load
+   home runs and retrofit rewiring. Local dimmers are not charged for those
+   same loads. Processor-to-panel QS routes and separate control enclosures
+   are included unless explicit co-location covers the first panel connection.
+   Still verify: actual current, load type, derating, feed grouping, spare
+   channels, physical placement and wiring. Four outputs per module and four
+   DPM positions per selected PD4 panel are count minima, not load approval.
+   Local load controls remain the default. Centralized loads follow the
+   keypad-only wall preference; a wired QS keypad alone does not require
+   a lighting panel. [7]
+
+10. RA3 and HomeWorks shared equipment
+    Modeled: processor/gateway capacity minima, coverage overrides, required
+    power, Ethernet routes, shared network accessories, installation and
+    commissioning. RA3 includes entered Type A repeaters and their labor.
+    HomeWorks supports wired QSX plus gateways or dual-radio processors; a
+    wired processor is added when a dual-radio project also needs QS devices.
+    QS device addresses, switch legs, processor links and aggregate power are
+    tracked separately. System capacity issues block the range.
+    Still verify: RF/floor coverage, port allocation, actual QS power groups,
+    cable gauge/distance, enclosures and networking. Endpoint counts do not
+    establish coverage or a valid power topology. Custom HomeWorks Type A
+    additions require a separate validated design. [8][9]
+
+11. Electrical infrastructure and access
+    Modeled: ceiling and wall route facts, separate shared-equipment paths,
+    circuit assessment, branch and low-voltage pulls, route preparation,
+    fishing setup, access removal, undimmed-feed conversion and endpoint work.
+    Fixture assembly and mounting follow open versus finished surfaces and
+    housing reuse. Project work type does not establish cutting permission.
+    Accessible attic/cavity paths, documented fishing, selective openings and
+    continuous removal have distinct allowances. Unknown or blocked new-cable
+    routes prevent release. No-access/no-cut conditions need a checked route,
+    permission change or separately priced alternate design.
+    Working height, occupied rooms, restricted movement and specialty conditions
+    are captured separately. Above-12-foot/stairwell work, masonry, rated
+    assemblies, structural changes and suspected hazardous material require a
+    separate reviewed method and pricing. No repair or painting is included.
+    Still verify: actual lengths, circuit capacity, approved opening locations,
+    route overlaps, obstructions and responsibilities of other trades.
+
+12. Project labor and travel
+    Modeled: planning, one startup hour, per-device programming/activation, owner handoff,
+    and preliminary installation task standards with task-specific condition
+    factors. Travel uses one two-person crew at eight hours/day, with on-site
+    person-hours / 16 rounded up and a two-visit minimum for open-framing rough/trim or shades.
+    Completed tasks round up to 0.25 hour after quantities and conditions.
+    Additional crew-day setup is included. Planning defaults off site;
+    programming and activation default on site; the estimator can classify tasks. See LABOR-ASSUMPTIONS.txt.
+    Still verify: rough/trim return visits, fragmented scheduling, owner-supply
+    delays and off-site/on-site allocation. Beyond 163 miles requires review.
+
+PROVISIONAL MEDIUM RUNS
+
+Current software defaults translate "medium run" into 50 ft per local lighting
+branch; 75 ft per load home run, QS keypad run, panel QS route, network node,
+new circuit feeder or module feed; and 15 ft per ordinary driver lead.
+For standard Lumaris packages, the controller-to-tape allowance is up to 10 ft
+with the correct 3- or 6-conductor cable. Confirm connector and route limits.
+These are explicit provisional allowances, not measured lengths or verified
+company standards. An estimator must revise them for the actual project.
+Long routes require a documented estimator review. A control zone, power
+circuit, driver, keypad and physical cable route are different quantities.
+
+WHAT REMAINS OUTSIDE AUTOMATIC DESIGN
+
+- The program does not calculate an engineered load schedule, code compliance,
+  actual RF layout, individual power-group topology or a fully measured BOM.
+- Generic material packages still need inclusion checks. Complete fixture and
+  controller/supply packages must not duplicate parts charged elsewhere.
+  Bundled hardware must still have installation labor covered by an approved
+  task standard. A zero labor standard needs a deliberate inclusion/exclusion.
+- Existing headend/panel spare-capacity credits, legacy RPM/H48 systems,
+  0-10 V/DALI paths, special integrations, service upgrades, permits, lifts,
+  disposal, hazardous materials, structural/millwork work and visits beyond
+  the current allowance need separate scope decisions; they are not silently included.
+- Drywall/plaster repair and painting, decorative fixture purchase and fan
+  equipment supply remain explicit exclusions. Selected fan installation is included. Required finish work for a
+  selected product must still be assigned to the responsible trade.
+
+WHEN A BUDGET RANGE CAN APPEAR
+
+A standalone planning range requires complete priced scope, applicable task
+standards and a feasible installation method. General design reminders do not
+hold the planning range. Unchecked D2/D2R ceiling suitability is an estimator
+follow-up before ordering; recorded incompatibility remains unresolved.
+Unsupported equipment, missing quantities/prices, capacity issues and blocked
+no-cut routes prevent a complete range. Shared customer release additionally
+requires the recorded design/price approval. A review checkbox does not resolve
+an impossible route or substitute for electrical design.
+
+MANUFACTURER REFERENCES
+
+These primary documents support the dependencies above. They do not certify
+the selected project, supplier prices, product availability or labor standards.
+
+[2] Rania/Ketra D2R installation and ceiling limitations
+https://assets.lutron.com/a/documents/3663306.pdf
+
+[3] Lumaris downlight models and installation
+https://assets.lutron.com/a/documents/3691335_eng.pdf
+https://assets.lutron.com/a/documents/041944.pdf
+https://assets.lutron.com/a/documents/041943.pdf
+
+[4] Lumaris tape architecture and platform-specific controllers
+https://support.lutron.com/us/en/product/radiora3/article/system-design-setup/Lumaris-Tape-Light-Overview
+
+[5] Sunnata controls, keypad and hybrid dependencies
+https://assets.lutron.com/a/documents/3691169_ENG.pdf
+https://assets.lutron.com/a/documents/3691209_ENG.pdf
+https://assets.lutron.com/a/documents/3691168_ENG.pdf
+https://assets.lutron.com/a/documents/3691235_eng.pdf
+
+[6] QS power and keypad assembly examples
+https://assets.lutron.com/a/documents/369405_pdu_spec_submittal.pdf
+https://assets.lutron.com/a/documents/369881_ENG.pdf
+https://assets.lutron.com/a/documents/3691310_eng.pdf
+
+[7] Dimming/switching modules and feed-through panels
+https://assets.lutron.com/a/documents/3691126_ENG.pdf
+https://assets.lutron.com/a/documents/3691060_eng.pdf
+https://assets.lutron.com/a/documents/3691193_eng.pdf
+
+[8] RA3 system limits and processor package contents
+https://support.lutron.com/us/en/product/radiora3/article/system-design-setup/RadioRA-3-System-Overview
+https://assets.lutron.com/a/documents/3691221_eng.pdf
+
+[9] HomeWorks wired/dual-radio processors, supply and system rules
+https://assets.lutron.com/a/documents/3691127_eng.pdf
+https://assets.lutron.com/a/documents/3691222_eng.pdf
+https://assets.lutron.com/a/documents/369885_ENG_WEB.pdf
+https://assets.lutron.com/a/documents/369821_Lutron_Residential_and_Commerical_System_Rules.pdf
+
+
+SHADES
+Read SHADING-ASSUMPTIONS.txt for the complete shade path matrix, historical
+selling ranges, power/control separation, package labor boundaries, site and
+quote gates, and manufacturer references. Shading shares compatible system
+headends, planning, setup and crew travel with lighting. No lighting DPM is
+added for a shade drive. Standalone RF remote operation needs no lighting headend.
+
+SHARED PROJECT QUALIFICATION
+
+A salesperson can record an undecided control system or an addition to an
+existing system. A range stays pending until the design and available capacity
+are resolved. In shared projects, room controls default to distributed. Select
+centralized control explicitly when a central lighting panel is in the design.
+Wired HomeWorks keypads can also be used with distributed loads.
+
+Lumaris fixed downlights and tape controllers have platform-specific part
+numbers. The catalog keeps separate RadioRA 3 and HomeWorks price rows. Use
+16.4 ft per standard tunable-white controller and up to 32.8 ft per RGB
+controller on the stated power package, in parallel runs of at most 16.4 ft.
+The estimate allows one compatible power package per controller. Sharing a
+power interface or using a different controller requires checked design.
+Lengths per control group can be entered when the groups are uneven. A new
+15 A Lumaris circuit is budgeted for every started 40 downlights, subject to
+verified circuit allocation and other loads. Sources: Lutron 3691335 and
+3691301, https://assets.lutron.com/a/documents/3691335_eng.pdf and
+https://assets.lutron.com/a/documents/3691301_eng.pdf.
+
+Fan speed controls require a compatible AC paddle fan. DC, smart or
+remote-controlled fans need a specific control plan. Verify load and neutral
+for the selected control. Source: Lutron 3691169,
+https://assets.lutron.com/a/documents/3691169_eng.pdf.
+
+Recorded layout review can add RA3 processors and Type A repeaters for
+coverage within manufacturer limits. HomeWorks review chooses the wireless
+processor or the wired QSX plus gateway architecture. Wired shades count
+against QS link address and output allowances.
+
+EXISTING-LIGHT CONTROL UPGRADES
+Dimmed and on/off group counts retain existing fixtures. Include removal of
+old wall controls, replacement masters and configured companions, circuit
+assessment, device installation and applicable commissioning. Existing local
+controls reuse suitable lighting wiring. New control locations add boxes and
+relocation runs. Centralization is an explicit keypad-only design choice and
+adds panel load runs, modules and shared equipment. Existing Lutron systems
+still require compatibility/capacity review before release.

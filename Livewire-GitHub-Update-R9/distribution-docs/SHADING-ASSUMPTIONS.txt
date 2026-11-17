@@ -1,0 +1,135 @@
+LIVEWIRE SHADING BUDGET: SCOPE AND ASSUMPTIONS
+R9 release | November 17, 2026 | USD and feet
+
+WHAT IS PRICED
+The current company catalog carries the UPPER historical size-band selling
+amount as the assembly budget, then calculates the complete project range at
+-10%/+15%. A matching job-specific quote takes precedence. The original low
+and high values for all 36 bands are preserved. The customer document identifies
+this historical basis. It is not a current fabrication quote or a guarantee.
+Fabric/options must fit the allowance or be repriced before commitment.
+
+The 36 low/high rows were recovered from Livewire's September 2026 shade
+budget work: 12 size bands each for Triathlon, Sivoia and Palladiom. These are
+historical CUSTOMER SELLING budget ranges, not dealer cost, MSRP or a current
+fabrication quote. The app does not add another material margin. Approximate
+width and height each round up to the next recovered band. There is no
+square-foot extrapolation. The 9-by-9-foot grid boundary is NOT a manufacturer's
+maximum shade size. Roller shades use this provisional grid; other styles and
+out-of-grid sizes require a custom price and installation scope.
+
+The exact fabric, power variant, tube/drive, hembar, brackets, batteries,
+receiver, top treatment and complete package inclusions must be checked.
+A final-measure/fabrication review is required for every order. An inside/outside
+mount choice does not certify clearance or anchorage. Blackout fabric alone
+does not remove light at the edges. Dual layers count two assemblies and drives.
+
+HISTORICAL INFRASTRUCTURE ALLOWANCES
+- $2,153 per started 10 combined NEW wired Sivoia/Palladiom shades, pooled by
+  physical power location. This is a bundled selling allowance, not a selected
+  supply/enclosure/module SKU or a guaranteed 10-drive electrical capacity.
+- $200 per NEW wired Sivoia/Palladiom shade route. A provisional 75-foot medium
+  route is used for crew/time planning. Existing compatible power avoids this
+  new-power route allowance but still gets test/connection work.
+- These packages have no recovered material/labor split. No split is invented.
+  The taxable material percentage must be configured before a complete
+  tax-inclusive range is released. Neither package receives another margin.
+- To prevent double charging, base wiring and power-package installation labor
+  is treated as included in the package price. Its hours still count toward
+  crew days and travel. Only incremental condition-related hours are separately
+  charged. This treatment is a declared budgeting assumption to be calibrated.
+- Exact enclosure, installed power modules, supply feed/receptacle, output load,
+  wire size, voltage drop and power-group separation need review. A checkbox
+  records that review; the app does not perform an electrical design.
+
+POWER AND CONTROL ARE DIFFERENT
+Triathlon remains RF-controlled whether battery or wired power. Its 12 V
+supply/cable is separate from 35 V Sivoia/Palladiom supplies. The historical
+35 V package does NOT price a Triathlon supply. Battery operation adds no
+wired power panel. Battery-to-wired field conversion must not be assumed.
+
+RF shades contribute to shared Type-A planning counts, never Type-X. A shade
+and its receiver are modeled as one endpoint, with the receiver separately
+priced only if not in the assembly. Confirm model-specific Designer addressing.
+RadioRA 3 currently limits usable ordinary Type-A devices to 95 per processor
+and 190 per system; additional processors do not erase the system limit.
+HomeWorks wired QS shade drives use a wired QS link, not a wireless-only
+processor port. Counts, coverage, power and link limits still require design.
+
+Palladiom Wired requires 35 V power and wired QS communication on HomeWorks.
+Palladiom Wire-Free uses RF commands with a battery or compatible wired-power
+configuration. A wired-power RF drive uses the specified receiver and adapter.
+Check existing Sivoia power and communication separately. The historical
+Palladiom grid covers a preliminary allowance only. Confirm the actual drive,
+size and allowance basis before releasing a budget range; confirm fabrication
+pricing before ordering.
+
+A wired power route does not prove a QS communication route exists. New wired
+QS shade packages provisionally include the shade-to-power-group control/power
+route; a shared power-group-to-processor QS backbone is counted separately once
+per location. Existing power can be reused while needing new control conductors.
+Only verified existing control routes receive the corresponding reuse credit.
+Shade supplies are separate from keypad PDU power. Lighting DPMs are not added
+for shade drives. Lighting and shades share compatible headends and controls.
+
+Standalone wireless shades default to one room-level Pico, not one per shade
+and no lighting processor. System-integrated shades can reuse app/keypad scenes;
+the tool does not automatically add one new keypad per window. Existing scene
+capacity and coverage need review. Full scheduling/integration scope is not
+unlimited or included automatically.
+
+LABOR AND TRAVEL
+The recovered 2 hours per window is interpreted as 2 PERSON-HOURS per complete
+shade assembly, charged at the current $112.50/person-hour. Dual layers count
+twice. This is a planning interpretation, not a claim about measured production.
+Basic installation covers brackets, assembly mounting/leveling,
+local limits and mechanical cycle testing. Standalone pairing is included.
+System Designer entry, activation, grouping and command checks are included
+in the per-shade programming task. No separate generic activation or shade
+group charge is added in labor revision 10.
+
+Additional preliminary standards:
+- Final measure/survey: .35 person-hour per opening.
+- Existing treatment removal: .35 per opening, when selected.
+- New shade cable: .03 per foot of provisional route.
+- Supply-package installation: 2 per package.
+- Existing power verification/connection: .35 per drive.
+- Each selected simple accessory fitting increment: .50 per assembly.
+- Room Pico fitting/pairing: .35 per remote.
+- Designer programming, activation and grouping: 10 minutes per system shade.
+Completed task hours round up to the next quarter-hour after quantities and
+conditions. Historical packages credit their rounded base labor; only the
+additional quarter-hours are separately charged.
+These are estimating judgments, not published trade standards. Existing
+condition factors apply only to affected physical/wiring tasks. No blanket
+whole-job factor is added. Base package work is not billed twice.
+
+A shade job defaults to two planned visits for survey and installation.
+Travel is the greater of planned visits and required eight-hour days for one
+two-person crew (16 on-site person-hours/day), with daily setup. Actual visit
+scheduling remains a project decision. Shared lighting/shading setup and travel
+are counted together, not as two independent projects.
+
+UNRESOLVED OR EXCLUDED SCOPE
+Historical assembly allowances remain available. Receiver/Pico/supply costs
+and optional parts remain unpriced when no verified company value exists. Specialty shapes,
+drapery/Roman/honeycomb/wood systems, oversized assemblies, coupled systems,
+structural blocking, lift work, pockets, electrical service upgrades, hazardous
+materials, finish repairs/painting, removal disposal and complex integrations
+need their own supplier/site scope. Capturing a preference is not a complete
+quote. The customer PDF remains Budget pending with no dollar total while
+required dependencies are unresolved.
+
+PRIMARY MANUFACTURER REFERENCES
+System compatibility:
+https://support.lutron.com/us/en/product/homeworks/article/system-design-setup/Which-Lutron-Residential-System-is-Best-for-Me
+Triathlon power:
+https://support.lutron.com/us/en/product/shades/article/installation/Wiring-a-Sivoia-QS-Triathlon-Shade-for-Power
+QS power and communication:
+https://support.lutron.com/us/en/product/shades/article/installation/Wiring-a-Sivoia-QS-for-Power-and-Communication
+RF communication with wired shade power:
+https://support.lutron.com/us/en/product/shades/article/installation/Wiring-a-Sivoia-QS-Palladiom-Shade-for-Power-with-RF-Wireless-Communication
+Final measurement and clearance:
+https://support.lutron.com/us/en/product/shades/article/product-selection-design/app-note-598-measuring-for-shades-guidelines-best-practices
+RadioRA 3 limits:
+https://support.lutron.com/us/en/product/radiora3/article/system-design-setup/RadioRA-3-System-Overview
