@@ -2,7 +2,7 @@
 
 Reviewed November 16, 2026.
 
-The sequence presents one customer decision at a time: work to include, control experience, keypad design when applicable, and wall appearance. Common settings are inferred; advanced settings remain available from the room overview and Conditions. Manufacturer product photos appear only in the keypad design question. They are unmodified style references, embedded for offline use, and do not select a finish or engraving beyond the stated budget basis.
+The sequence presents one customer decision at a time: work to include, control experience, keypad design when applicable, and wall appearance. Common settings are inferred; advanced settings remain available from the room overview and Conditions. Manufacturer product photos appear only in the keypad design question. They are unmodified style references, included with the application, and do not select a finish or engraving beyond the stated budget basis.
 
 ## Source references
 

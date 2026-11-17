@@ -99,7 +99,7 @@ usable wired port. A property network alone does not establish that port.
 Material prices, shipping tiers, 6% material surcharge, -10%/+15% range and
 4% of the low-end retainer are unchanged. The retainer is credited toward
 the job, not added to it.
-Older standalone jobs visibly migrate unchanged default labor values.
+Imported earlier test jobs visibly migrate unchanged default labor values.
 Nonstandard unit-hour overrides, equipment prices and site facts are retained.
 Rounding still applies to the calculated task after any unit-rate override.
 Legacy programming rows remain for old published catalogs and are not charged

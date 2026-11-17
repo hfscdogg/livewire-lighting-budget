@@ -1,64 +1,59 @@
 LIVEWIRE LIGHTING AND SHADING ESTIMATOR
 
-STANDALONE OPERATION
-Open Livewire-Lighting-Budget.html in the approved company browser. This is an
-internal company file containing pricing. Share only the customer PDF with a
-client. The internal setup file exposes catalog settings and review controls.
+STAFF WORKFLOW
+Open the approved company estimator link in the browser on a computer or iPad.
+Sign in with an approved Google work account. All staff use the same hosted
+application, shared project database and company pricing releases.
 
-Start a project, add rooms and enter fixtures, controls and shades. Conditions
-records ceiling and wall access separately, opening permission, working height,
-occupancy and specialty construction. Unknown is an acceptable draft answer.
-The customer price remains pending until required facts and prices are resolved.
-Shared equipment routes are recorded once for the project.
+Start a project and add rooms. Select the lighting, controls, keypads, fixtures,
+fans and shades involved. Record the surface, permission for access cuts,
+attic access, working height and occupancy. Common technical settings are
+inferred from these answers and remain available for adjustment.
 
-The Budget screen includes the generated installation scope and an expandable
-quantity, task-hours and condition-factor breakdown. Review the scope and
-applicable equipment dependencies before approving a customer range. A review
-checkbox does not clear a blocked route or manufacture missing prices.
+Review the Budget screen's range, generated scope and installation assumptions.
+Required facts appear in their relevant workflow step. Unchecked D2/D2R ceiling
+suitability appears as an estimator follow-up before ordering. Known physical
+incompatibility, blocked wiring or unsupported scope still requires resolution.
 
-Use Save project to keep the editable JSON, including room notes and photos.
-Use Open project to resume it. Start next job offers a download while leaving
-the draft open. Confirm that the file is saved, then choose Clear draft and
-start next job. Cancelling a download does not clear the working job. Browser storage is a temporary convenience. Keep the saved project
-in the company's project folder. There is no automatic Drive synchronization.
+SHARED PROJECTS
+Choose Save project to store the job, room notes and photos in the company
+database. Choose Shared projects to find and reopen an existing job. Save before
+starting the next job, signing out or leaving the page. Unsaved changes are not
+available to teammates. If another employee changes the same job, reopen the
+newer saved revision before continuing; conflicting saves are not overwritten.
 
 CUSTOMER PDF
-Choose Customer budget PDF, review the scope, then Save / print PDF in the
-browser. The PDF includes room work, installation methods, shared work,
-exclusions and the planning range. The retainer is 4% of the displayed low
-budget, credited toward the eventual project, not added to its total.
+After the required budget review, choose Customer budget / PDF and Save / print
+PDF in the browser. The document includes the planning range, room work,
+installation methods, shared work and exclusions. The retainer is 4% of the
+displayed low budget, credited toward the project, not added to its total.
 Supplier prices, internal labor data, private notes and photos are excluded.
 A pending estimate produces a scope summary without customer dollar amounts.
 
 ESTIMATOR HANDOFF PDF
 Choose Estimator handoff PDF for the internal report. It includes the range,
 retainer, room selections, access, materials, labor, ordering notes and room
-photos/notes. Keep this report internal; it is separate from the customer PDF.
+photos/notes. Save the shared project so estimating can reopen the editable job.
+Keep the handoff internal and send the separate customer PDF to the client.
 
-PRICING
-The private repository's pricing/catalog.json is the maintained source. New
-builds embed that release. Saved projects retain their price-list snapshot
-until deliberately repriced. Use a new version when publishing changed prices
-or assumptions. The internal setup page exports the current editable CSV.
-Historical spreadsheet templates are not part of the current source release.
-The catalog and exports generated from it are the current pricing source.
+PRICING AND REVIEW
+The repository's pricing/catalog.json is the maintained pricing source.
+Saved projects retain their assigned catalog release until deliberately
+repriced. Sales staff can view company pricing; pricing administrators and
+owners maintain releases and approve customer budgets. Staff do not maintain
+individual price lists or import spreadsheets as part of normal estimating.
 
-Labor uses $112.50 per person-hour. Task estimates, medium cable lengths,
-installation factors and access-removal quantities are estimating allowances.
-Completed tasks round up to quarter-hours after quantities and conditions.
-Programming includes one startup hour plus per-device entry, activation and
-response testing. Unit rates retain precision for calculation.
-See LABOR-ASSUMPTIONS.txt and SCOPE-MATRIX.txt for inclusions and limits.
+Labor uses $112.50 per person-hour. Completed task hours round up to quarter-
+hours after quantity and applicable condition adjustments. Programming includes
+one startup hour plus per-device entry, activation and response testing.
+The customer budget is -10% to +15% around the complete planning amount.
+Drywall/plaster repair and painting are excluded. See LABOR-REVIEW.md and
+SCOPE-MATRIX.txt for estimating allowances, inclusions and limits.
 
-SHARED DEPLOYMENT
-The source includes the Google employee sign-in, roles, shared-project database,
-pricing release and server-side approval implementation. A company hosting
-configuration is still required. See README.md and .env.example. Do not place
-standalone HTML, source, company catalogs or saved project files on a public site.
-Use an approved staging environment to verify sign-in, saves, roles and backups.
-
-VALIDATION
-From source run npm ci, npm test and npm run build. Tests cover model arithmetic,
-access holds, customer data separation, saved projects, pricing and estate-scale
-layouts. Complete visual, save/open and print testing on company browsers before
-rollout. Plans are not read automatically by this version.
+APPLICATION SUPPORT
+The company Vercel deployment serves the application. Google verifies approved
+employee accounts. PostgreSQL stores shared projects, pricing releases, notes
+and photos. GitHub stores code and catalog source, not saved customer jobs.
+See VERCEL-DEPLOYMENT.md for environment configuration and acceptance checks.
+Sign-in, shared saving, photo handling, PDF output and backup restoration must
+be accepted in the company environment before staff rollout.

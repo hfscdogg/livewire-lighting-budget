@@ -1,5 +1,5 @@
 {
-  "release": "2026-11-17-R9-company-review",
+  "release": "2026-11-17-R10-hosted-workflow",
   "files": [
     {
       "path": ".env.example",
@@ -15,11 +15,11 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "e7c93ad847637caae6c7be88e7bbbb6680f7d15ccbdd3a9906d21667a2722a04"
+      "sha256": "8b468d4a0ef589a25b149294562f248eb8032ae66654ca4459acd3d611a35d5e"
     },
     {
       "path": "README.md",
-      "sha256": "1962b14a2c6eb13a97490b1e347adddfb4ddb9576f7d7493b2bb64e5eb00cbca"
+      "sha256": "8be736ad31d5afa5155333d9536d5035230d5ae811b0b3f30f89cda98a1cae30"
     },
     {
       "path": "access-flow.test.js",
@@ -111,15 +111,15 @@
     },
     {
       "path": "distribution-docs/GUIDED-ROOM-FLOW.md",
-      "sha256": "9168bfaf23d9f2be8be7eb76d21a69733f50c4ce00ac7f1113a9193652446329"
+      "sha256": "2c71344b5bf12683c5a6d1fa0caae8ad51993c54de96e3e4a2767323a34aea04"
     },
     {
       "path": "distribution-docs/LABOR-ASSUMPTIONS.txt",
-      "sha256": "2e21b2794cf63487a4325be6b05607fbc92e4c87bb74748e1b47d322efc3e2f4"
+      "sha256": "b4734d7a0abd67cba2a0febe9f4109167b4bb64ea3e4580df7144c1350ce48a6"
     },
     {
       "path": "distribution-docs/LABOR-REVIEW.md",
-      "sha256": "2cafb515a8a8a5b87bb188ea5ce62b3c700cd3234e8b91c94ab034cc9393c133"
+      "sha256": "93e271c8699b9619d32240083ebbd629d7bfdbaccabb927561fb0dcdf6158a43"
     },
     {
       "path": "distribution-docs/PLAN-IMPORT.md",
@@ -135,7 +135,7 @@
     },
     {
       "path": "distribution-docs/RELEASE-STATUS.md",
-      "sha256": "3e01963492c12334d237179207ef54d9943475925b35302fab1a2962e59f12df"
+      "sha256": "29069baf16059607cb1a42dd2e3e220907ab4ac594e436f1d669fadf738dbb03"
     },
     {
       "path": "distribution-docs/SCOPE-MATRIX.txt",
@@ -143,7 +143,7 @@
     },
     {
       "path": "distribution-docs/SETUP.txt",
-      "sha256": "b3973f2637c4169cb54ac47f6c21a6c6d7e92afed7506b351e09f9d71c02b67e"
+      "sha256": "6a82595955dad76953354de03b2f8b3c77a08e1099cd7cf121dcaf68c8e9a439"
     },
     {
       "path": "distribution-docs/SHADING-ASSUMPTIONS.txt",
@@ -151,11 +151,11 @@
     },
     {
       "path": "distribution-docs/SHARED-APP-PLAN.txt",
-      "sha256": "c7408d84a2af63ab7f1100c44d5f19e303619358bb49b5ef127ee49069daadf2"
+      "sha256": "e52712acf4ce283523baafc246ff2e4845e4f1d7e50f4f6b69eaaab9d9854336"
     },
     {
       "path": "distribution-docs/VERCEL-DEPLOYMENT.md",
-      "sha256": "b62e76947499569ba71d405a1808a5f9f935568def50d8987e38f2c3ebf45aa1"
+      "sha256": "4ecf39ae4d0ad853bc6101bec9ebb5a3ed780abbed1ae30a36a7a4bca75ae148"
     },
     {
       "path": "estate.test.js",
@@ -175,7 +175,7 @@
     },
     {
       "path": "generate-source-manifest.js",
-      "sha256": "7dbb67e9a2690194996894db80c045c00ba642131e74b60b79617fa2c48f1e98"
+      "sha256": "25e8a96218d9553cc9193c918dca914ac3786a7600be8a75980e558f6f628009"
     },
     {
       "path": "guided-room-flow.test.js",

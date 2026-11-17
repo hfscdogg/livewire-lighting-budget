@@ -1,10 +1,10 @@
 LIVEWIRE SHARED APPLICATION ARCHITECTURE
-November 17, 2026 | R9 shared application
+November 17, 2026 | Source R10; application R9
 
 PURPOSE
 Staff open the estimator at its approved HTTPS address, sign in with their
 work Google accounts and use shared projects and centrally managed pricing.
-The private GitHub repository stores code and catalog source. The company
+The GitHub repository stores code and catalog source. The company
 Vercel account runs the web application. Employee sign-in is separate from
 GitHub access. The public Livewire website does not need to change.
 
@@ -36,7 +36,7 @@ remain bounded. Photos require no separate object-storage service in this
 implementation.
 
 MIGRATION AND RECOVERY
-Existing project JSON files can be imported after employee sign-in. Imported
+Earlier test project JSON files can be imported after employee sign-in. Imported
 pricing and approvals cannot replace central company settings or hosted review.
 Existing SQLite databases are not automatically migrated. PostgreSQL backups
 and restoration are the company database administrator's responsibility.

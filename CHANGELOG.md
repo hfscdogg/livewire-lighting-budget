@@ -1,8 +1,15 @@
 # Change log
 
+## 2026-11-17 R10: Hosted workflow and repository configuration
+
+- Established the company-hosted estimator as the staff workflow: Google work-account sign-in, shared projects, central pricing and separate customer and estimator PDFs.
+- Replaced test-file operating instructions with shared saving and reopening, deployment ownership and company environment acceptance guidance.
+- Included the current environment template, ignore rules and GitHub verification workflow, with explicit upload instructions for these required files.
+- Regenerated the source inventory. Application code, equipment prices, labor calculations and reports are unchanged from R9.
+
 ## 2026-11-17 R9: Cumulative company review release
 
-This source package includes the guided sales workflow, company pricing, standalone reports and shared-deployment implementation through R9.
+This source package includes the guided sales workflow, company pricing, customer and estimator reports and shared-deployment implementation through R9.
 
 - Added quarter-hour rounding to completed labor tasks after quantity and applicable condition adjustments. Labor prices, programming totals, travel and report hours use the same rounded values. Unit rates retain calculation precision.
 - Preserved one startup hour and per-device programming, activation and testing, with progressive coordination allowances for larger systems. Applied access and height factors only to affected installation tasks.
@@ -27,7 +34,7 @@ Added a separate internal Estimator handoff PDF with the planning range, credite
 
 Unchecked D2 and D2R ceiling suitability generates room-specific ordering notes. Blank and unchecked legacy values normalize to unknown without recording approval. An obsolete review-only ceiling issue cannot reappear as a planning or navigation hold. Known D2R incompatibility and unresolved wiring access remain separate physical constraints. Pricing and labor allowances are unchanged.
 
-The same report is available through an authenticated shared endpoint and the standalone HTML. Large handoffs use the existing bounded transfer path. Validation includes 60 fixed/adjustable D2 and D2R cases across surfaces and unchecked values, saved/imported jobs, both report actions, hosted approval with an unchecked ceiling, large photo jobs and customer-data separation. A generated handoff was rendered and visually checked using a PDF layout engine; physical browser/iPad printing remains a deployment check.
+The report is available through an authenticated shared endpoint; the test bundle exercises the same report generation. Large handoffs use the existing bounded transfer path. Validation includes 60 fixed/adjustable D2 and D2R cases across surfaces and unchecked values, saved/imported jobs, both report actions, hosted approval with an unchecked ceiling, large photo jobs and customer-data separation. A generated handoff was rendered and visually checked using a PDF layout engine; physical browser/iPad printing remains a deployment check.
 
 
 ## 2026-11-16 R6: Company Vercel deployment support
@@ -36,15 +43,15 @@ Added a Vercel serverless entry point and build configuration, durable PostgreSQ
 
 Large project saves and imports transfer in small authenticated sections; larger responses stream back. Failed transfers do not replace the saved project. Uploads are bound to the employee and intended endpoint, expire after 15 minutes and can be consumed only once. Concurrent saves retain revision conflict protection. Room notes, photos and customer-data separation remain intact. Hosted calculation responses now include navigation requirements, preventing required answers from being deferred to the final screen.
 
-This cumulative package includes the R4 surface-based assemblies and copied-room navigation, and the R5 nonblocking D2R ordering notes. The standalone interface remains R5; equipment prices, budget percentages and labor standards are unchanged by the Vercel work. Source verification now requires the deployment files and runs during the Vercel build.
+This cumulative package includes the R4 surface-based assemblies and copied-room navigation, and the R5 nonblocking D2R ordering notes. The guided interface remains R5; equipment prices, budget percentages and labor standards are unchanged by the Vercel work. Source verification now requires the deployment files and runs during the Vercel build.
 
-Validation covers the existing estimating suite, generated standalone HTML, local shared-server tests and PostgreSQL-backed HTTP integration tests using PGlite. PostgreSQL tests exercise independent application instances, cross-instance login, saved projects, conflicting edits, immutable pricing, photo-heavy transfers, transfer failures and access restrictions. Live Vercel routing, external database networking, Google sign-in, browser printing and physical iPad acceptance remain deployment checks. No company account, paid service or public website was changed.
+Validation covers the existing estimating suite, generated development test bundle, local shared-server tests and PostgreSQL-backed HTTP integration tests using PGlite. PostgreSQL tests exercise independent application instances, cross-instance login, saved projects, conflicting edits, immutable pricing, photo-heavy transfers, transfer failures and access restrictions. Live Vercel routing, external database networking, Google sign-in, browser printing and physical iPad acceptance remain deployment checks. No company account, paid service or public website was changed.
 
 ## 2026-11-16 R5: Defer unchecked D2R suitability to the ordering handoff
 
 Unchecked Rania/Ketra D2R ceiling suitability no longer holds a complete budget or interrupts room navigation. Each affected room carries an automatic estimator note to confirm ceiling construction, insulation clearance, cutout and complete assembly before ordering. The optional ceiling check remains editable; explicitly incompatible conditions still require a revised selection. Prices, equipment quantities and labor are unchanged.
 
-The note is regenerated from saved room selections when a project is reopened and is included in the shared estimating response. Customer documents show the ceiling-fit assumption without exposing the internal ordering checklist. Automated checks cover unchecked fixed/adjustable assemblies, unchanged totals, copied-room navigation, save/reopen, known incompatibility and generated standalone HTML.
+The note is regenerated from saved room selections when a project is reopened and is included in the shared estimating response. Customer documents show the ceiling-fit assumption without exposing the internal ordering checklist. Automated checks cover unchecked fixed/adjustable assemblies, unchanged totals, copied-room navigation, save/reopen, known incompatibility and generated development test bundle.
 
 ## 2026-11-16 R4: Surface-based fixture assemblies and completed-room navigation
 
@@ -54,7 +61,7 @@ Fixed and adjustable Rania/Ketra in finished rooms use the priced D2R remodel pa
 
 Applying conditions to selected similar rooms marks them for forward-navigation skipping once complete. Any remaining room-specific ceiling or no-cut route check keeps that room in the sequence. Rooms remain accessible for manual review. Copied conditions and fixture installation overrides persist through save/reopen and shared scope validation.
 
-Automated regression coverage includes 63 surface, project-type and fixture-direction combinations, complete priced takeoffs, housing reuse, ceiling and no-cut safeguards, event-driven copy navigation and the generated standalone HTML. Physical browser/iPad and print acceptance remain unverified. This release provides the standalone R4 HTML for review; it does not deploy the public site.
+Automated regression coverage includes 63 surface, project-type and fixture-direction combinations, complete priced takeoffs, housing reuse, ceiling and no-cut safeguards, event-driven copy navigation and the generated development test bundle. Physical browser/iPad and print acceptance remain unverified. This release provided an R4 test build for review; it did not deploy the public site.
 
 ## 2026-11-16 R3: Complete tape choices, keypad budgets and room defaults
 
@@ -64,7 +71,7 @@ Removed selectable instruction placeholders and duplicate keypad load-arrangemen
 
 Untouched later rooms start with editable conditions from a preceding room of the same work type. Saved overrides remain intact. Route verification, fan support and fixture suitability are not copied. No-cut rooms require their own concealed-route confirmation. The customer scope identifies inherited assumptions and applicable equipment allowances.
 
-The standalone file displays build 2026-11-16 R3. Catalog pilot 9, price exports, source inventory and cumulative archive are synchronized. Regression cases cover all tape and keypad choices, fixed/adjustable assemblies, controller boundaries, price migration, no-cut restrictions and later-room defaults. Physical browser/iPad and print acceptance remain unverified.
+The development test build displays 2026-11-16 R3. Catalog pilot 9, price exports, source inventory and cumulative archive are synchronized. Regression cases cover all tape and keypad choices, fixed/adjustable assemblies, controller boundaries, price migration, no-cut restrictions and later-room defaults. Physical browser/iPad and print acceptance remain unverified.
 
 ## 2026-11-16: Progressive room choices and independent access settings
 
@@ -76,7 +83,7 @@ Removed the dark opening panel, duplicate step instructions and sales price-list
 
 ## 2026-11-16: Guided room setup and existing-light control upgrades
 
-Room setup now asks the work type and control experience before exposing keypad design and wall appearance. Manufacturer style references are embedded for offline use. Advanced equipment settings remain editable. Back preserves room quantities, and automatic platform upgrades are reversed when their requirements are removed while explicit preferences are retained.
+Room setup now asks the work type and control experience before exposing keypad design and wall appearance. Manufacturer style references are included with the application. Advanced equipment settings remain editable. Back preserves room quantities, and automatic platform upgrades are reversed when their requirements are removed while explicit preferences are retained.
 
 Existing-light control upgrades have independent dimmed and on/off group counts. Estimates include removal and replacement of wall controls, companion devices, circuit assessment and applicable programming. Local replacements retain existing fixtures and wiring. Relocation and centralized load arrangements add the applicable boxes, cabling and shared equipment. Hybrid keypads replace one compatible separate dimmer without duplicate device or installation charges.
 

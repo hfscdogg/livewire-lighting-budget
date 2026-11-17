@@ -2,14 +2,14 @@
 
 An internal sales tool for developing room-by-room budgets for lighting, Lutron controls and motorized shades. The guided workflow turns customer preferences and installation conditions into an equipment takeoff, task-based labor, a budget range and a scope of work.
 
-Release: **R9, November 17, 2026**. The standalone application is available for company review. Shared operation supports the company Vercel environment and requires deployment configuration and acceptance testing.
+Source release: **R10, November 17, 2026**. Staff use one hosted estimator through the company Vercel environment, with Google work-account sign-in, shared projects and centrally maintained pricing. Deployment configuration and acceptance testing remain required before staff rollout. This release updates documentation and repository configuration; estimator calculations remain at R9.
 
 ## Sales workflow
 
-1. Create a project and add the rooms involved.
+1. Open the company estimator link, sign in with an approved Google work account, create a project and add the rooms involved.
 2. Select the work in each room: recessed lighting, undercabinet lighting, owner-supplied fixtures or fans, existing-light controls, keypads and shades.
 3. Record the finished surface, permission for access cuts, attic access, working height and occupancy. Common installation settings are inferred and remain editable.
-4. Review the budget range and room-by-room scope. Save the project or generate a customer budget PDF and a separate estimator handoff PDF.
+4. Review the budget range and room-by-room scope. Save to shared projects, then generate a customer budget PDF after the required review or a separate estimator handoff PDF.
 
 Lighting choices determine the compatible control platform and shared equipment. Conventional lighting can use local dimmers and hybrid keypads. Central lighting panels are included when the selected wall-control arrangement requires them. Intelligent lighting, shades and controls share compatible processors and infrastructure.
 
@@ -32,26 +32,23 @@ Cable quantities, load controls, processor capacity, power supplies and installa
 
 The versioned company catalog is [pricing/catalog.json](pricing/catalog.json). Product records identify exact supplier prices, comparable assembly allowances and historical shade budgets. Shade amounts remain budget allowances pending final measurement and fabrication pricing. Task times are estimating standards, not a guarantee against concealed conditions or changes in scope. Final installation design and ordering review remain required.
 
-## Project files and reports
+## Shared projects and reports
 
-**Save project** retains an editable job, including room notes and photos. **Open project** resumes it. **Start next job** provides a save opportunity before clearing the draft. Browser storage is temporary; keep exported jobs in the company project location.
+**Save project** stores the editable job, including room notes and photos, in the company database. **Shared projects** finds and reopens jobs for authorized employees. Save before leaving a project or starting the next job; unsaved changes are not available to teammates. GitHub stores application source and pricing, not customer project records.
 
 The customer PDF contains the budget, credited retainer, scope and exclusions. The estimator handoff adds room selections, access assumptions, ordering notes, material quantities, labor, private notes and photos. Customer documents omit supplier costs and internal information. The application and editable project files are for internal company use.
 
-## Delivery options
+## Hosting and ownership
 
-| Mode | Use |
-| --- | --- |
-| Standalone HTML | Runs locally, saves editable project files and produces both reports; no employee sign-in or shared database |
-| Shared application | Google work-account sign-in, shared projects and central pricing through a company Vercel deployment with PostgreSQL |
+GitHub holds the maintained application source and pricing. The company Vercel project runs the estimator, Google verifies employee identities, and PostgreSQL stores shared jobs, notes, photos and catalog releases. Staff use the same approved HTTPS link on their computer or iPad. They do not need GitHub accounts or application files.
 
-GitHub stores source and pricing; Vercel runs the shared application. A public repository is not required. The repository and standalone application contain internal pricing and should remain restricted to authorized staff. GitHub Pages does not run the shared application's server and database. The public Livewire website is separate from this application.
+GitHub Pages cannot run the authenticated server and database required by this application. The public Livewire website is separate. The repository includes supplier pricing; a public repository makes those files readable regardless of the estimator's sign-in protection.
 
 Shared projects retain their assigned catalog release until repriced. Sales users can view company pricing; pricing administrators and owners maintain releases and approve customer budgets. Shared deployment requires approved company storage, Google identity configuration and backup arrangements. See [Vercel deployment](distribution-docs/VERCEL-DEPLOYMENT.md).
 
 ## Repository installation and verification
 
-The source archive contains repository files directly at its root. Extract it, then upload all enclosed files and folders to the repository root, preserving `dist/`, `pricing/`, `server/`, `api/`, `distribution-docs/` and `.github/`. Upload the extracted contents, not the ZIP itself or an enclosing folder.
+The source archive contains repository files directly at its root. Extract it, then upload all enclosed files and folders to the repository root, preserving `dist/`, `pricing/`, `server/`, `api/`, `distribution-docs/` and `.github/`. Upload the extracted contents, not the ZIP itself or an enclosing folder. Include `.env.example`, `.gitignore` and `.github/workflows/verify.yml`; filenames beginning with a dot are required source files. Confirm they appear in the upload before committing.
 
 With Node.js 22.x, version 22.16 or later:
 
@@ -59,11 +56,10 @@ With Node.js 22.x, version 22.16 or later:
 npm run verify
 npm ci
 npm test
-npm run build
-npm run test:bundle
+npm run build:vercel
 ```
 
-The standalone output is `distribution/Livewire-Lighting-Budget.html`. The company configuration view is `distribution/Livewire-Internal-Setup.html`. For Vercel, use `npm run build:vercel`, the Other framework preset and `public` as the output directory; the deployment guide specifies environment settings.
+Use the Other framework preset and `public` as the Vercel output directory. Application routes are served by the authenticated Node function. The deployment guide specifies environment settings and acceptance checks.
 
 The source inventory detects missing folders and mixed versions. After intentional source edits, regenerate it with `npm run manifest`. The GitHub verification workflow checks source integrity, tests and builds. Automated checks cover calculation, access, complete assemblies, controls-only work, large systems, saved projects, reports and shared authorization. Physical iPad/browser printing and live company sign-in, storage and backups remain deployment acceptance checks.
 
@@ -71,7 +67,8 @@ The source inventory detects missing folders and mixed versions. After intention
 
 - [Release status](distribution-docs/RELEASE-STATUS.md)
 - [Release history](CHANGELOG.md)
-- [Standalone operation](distribution-docs/SETUP.txt)
+- [Staff workflow](distribution-docs/SETUP.txt)
+- [Company Vercel deployment](distribution-docs/VERCEL-DEPLOYMENT.md)
 - [Labor basis and task register](distribution-docs/LABOR-REVIEW.md)
 - [Scope coverage](distribution-docs/SCOPE-MATRIX.txt)
 - [Shading allowances](distribution-docs/SHADING-ASSUMPTIONS.txt)

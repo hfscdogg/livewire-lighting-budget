@@ -1,6 +1,6 @@
 # Company Vercel deployment
 
-November 17, 2026. R9 shared application.
+November 17, 2026. Source R10; application R9.
 
 GitHub is the source repository. Vercel runs the shared estimator at its own HTTPS address. Staff use that address and their approved Google accounts; they do not need GitHub accounts. The public Livewire website does not need to change.
 
@@ -10,13 +10,13 @@ The company Vercel project owner or web application developer handles deployment
 
 Use `Livewire-Electrical/livewire-lighting-budget` and the existing company Vercel team. The company GitHub/Vercel administrators authorize that repository through the company's own accounts.
 
-An existing company-approved PostgreSQL database is required for shared saving. Vercel function files are temporary and cannot serve as the project database. Confirm database availability, access, backup policy and any charges within the existing company arrangements before enabling a new service. This package neither provisions a database nor establishes that one is included with the Vercel account. If none is available within approved company service arrangements, the standalone estimator remains usable while company storage is resolved.
+An existing company-approved PostgreSQL database is required for shared saving. Vercel function files are temporary and cannot serve as the project database. Confirm database availability, access, backup policy and any charges within the existing company arrangements before enabling a new service. This package neither provisions a database nor establishes that one is included with the Vercel account. Shared project saving requires that storage to be configured before staff rollout.
 
 ## Repository and build
 
 This is a cumulative source replacement. Extract the ZIP and update the repository root with all included files and folders. Do not upload the ZIP as the application, omit nested folders, or place an enclosing ZIP folder at the repository root. The `source-manifest.json` inventory must travel with the source. `npm run verify` reports missing or mixed-version files.
 
-Import the updated private repository into a new estimator project within the company Vercel team. Do not replace the company's public website project.
+Import the updated repository into a new estimator project within the company Vercel team. Do not replace the company's public website project.
 
 | Setting | Value |
 | --- | --- |
@@ -33,7 +33,7 @@ The build validates the complete source and company catalog. It generates a publ
 
 ## Company environment settings
 
-Set the following in Vercel project environment settings. Do not put populated secrets in GitHub, the HTML or a customer document. Redeploy after changing environment settings.
+Set the following in Vercel project environment settings. Do not put populated secrets in GitHub, client-side assets or a customer document. Redeploy after changing environment settings.
 
 | Variable | Required value |
 | --- | --- |
@@ -70,13 +70,13 @@ The first successful application initialization creates the database objects and
 
 The app automatically divides large saves, imports and calculation requests into small authenticated requests. Sections belong to one employee and one endpoint, expire after 15 minutes, and cannot be reused after finalization. Expired sections are cleared when another upload begins. Larger JSON responses stream. Each project supports up to 24 compressed JPEG photos, up to eight per room, subject to the existing image limits and 8 MB project-file limit. Photos are stored with the job in PostgreSQL, so this version does not require a separate object-storage subscription. A failed upload leaves the previously saved revision in place. Conflicting saves require reopening the newer revision.
 
-Use Shared projects, then Import an offline project to bring an existing estimator JSON file into the hosted application; save it to shared projects afterward. Import preserves validated room scope, notes and photos and uses company-managed pricing. Local approvals and catalogs are not trusted as hosted approvals. Existing SQLite databases are not migrated automatically.
+For migration of earlier test jobs only, the import action under Shared projects accepts existing estimator JSON files. Save imported jobs to shared projects afterward. Import preserves validated room scope, notes and photos and uses company-managed pricing. Imported approvals and catalogs are not trusted as hosted approvals. Normal staff work uses shared saving and reopening. Existing SQLite databases are not migrated automatically.
 
 Back up the PostgreSQL database, including project records, pricing and identity enrollment. Verify restoration to a separate test database. Repository history backs up code and catalog source; it does not back up saved jobs. The database provider owns recovery, retention and connection configuration. No automatic database backup service is created by the application.
 
 ## Acceptance before staff rollout
 
-The repository's automated checks run with `npm test`, `npm run build`, `npm run test:bundle` and `npm run build:vercel`. PostgreSQL tests use the actual PostgreSQL engine through PGlite, with simulated Google claims. They do not establish live Google or database-provider connectivity.
+The hosted release checks run with `npm run verify`, `npm test` and `npm run build:vercel`. The verification workflow also retains development bundle regression checks. PostgreSQL tests use the actual PostgreSQL engine through PGlite, with simulated Google claims. They do not establish live Google or database-provider connectivity.
 
 Complete these checks on the configured deployment:
 
